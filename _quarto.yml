@@ -1,0 +1,32 @@
+project:
+  type: book
+
+book:
+  title: "自然地理学特説II"
+  author: "岡本遼太郎"
+  date: "8/3/2025"
+  chapters:
+    - index.qmd
+    - 1.qmd
+    - 2.qmd
+    - 3.qmd
+    - 4.qmd
+    - 5.qmd
+    - 6.qmd
+    - 7.qmd
+    - 8.qmd
+    - 9.qmd
+    - references.qmd
+
+bibliography: export.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - pg2.scss
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+

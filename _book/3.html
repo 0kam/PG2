@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; QGISとRStudioのインストールと基礎 – 自然地理学特説II</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./4.html" rel="next">
+<link href="./2.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a363b19e2a952d3e8f07b97aa9d0cc3f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./3.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">QGISとRStudioのインストールと基礎</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">自然地理学特説II</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">はじめに</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">生態系観測の意義と地理学との接点</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">生態系リモートセンシングの基礎</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">QGISとRStudioのインストールと基礎</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">RStudioを用いた地理情報解析の基礎</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">衛星画像による生態系観測</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">地上撮影写真による生態系観測</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">音響データによる生態系観測</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">生物の地理的分布を説明・予測するモデル</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">自然地理学と社会</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">参考文献</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#はじめる前に" id="toc-はじめる前に" class="nav-link active" data-scroll-target="#はじめる前に"><span class="header-section-number">3.1</span> はじめる前に</a></li>
+  <li><a href="#qgisのインストール" id="toc-qgisのインストール" class="nav-link" data-scroll-target="#qgisのインストール"><span class="header-section-number">3.2</span> QGISのインストール</a>
+  <ul class="collapse">
+  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows"><span class="header-section-number">3.2.1</span> Windows</a></li>
+  <li><a href="#mac" id="toc-mac" class="nav-link" data-scroll-target="#mac"><span class="header-section-number">3.2.2</span> Mac</a></li>
+  <li><a href="#国土地理院標準地図を読み込む" id="toc-国土地理院標準地図を読み込む" class="nav-link" data-scroll-target="#国土地理院標準地図を読み込む"><span class="header-section-number">3.2.3</span> 国土地理院標準地図を読み込む</a></li>
+  <li><a href="#国土地理院数値標高モデルdemを使えるようにする" id="toc-国土地理院数値標高モデルdemを使えるようにする" class="nav-link" data-scroll-target="#国土地理院数値標高モデルdemを使えるようにする"><span class="header-section-number">3.2.4</span> 国土地理院数値標高モデル（DEM）を使えるようにする</a></li>
+  </ul></li>
+  <li><a href="#rとrstudioのインストール" id="toc-rとrstudioのインストール" class="nav-link" data-scroll-target="#rとrstudioのインストール"><span class="header-section-number">3.3</span> RとRStudioのインストール</a>
+  <ul class="collapse">
+  <li><a href="#rパッケージのインストール" id="toc-rパッケージのインストール" class="nav-link" data-scroll-target="#rパッケージのインストール"><span class="header-section-number">3.3.1</span> Rパッケージのインストール</a></li>
+  <li><a href="#windows-1" id="toc-windows-1" class="nav-link" data-scroll-target="#windows-1"><span class="header-section-number">3.3.2</span> Windows</a></li>
+  <li><a href="#mac-1" id="toc-mac-1" class="nav-link" data-scroll-target="#mac-1"><span class="header-section-number">3.3.3</span> Mac</a></li>
+  <li><a href="#最初のプロジェクト" id="toc-最初のプロジェクト" class="nav-link" data-scroll-target="#最初のプロジェクト"><span class="header-section-number">3.3.4</span> 最初のプロジェクト</a></li>
+  <li><a href="#余談プログラミングに入門するときのコツ" id="toc-余談プログラミングに入門するときのコツ" class="nav-link" data-scroll-target="#余談プログラミングに入門するときのコツ"><span class="header-section-number">3.3.5</span> 余談：プログラミングに入門するときのコツ</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">QGISとRStudioのインストールと基礎</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="はじめる前に" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="はじめる前に"><span class="header-section-number">3.1</span> はじめる前に</h2>
+<p>この章から、いよいよ具体的な作業に移っていきます。 始める前に、授業用のデータを格納するフォルダを作っておきましょう。フォルダ名は<code>PG2</code>とします。Physical Geography 2、この授業のタイトルですね。<code>PG2/</code>フォルダを置く場所はどこでも良いですが、親フォルダも含めて全角文字（ひらがな、カタカナ、漢字）が無いことが条件です。Windowsであれば「ドキュメント」、Macであれば「書類」直下などに置くのが良いでしょう（これらのフォルダは日本語で表示されていますが、内部的にはDocumentsという名前のフォルダになっています）。<code>PG2</code>フォルダの下に、この授業の章ごとにフォルダを作っていくことにします。今回は3つ目のテーマなので、<code>PG2/3/</code>という名前のフォルダを作りましょう。</p>
+</section>
+<section id="qgisのインストール" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="qgisのインストール"><span class="header-section-number">3.2</span> QGISのインストール</h2>
+<p>QGISは無料で使えるオープンソースの<a href="https://sorabatake.jp/16915/">地理情報システム（Geographical Information System, GIS）</a>です。 主要なOS全てに対応していてユーザー数も多く、さまざまなプラグインが公開されており、Web上の解説記事なども豊富にあります。</p>
+<section id="windows" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="windows"><span class="header-section-number">3.2.1</span> Windows</h3>
+<p><a href="https://sk-lb.net/qgis-install/">このインストラクション</a>に従いましょう。書いてあるとおり、ユーザー名に半角ローマ字以外が使われているとエラーを起こします。これはQGIS以外の多くの海外製ソフトウェア（後でインストールするRStudio含む）でも同様です。面倒ですが、新しいアカウントを作ってください。</p>
+</section>
+<section id="mac" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="mac"><span class="header-section-number">3.2.2</span> Mac</h3>
+<p><a href="https://qgis.mierune.co.jp/posts/howto_1_install_qgis#mac%E3%81%A7%E3%81%AEqgis%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%89%8B%E9%A0%86">このインストラクション</a>に従いましょう。</p>
+</section>
+<section id="国土地理院標準地図を読み込む" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="国土地理院標準地図を読み込む"><span class="header-section-number">3.2.3</span> 国土地理院標準地図を読み込む</h3>
+<p>この授業では、さまざまな地理情報を表示するためのツールとしてQGISを使います この際に、背景となる地図があると便利です。背景地図には、インターネット経由でXYZタイル形式のデータを取得するのが一般的です。QGISではOpenStreetMap(OSM)が使えるようになっていますが、日本国内に限って言えば（等高線が描かれた）国土地理院標準地図を使うのが便利です。</p>
+<p>まず、QGISを開き、左側の「ブラウザ」から「XYZタイル」を選び、右クリックし、「新規接続」をクリックします。 <img src="images/qgis_gsi_1.png" class="img-fluid"> 新規接続設定画面が出てくるので、</p>
+<ul>
+<li>名前に <code>地理院標準地図</code></li>
+<li>URLに <code>https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png</code></li>
+</ul>
+<p>を入力し、「OK」を押します。</p>
+<p><img src="images/qgis_gsi_2.png" class="img-fluid"> 「ブラウザ」の「XYZタイル」に「地理院標準地図」が追加されているので、クリックして地図を表示します。ズームしながらいろいろな場所を見てみましょう！</p>
+<p><img src="images/qgis_gsi_3.png" class="img-fluid"> ### ベクターデータとラスターデータ 前提として、GISにおけるデータの種類について簡単に紹介します。 GISで用いられるデータは主に<strong>ベクターデータ</strong>と<strong>ラスターデータ</strong>に分類されます。</p>
+<ul>
+<li><strong>ベクターデータ</strong>は、市区町村や建物などを<strong>ポイント、ライン、ポリゴン</strong>で表したものです。 それぞれのポイント、ライン、ポリゴンには市区町村名や建物名などの<strong>属性(Attribute)</strong>を紐づけます。ベクターデータはシェープファイル（.shp）やGeoJSON（.geojson）、KML（.kml）といったファイル形式で保存されます。 <img src="https://images.microcms-assets.io/assets/6c4873527fd24450a0163b40e8e173f2/8f22dcb8d6434fcbb17d76a7f88073ef/howto_1_about_data-type_2.png" class="img-fluid" alt="同じ建物を面で表現した場合（左図）とポイントで表現した場合（右図）QGIS LAB 「GISデータについて知ろう！ベクタデータとラスタデータの違いを解説」（https://qgis.mierune.co.jp/posts/howto_1_about_data-type）より"></li>
+<li><strong>ラスターデータ</strong>は一定間隔の格子状にその場所のデータ（標高、土地被覆、色など）が格納されたデータのことを指します。たとえば、航空写真や衛生画像が該当します。この格子の目の大きさを<strong>ピクセルサイズ</strong>ないしは<strong>空間解像度</strong>と呼び、これが細かいほど細部まで詳細に表すことができますが、データサイズが大きくなります。ラスターデータはGeoTIFF（.tiff、.tif）形式で保存されることが多いです。 <img src="https://images.microcms-assets.io/assets/6c4873527fd24450a0163b40e8e173f2/9849488dc31a4faa80d799a2302157a2/howto_1_about_data-type_5.png" class="img-fluid" alt="ラスタデータは格子状に並んだピクセルで校正されている（地球地図日本（国土地理院）を加工して作成）。「GISデータについて知ろう！ベクタデータとラスタデータの違いを解説」（https://qgis.mierune.co.jp/posts/howto_1_about_data-type）より"></li>
+</ul>
+<p><a href="https://qgis.mierune.co.jp/posts/howto_1_about_data-type">参考：QGIS LAB 「GISデータについて知ろう！ベクタデータとラスタデータの違いを解説」</a></p>
+</section>
+<section id="国土地理院数値標高モデルdemを使えるようにする" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="国土地理院数値標高モデルdemを使えるようにする"><span class="header-section-number">3.2.4</span> 国土地理院数値標高モデル（DEM）を使えるようにする</h3>
+<p>生態学や自然地理学で使う最も基本的な地理情報に、地形データがあります。 地形データは、5mや1m間隔の格子の中に、その場所の標高が格納されたラスタデータ（数値標高モデル、Digital Elevation Model (DEM)）として表現されます。 日本国内においては、国土地理院がDEMを作成・公開しており、誰でも無償で利用できます。一方、国土地理院DEMはGISでは取り扱いづらいデータ形式で配布されているため、QGISのプラグインを使ってGeoTIFF形式に変換します。</p>
+<p>ここでは、<a href="https://github.com/MIERUNE/QuickDEM4JP">QuickDEM4JPプラグイン</a>を使います。 まず、QGIS上部のメニューバーから「プラグイン」→「プラグインの管理とインストール」をクリックします。 <img src="images/qgis_dem4jp_1.png" class="img-fluid"> 検索窓に<code>QuickDEM4JP</code>と入力し、「QuickDEM4JP」を選択してインストールボタンを押します。 <img src="images/qgis_dem4jp_2.png" class="img-fluid"> 試しに、駿河台キャンパス周辺のDEMをダウンロードして表示してみましょう。 まずは、基盤地図情報ダウンロードサービスのアカウントを作成します。以下のURLからメールアドレスを登録し、本登録まで進んでください。 https://service-login.gsi.go.jp/regist/agreement</p>
+<p>アカウントができたらDEMデータのダウンロードに移りましょう。国土地理院の<a href="https://service.gsi.go.jp/kiban/app/">基盤地図情報ダウンロードサービス</a>を開き、右上の「ログイン」ボタンから、先ほど作成したアカウントにログインします。</p>
+<p>「基本項目・数値標高モデルのダウンロード」から「数値標高モデル」のボタンを押します。 表示された地図をズームして駿河台キャンパスを含むメッシュをクリックします。画面下の「検索結果リスト」タブにデータが追加されるので「ダウンロードリストに全て追加」を押します。「ダウンロードリスト」タブを開き、「ダウンロード等」に進みます。 <img src="images/qgis_dem4jp_3.png" class="img-fluid"></p>
+<p>追加したDEMデータを選択し、「ダウンロード」ボタンを押します。</p>
+<p><img src="images/qgis_dem4jp_4.png" class="img-fluid"> <code>FG-GML-533946-DEM5A-20250620.zip</code>というファイルがダウンロードされるので、これを<code>PG2/3/</code>以下に移動させます。</p>
+<p>画面をQGISに戻しましょう。上部メニューバーの「Processing」から「Toolbox」をクリックして、プロセシングールボックスを開きます。先ほど追加した「QuickDEM4JP」をクリックします。 <img src="images/qgis_dem4jp_5.png" class="img-fluid"></p>
+<p>「DEM」に、先ほどダウンロードした<code>PG2/3/FG-GML-533946-DEM5A-20250620.zip</code>を、「GeoTIFFの出力先」に適当なファイル名（<code>PG2/3/chiyodaku_dem.tif</code>）を選択し、「実行」を押します。 <img src="images/qgis_dem4jp_6.png" class="img-fluid"></p>
+<p>以下のように、標高が格納されたファイルが表示されるはずです！ <img src="images/qgis_dem4jp_7.png" class="img-fluid"> この図だと白黒でちょっと見辛いので、表示をいじってみましょう。 左下「レイヤ」の<code>chiyodaku_dem</code>を右クリックし、「プロパティ」を開きます。 - カラーマップの変更 - 左のタブ一覧から「シンボロジ」タブを開きます。 - 「レンダリングタイプ」を「単バンド擬似カラー」にします。 - 「カラーランプ」を「Viridis」にします。 - 「OK」を押します - 透明度の変更 - 左のタブ一覧から「透明度」タブを開きます。 - 「グローバルな不透明度」を70%にします。 - 「OK」を押します。</p>
+<p><img src="images/qgis_dem4jp_8.png" class="img-fluid"> 鮮やかなカラーマップが表示されました！半透明で標準地図も見ることができます。 本郷台地から不忍池に伸びる谷地形が印象的ですね！</p>
+<section id="余裕がある人向けの発展課題" class="level4" data-number="3.2.4.1">
+<h4 data-number="3.2.4.1" class="anchored" data-anchor-id="余裕がある人向けの発展課題"><span class="header-section-number">3.2.4.1</span> 余裕がある人向けの発展課題</h4>
+<p>東京全域のDEMをダウンロードして一つのGeoTIFFファイルにまとめ、QGIS上で表示してみましょう。 ヒント：「QGIS ラスター 結合」で検索</p>
+</section>
+</section>
+</section>
+<section id="rとrstudioのインストール" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="rとrstudioのインストール"><span class="header-section-number">3.3</span> RとRStudioのインストール</h2>
+<p><a href="https://www.r-project.org/">R</a>は主に統計解析を目的として作られたプログラミング言語・実行環境で、フリーで使うことができます。世界中のRユーザーが開発したパッケージが無数に公開されており、地理情報解析向けのパッケージも多数あります。</p>
+<p>地理情報解析にRを使うメリットはいろいろあります。</p>
+<ul>
+<li>マウス操作で行うGISソフトと違い、操作をプログラムで記述するため<strong>再現性が担保される</strong>。<br>
+</li>
+<li>統計解析や機械学習、論文に使える綺麗な図の作成まで一貫して行える.</li>
+<li>解析結果をいちいち表示しないので<strong>GISソフトより計算が速い</strong>.</li>
+<li>フリーソフトなので、所属機関が変わっても使える.</li>
+<li>構文が簡単でプログラミングの初歩的な学習に向いている…….</li>
+</ul>
+<p><a href="https://posit.co/download/rstudio-desktop/">RStudio</a>は（主に）R言語のプログラミング・実行を行うための統合開発環境（IDE、プログラムを書くエディタと実行環境がセットになったもの）です。必須ではありませんが、RStudioを使うとより効率的にRプログラミングができます。</p>
+<p>インストールは<a href="https://best-biostatistics.com/r/rstudio_start.html">このインストラクション</a>に従いましょう。</p>
+<section id="rパッケージのインストール" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="rパッケージのインストール"><span class="header-section-number">3.3.1</span> Rパッケージのインストール</h3>
+<p>最後に、地理情報解析に用いるRパッケージをインストールします。 後の章では他のパッケージも追加しますが、ここではとりあえず以下をインストールします。</p>
+<ul>
+<li><code>tidyverse</code>：データ処理とグラフ作成に使うパッケージ群</li>
+<li><code>sf</code>：ベクターデータ処理用のパッケージ</li>
+<li><code>terra</code>：ラスターデータ処理用のパッケージ</li>
+<li><code>tidyterra</code>：<code>terra</code>を用いたラスター演算を行いやすくするためのパッケージ</li>
+</ul>
+</section>
+<section id="windows-1" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="windows-1"><span class="header-section-number">3.3.2</span> Windows</h3>
+<p>RStudioの<code>Console</code>ペイン（左下）に</p>
+<pre><code>install.packages(c("tidyverse", "sf", "terra", "tidyterra"))</code></pre>
+<p>と入力し、エンターを押します。</p>
+</section>
+<section id="mac-1" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="mac-1"><span class="header-section-number">3.3.3</span> Mac</h3>
+<p>Macではいくつか依存するパッケージを事前にインストールする必要があります。 ここでは、<a href="https://brew.sh/ja/">homebrew</a>というパッケージマネージャを使ってインストールしましょう。 まず、「ターミナル」アプリを開き、以下を実行します。</p>
+<pre><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre>
+<p>これで<code>brew</code>コマンドが使えるようになりました。 続いて、必要なパッケージをインストールします。 以下をターミナルで実行します。</p>
+<pre><code>brew install harfbuzz fribidi libpng libtiff
+brew install pkg-config gdal</code></pre>
+<p>画面をRStudioに切り替え、コンソールペインに以下を貼り付けて実行します。</p>
+<pre><code>install.packages("sf", type = "source", configure.args = "--with-proj-lib=$(brew --prefix)/lib/")
+install.packages(c("tidyverse", "terra", "tidyterra"))</code></pre>
+<p>エラーが出たら教えてください！</p>
+</section>
+<section id="最初のプロジェクト" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="最初のプロジェクト"><span class="header-section-number">3.3.4</span> 最初のプロジェクト</h3>
+<p>ここでは、先ほどQGISで行ったDEMデータの変換と表示をRを使って行います。 QGISのプラグインでは、ダウンロードしてきた複数のDEMデータを一括で処理することができず、面倒です。 そこで、Rで同様の処理をまとめて行うためのスクリプトを作成しましょう。</p>
+<p>まずは、先ほどと同様に<a href="https://service.gsi.go.jp/kiban/app/">基盤地図情報ダウンロードサービス</a>からDEMデータをダウンロードします。 今回は、もう少し広めのエリアをダウンロードしましょう。</p>
+<p>RStudioの左上にある新規作成ボタン（白紙に緑のプラスマーク）を押し、<code>R Script</code>を選択します。</p>
+</section>
+<section id="余談プログラミングに入門するときのコツ" class="level3" data-number="3.3.5">
+<h3 data-number="3.3.5" class="anchored" data-anchor-id="余談プログラミングに入門するときのコツ"><span class="header-section-number">3.3.5</span> 余談：プログラミングに入門するときのコツ</h3>
+<p>いきなり意味のわからないプログラムが出てきてやる気なくしますよね（普通そうだと思います）。しかし、ちょっとした解析やデータの整理、グラフ作成を行う能力はきっと将来役に立つはずです。Rはそのためのツールとしてとても優れています。とはいえ、「コピペだけしても何もわかった気にならない」みたいな気持ちを持ったまま授業に臨むのは辛いので、ここでは僕がプログラミングに入門する際に重要だと思っていることを書きます。</p>
+<ol type="1">
+<li>雑にやる プログラムの意味が分かってなくても、動けばいいです。 「なんか絵が出た！」という素朴な楽しさを大切にしましょう。</li>
+<li>エラーメッセージは「怒られ」ではない エラーが出たらちょっとびっくりしますよね。エラーが出ると怒られた気持ちになってプログラミングを挫折したという話も聞いたことがあります。しかし、エラーが出ないように気をつけてプログラムを書くのは、（R初学者にとっては）あまり良いとは思いません。エラーをたくさん読むことが、プログラムのルールを学ぶ近道だと思います。自信がなくてもとりあえず実行してみて、結果を見ながら改善する、というループをできるだけたくさん回しましょう。</li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./2.html" class="pagination-link" aria-label="生態系リモートセンシングの基礎">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">生態系リモートセンシングの基礎</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./4.html" class="pagination-link" aria-label="RStudioを用いた地理情報解析の基礎">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">RStudioを用いた地理情報解析の基礎</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
