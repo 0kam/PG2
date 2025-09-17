@@ -34,30 +34,261 @@
 
 ![](images/4/1_4.png)
 
-結合されたレイヤが作成されるので、これをGeoTIFFファイルとして保存します。
-`出力レイヤ`を右クリックし、`エクスポート→名前をつけて保存`を選びます。`ファイル名`を編集して、`PG2/4/`に`dem_tokyo`という名前で保存しましょう。
+結合されたレイヤが作成されるので、これをGeoTIFFファイルとして保存します。 `出力レイヤ`を右クリックし、`エクスポート→名前をつけて保存`を選びます。`ファイル名`を編集して、`PG2/4/`に`dem_tokyo`という名前で保存しましょう。
 
 ![](images/4/1_5.png)
 
 ファイルエクスプローラを使って、`PG2/4/dem_tokyo.tif`が存在することを確かめます。
 
 ### まずはRで読み込んでみる
-それでは、RStudioに画面を切り替えます。 RStudioの左上にある新規作成ボタン（白紙に緑のプラスマーク）を押し、`R Script`を選択します。
 
+それでは、RStudioに画面を切り替えます。 RStudioの左上にある新規作成ボタン（白紙に緑のプラスマーク）を押し、`R Script`を選択します。`Ctrl + S`（Macの場合は`Cmd + S`）を押すと、保存先のファイル名を聞かれるので、`PG2/4/1_read_dem.R`として保存します。
+
+次に、Rを実行する場所を指定します。`Session → Set Working Directory → To Source File Location`を選んで、RStudioに作業場所が`PG2/4/`であることを教えます。
+
+![](images/4/1_6.png)
+
+それでは、以下をコピペして`Source`と書かれたボタンを押します。右下のペインにDEMが表示されるはずです。
 
 ```{R}
-
+#| include: true
+#| message: false
+#| collapse: true
+#| results: hold
+# 1_read_dem.R
+setwd("~/Documents/PG2/4/") # 人によって違うかもしれません
+library(terra)
+library(tidyverse)
+library(tidyterra)
+dem <- rast('dem_tokyo.tif')
+dem
+# Rで図を書く際には、ggplotライブラリを使います。
+ggplot() + # まずggplotを初期化し、+で要素を足していきます。
+  geom_spatraster(data = dem) # 次にgeom_spatraster()という種類の図を追加します。
 ```
 
-### ベクターデータと組み合わせてみる
+### 市区ごとの標高をグラフにする
 
-#### 市区ごとの標高をグラフにする
+次に、ベクターデータと組み合わせて解析してみましょう。 満遍なく均一にデータが敷き詰められたラスターデータを、ベクターデータで特定のエリアごとに分割して集計する作業を行います。
 
-#### 地形の断面を見てみる
+まずは簡単な例として、DEMデータを市区ごとに分割し、市区ごとの標高分布をグラフにしてみます。
 
-#### 河川の勾配をグラフにする
+`dem_tokyo.tif`には武蔵野市、杉並区、中野区、新宿区、文京区、千代田区、台東区、墨田区が（おおむね）含まれているので、これらの市区間で比較しましょう。
 
-## テーマ2. 
+書き始める前に、日本の自治体の地理情報をまとめたRパッケージ`jpndistrict`をインストールします。 `Console`ペインに以下を貼り付けて実行します。
+
+```         
+install.packages("remotes")
+remotes::install_github("uribo/jpndistrict")
+```
+
+それでは、解析用のRスクリプトを`PG2/4/2_dem_cities.R`として作成します。
+
+```{R}
+#| include: true
+#| message: false
+#| collapse: true
+# 2_dem_cities.R
+
+library(terra)
+library(tidyverse)
+library(tidyterra)
+library(jpndistrict)
+
+setwd("~/Documents/PG2/4/")
+
+dem <- rast('dem_tokyo.tif')
+
+# 欲しい市区の名称
+city_names <- c("武蔵野市", "杉並区", "中野区", "新宿区", 
+            "文京区", "千代田区", "台東区", "墨田区")
+
+# 都道府県のJISコードを確認する
+# 東京は13
+jpnprefs |> print(n = 20)
+
+cities <- jpn_cities(jis_code = 13, admin_name = city_names)
+
+# geometry列に市区のポリゴンデータが入っている
+cities
+
+# DEMデータに合わせるように、市区データをラスタライズする
+cities_raster <- cities |>
+  rasterize(dem, field = "city")
+
+# DEMデータのセルに市区名が入ったデータが出来上がる
+ggplot() + 
+  geom_spatraster(data = cities_raster)
+
+# DEMデータと市区名ラスターを結合し、データフレームに変える
+dem_city <- c(dem, cities_raster) |>
+  as_tibble() |> # データフレームに変換
+  mutate(city = factor(city, levels = city_names)) |> # 表示順をcity_namesの順番にする
+  drop_na()
+
+dem_city 
+
+# geom_histgram()でヒストグラムを作成
+# x軸は標高にしたいので、dem_tokyoを指定
+# facet_wrap()でcity別にヒストグラムを作る
+# labs()で軸のラベルを変える
+dem_city |>
+  ggplot() +
+  geom_histogram(mapping = aes(x = dem_tokyo)) +
+  facet_wrap(~city) +
+  labs(x = "DEMデータの標高（m）", y = "頻度")
+```
+
+### 地形の断面を見てみる
+
+次に、地図上に線を引いて地形の断面を見てみましょう。 まずは断面の元になる線をQGISで引きます。
+
+![](images/4/1_7.png) `新規シェイプファイルレイヤ`をクリックし、`ジオメトリ型`には`ラインストリング`を指定、`PG2/4/line_tokyo.shp`として保存します。 ![](images/4/1_8.png) `編集モードを切り替え`、`線の地物を追加`を押してから地図上に適当な線を引きます。ダブルクリックすると線の描画を終了できます。最後に`レイヤ編集内容を保存`を押して保存しましょう。
+
+これをRで読み込みます。 新しく、`PG2/4/3_cross_section.R`を作成しましょう。
+
+```{R}
+#| include: true
+#| message: false
+#| collapse: true
+# 3_cross_section.R
+
+library(terra)
+library(tidyverse)
+library(tidyterra)
+library(jpndistrict)
+library(sf)
+
+setwd("~/Documents/PG2/4/")
+
+# DEMを読み込む
+dem <- rast("dem_tokyo.tif")
+# 線を読み込む
+section <- st_read("line_tokyo.shp")
+
+# 市区のデータをDEMに合わせてラスターにする
+city_names <- c("武蔵野市", "杉並区", "中野区", "新宿区", 
+                "文京区", "千代田区", "台東区", "墨田区")
+cities_raster <- jpn_cities(jis_code = 13, admin_name = city_names) |>
+  rasterize(dem, field = "city")
+
+# とりあえずプロット
+ggplot() +
+  geom_spatraster(data = dem) +
+  geom_sf(data = section, colour = "white")
+
+# 線に沿って標高と市区名を取得
+# x（経度）,y（緯度）, 値の入ったデータフレームが返ってくる 
+elevation <- extractAlong(dem, section, xy = TRUE, ID = FALSE)
+cities <- extractAlong(cities_raster, section, xy = TRUE, ID= FALSE)
+
+# 両者を結合し、横軸を経度、縦軸を標高、色を市区名にした折れ線グラフを描く
+elevation |>
+  mutate(city = factor(cities$city, levels = city_names)) |> # 新しい列としてcityを追加
+  drop_na() |>
+  ggplot(aes(x = x, y = dem_tokyo, colour = city)) +
+  geom_line() +
+  labs(x = "経度", y = "標高", colour = "市区名")
+```
+
+### 河川の標高と傾斜をグラフにする
+
+最後に、河川に沿って同様の図を描いてみましょう。折よくこのエリアには神田川が流れているので、神田川に沿って、標高の変化をグラフにします。今回は追加で、DEMから傾斜角も算出してみます。
+
+まずは、河川のデータを取得します。 [国土数値情報ダウンロードサイト](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-W05.html#!)から河川データがダウンロードできます。データの選択で東京都を選び、ダウンロードしてください。
+
+`W05_08_13_GML.zip`がダウンロードされたと思うので、これを`PG2/4/`に移動して解凍します。中には`Stream.shp`と、`RiverNode.shp`の二つが入っていますが、今回は前者を使います。
+
+それではRスクリプトを書いていきましょう。 今回のファイル名は`PG2/4/4_stream.R`にします。
+
+```{R}
+#| include: true
+#| message: false
+#| collapse: true
+# 4_stream.R
+library(terra)
+library(tidyverse)
+library(tidyterra)
+library(jpndistrict)
+library(sf)
+
+setwd("~/Documents/PG2/4/")
+
+dem <- rast("dem_tokyo.tif")
+stream <- st_read("W05-08_13_GML/W05-08_13-g_Stream.shp")
+stream
+
+# W05_004には河川名称が入っているので、これが神田川の行だけ選ぶ
+# 距離の計算に使いやすいように、st_transform()でCRSをUTM(54)に変換
+kandagawa <- stream |>
+  filter(W05_004 == "神田川") |>
+  st_set_crs(4326) |>
+  st_union() |>
+  st_transform(6691)
+
+kandagawa
+
+# 1mあたり0.01個の密度（=100 m間隔）で神田川に沿って点をサンプリング
+kandagawa_points <- st_line_sample(kandagawa, density = 0.01) |>
+  st_cast("POINT") |>
+  st_as_sf() |>
+  arrange(desc(row_number())) |> # 順序を反転させ
+  mutate(distance = (row_number() * 100)) # 河口からの距離を計算
+
+# 欲しい市区の名前をDEMの各セルに紐付け
+city_names <- c("武蔵野市", "杉並区", "中野区", "新宿区", 
+                "文京区", "千代田区", "台東区", "墨田区")
+cities_raster <- jpn_cities(jis_code = 13, admin_name = city_names) |>
+  rasterize(dem, field = "city")
+
+# 重ねてみる
+ggplot() +
+  geom_spatraster(data = dem) +
+  geom_sf(data = kandagawa_points, aes(colour = distance)) +
+  scale_color_viridis_c() + # 河口からの距離はカラーマップを変える
+  labs(colour = "河口からの距離 (m)", fill = "標高")
+
+# 神田川沿いにサンプリングした100m間隔の点の標高を取得
+elevation <- terra::extract(dem, kandagawa_points, bind = TRUE, exact = TRUE) |>
+  st_as_sf()
+# 同様に、点の市区名を取得。
+cities <- terra::extract(cities_raster, kandagawa_points, bind = TRUE) |>
+  st_as_sf()
+
+# 河口からの距離と標高をプロットしてみる。
+elevation |> 
+  mutate(city = cities$city) |>
+  ggplot(aes(x = distance, y = dem_tokyo, colour = city)) +
+  geom_point() +
+  scale_x_reverse() + # X軸は降順にする
+  labs(x = "河口からの距離 (m)", y = "標高", colour = "市区")
+```
+
+あれ、川は坂を登ることはないはずですが、文京区と新宿区のあたりで妙な挙動を示していますね。神田川を地図にプロットして何が起きてるかみてみましょう。 以下を書き加えます。
+
+```{R}
+#| include: true
+#| message: false
+#| collapse: true
+# 4_stream.R（続き）
+
+library(leaflet)
+elevation |>
+  mutate(city = cities$city) |>
+  st_transform(4326) |> # Leafletで表示するために緯度経度に直す
+  filter(city %in% c("新宿区", "文京区")) |> # 新宿区or文京区で
+  filter(dem_tokyo > 2.5 & dem_tokyo < 5) |>  # 標高が2.5 ~ 5 m
+  filter(distance < 6000) |>                  # 河口からの距離が6km以内の場所に絞る
+  leaflet() |>
+  addTiles() |>  # Add default OpenStreetMap map tiles
+  addMarkers()
+```
+
+首都高でした！ここですね。
+
+![首都高5号池袋線の下を流れる神田川。Wikipedia「神田川」より](https://upload.wikimedia.org/wikipedia/commons/8/8e/KandaRiver_nearly_IshikiriBridge.jpg)
+
+## テーマ2.
 
 ## 余談：プログラミングに入門するときのコツ
 
@@ -66,3 +297,7 @@
 1.  雑にやる プログラムの意味が分かってなくても、動けばいいです。 「なんか絵が出た！」という素朴な楽しさを大切にしましょう。
 
 2.  エラーメッセージは「怒られ」ではない エラーが出たらちょっとびっくりしますよね。エラーが出ると怒られた気持ちになってプログラミングを挫折したという話も聞いたことがあります。しかし、エラーが出ないように気をつけてプログラムを書くのは、（R初学者にとっては）あまり良いとは思いません。エラーをたくさん読むことが、プログラムのルールを学ぶ近道だと思います。自信がなくてもとりあえず実行してみて、結果を見ながら改善する、というループをできるだけたくさん回しましょう。
+
+## 参考資料
+
+-   [Geocomputation with R](https://r.geocompx.org/jp/index.html)
