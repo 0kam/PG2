@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -190,8 +210,9 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#パッシブセンサ" id="toc-パッシブセンサ" class="nav-link" data-scroll-target="#パッシブセンサ"><span class="header-section-number">2.1.1</span> パッシブセンサ</a></li>
   </ul></li>
-  <li><a href="#鳥の眼虫の眼" id="toc-鳥の眼虫の眼" class="nav-link" data-scroll-target="#鳥の眼虫の眼"><span class="header-section-number">2.2</span> 鳥の眼、虫の眼</a></li>
-  <li><a href="#より深く知りたい方へ" id="toc-より深く知りたい方へ" class="nav-link" data-scroll-target="#より深く知りたい方へ"><span class="header-section-number">2.3</span> より深く知りたい方へ</a></li>
+  <li><a href="#アクティブセンサ" id="toc-アクティブセンサ" class="nav-link" data-scroll-target="#アクティブセンサ"><span class="header-section-number">2.2</span> アクティブセンサ</a></li>
+  <li><a href="#鳥の眼虫の眼" id="toc-鳥の眼虫の眼" class="nav-link" data-scroll-target="#鳥の眼虫の眼"><span class="header-section-number">2.3</span> 鳥の眼、虫の眼</a></li>
+  <li><a href="#より深く知りたい方へ" id="toc-より深く知りたい方へ" class="nav-link" data-scroll-target="#より深く知りたい方へ"><span class="header-section-number">2.4</span> より深く知りたい方へ</a></li>
   </ul>
 </nav>
     </div>
@@ -223,25 +244,55 @@ ul.task-list li input[type="checkbox"] {
 <section id="パッシブセンサ" class="level3" data-number="2.1.1">
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="パッシブセンサ"><span class="header-section-number">2.1.1</span> パッシブセンサ</h3>
 <p>まずは、使われるセンサの仕組みからリモセンを分類していきましょう。ここでは人工衛星に搭載されたセンサを用いたリモセンに着目します。</p>
-<p>最もよく使われるのは「パッシブセンサ」です。これは、太陽や地球が自然に反射・放射している電磁波（光や赤外線、マイクロ波など）を <strong>受動的に</strong> 観測するものです。</p>
+<p>最もよく使われるのは「パッシブセンサ」です。これは、太陽や地球が自然に放射・反射している電磁波（光や赤外線、マイクロ波など）を <strong>受動的に</strong> 観測するものです。</p>
 <p>少し堅苦しく聞こえるかもしれませんが、実は私たちの「目」もパッシブセンサだと言えます。 私たちの視覚は、以下のようなプロセスを経て世界を認識しています。</p>
 <ul>
 <li>光源（太陽や照明）から出た光が物体に当たり、反射したものを目がとらえる<br>
 </li>
-<li>目には赤・青・緑の三種類の受容体があり、三色の組み合わせで「色」を感じている</li>
+<li>目には赤・青・緑（Red Green Blue でRGBと呼びます）の三種類の受容体があり、三色の組み合わせで「色」を感じている</li>
 </ul>
 <p>植物の葉が緑に見えるのは、葉が緑の光を強く反射し、赤や青を吸収しているからです。一方で、鳥類や昆虫、霊長類以外の哺乳類は人間とは異なった色覚を持っており、中にはヒトよりも細かく色を分解して見ている生き物もいます。</p>
-<p><img src="https://gakugei.shueisha.co.jp/mori/serial/iroiro/image/zu12.jpg" class="img-fluid" alt="様々な生き物が持つ視物質の吸収波長特性の比較。川端裕人『いろいろな人のいろいろな色　色覚多様性をめぐって』（https://gakugei.shueisha.co.jp/mori/serial/iroiro/005.html）より"> ヒトや動物の目のように、特定の波長の電磁波を受動的に観測するセンサをパッシブセンサと呼び、リモセンに使われる多くのセンサが該当します。電磁波はその波長に応じてさまざまな種類に分類されます。たとえば可視光線や紫外線、赤外線などが挙げられます。地球を覆っている様々なもの（岩石、植物、水、雲…）はそれぞれ異なる反射特性を持っていますが、これらを判別するために、人工衛星などに搭載されるセンサには光の三原色だけでなく赤外線を観測できるものや、光をより細かい波長解像度で分解して観測することができるものもあります。 <img src="https://earth.jaxa.jp/ja/wp-content/uploads/sites/3/2021/07/image002.png" class="img-fluid" alt="JAXA 『リモートセンシングと放射伝達』（https://earth.jaxa.jp/ja/eo-knowledge/remote-sensing/index.html）より"> ### アクティブセンサ パッシブセンサが太陽や地球が放射する電磁波を受動的に観測するのに対して、自ら能動的（アクティブ）に電磁波を観測対象（地球表面）に照射し、その反射を観測するセンサ（アクティブセンサ）もあります。アクティブセンサで代表的なものには、SAR（Synthetic Aperture Radar, 合成開口レーダー）やLiDAR（Light Detection and Ranging）があります。これらのセンサは、赤外線よりもさらに波長の長い電磁波やレーザー光を地表に照射し、その反射を観測することで地表面の構造を観測します。アクティブセンサを用いる利点には、昼夜を問わず観測可能なこと、環境条件によらず均質な観測が可能なことが挙げられます。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://gakugei.shueisha.co.jp/mori/serial/iroiro/image/zu12.jpg" class="img-fluid figure-img"></p>
+<figcaption>様々な生き物が持つ視物質の吸収波長特性の比較。川端裕人『いろいろな人のいろいろな色　色覚多様性をめぐって』（https://gakugei.shueisha.co.jp/mori/serial/iroiro/005.html）より</figcaption>
+</figure>
+</div>
+<p>ヒトや動物の目のように、特定の波長の電磁波を受動的に観測するセンサをパッシブセンサと呼び、リモセンに使われる多くのセンサが該当します。電磁波はその波長に応じてさまざまな種類に分類されます。たとえば可視光線や紫外線、赤外線などが挙げられます。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://earth.jaxa.jp/ja/wp-content/uploads/sites/3/2021/07/image002.png" class="img-fluid figure-img"></p>
+<figcaption>JAXA 『リモートセンシングと放射伝達』（https://earth.jaxa.jp/ja/eo-knowledge/remote-sensing/index.html）より</figcaption>
+</figure>
+</div>
+<p>地球を覆っている様々なもの（岩石、植物、水、雲…）はそれぞれ異なる反射特性を持っていますが、これらを判別するために、人工衛星などに搭載されるセンサには光の三原色だけでなく赤外線を観測できるものや、光をより細かい波長解像度で分解して観測することができるものもあります。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://sorabatake.jp/wp-content/uploads/2018/12/1-2.jpg" class="img-fluid figure-img"></p>
+<figcaption>光の波長と波長による観測しやすい観測対象を表すグラフ宙畑（https://sorabatake.jp/364/）より</figcaption>
+</figure>
+</div>
+<p>例えば植物の葉に含まれるクロロフィル色素は赤色光を吸収し、近赤外線を反射する特性を持っています。したがって近赤外線を撮影できるセンサーを使い、近赤外光が赤色光に比べてどの程度強く吸収されているかを測定すれば、植生の有無やクロロフィル含有量、さらには光合成量を推定することができます。具体的な解析手法については第5章で触れます。</p>
+</section>
+</section>
+<section id="アクティブセンサ" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="アクティブセンサ"><span class="header-section-number">2.2</span> アクティブセンサ</h2>
+<p>パッシブセンサが太陽や地球が放射する電磁波を受動的に観測するのに対して、自ら能動的（アクティブ）に電磁波を観測対象（地球表面）に照射し、その反射を観測するセンサ（アクティブセンサ）もあります。アクティブセンサで代表的なものには、SAR（Synthetic Aperture Radar, 合成開口レーダー）やLiDAR（Light Detection and Ranging）があります。これらのセンサは、赤外線よりもさらに波長の長い電磁波やレーザー光を地表に照射し、その反射を観測することで地表面の構造を観測します。アクティブセンサを用いる利点には、昼夜を問わず観測可能なこと、環境条件によらず均質な観測が可能なことが挙げられます。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://sorabatake.jp/wp-content/uploads/2018/12/6e0174bc2bc0d246d0269f035beb91bd-1300x451.png" class="img-fluid figure-img"></p>
-<figcaption>SAR衛星のイメージ（宙畑「衛星データのキホン<sub>分かること、種類、頻度、解像度、活用事例</sub>」（https://sorabatake.jp/279/）より）</figcaption>
+<figcaption>SAR衛星のイメージ（宙畑「衛星データのキホン〜分かること、種類、頻度、解像度、活用事例〜」（https://sorabatake.jp/279/）より）</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/LIDAR-scanned-SICK-LMS-animation.gif/500px-LIDAR-scanned-SICK-LMS-animation.gif" class="img-fluid figure-img"></p>
+<figcaption>LiDARの動作イメージ。対象をスキャンするようにレーザー光を照射し、光が反射されて戻ってくるまでの時間によって対象までの距離（＝対象の構造）をマッピングする。Wikipedia（https://ja.wikipedia.org/wiki/LIDAR）より。</figcaption>
 </figure>
 </div>
 </section>
-</section>
-<section id="鳥の眼虫の眼" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="鳥の眼虫の眼"><span class="header-section-number">2.2</span> 鳥の眼、虫の眼</h2>
+<section id="鳥の眼虫の眼" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="鳥の眼虫の眼"><span class="header-section-number">2.3</span> 鳥の眼、虫の眼</h2>
 <p>上記のように、「リモセン」というと一般的には人工衛星を用いたリモセンを指すことが多いです。より細かい空間解像度が必要な場合には、航空機やドローンにカメラを搭載して観測を行うこともあります。航空機やドローンはその都度飛ばす必要があるため、撮影回数がどうしても下がりがちです。</p>
 <p>では、高解像度かつ高頻度な観測が必要な場合にはどうすれば良いでしょうか。たとえば、植物の日毎の開花数を観測したい場合や、ある場所に訪れる動物の数の時系列変化を観測したい場合などです。思い切ってセンサを地上に固定してしまうのはどうでしょう？広域を観測できるリモセンの利点は弱くなりますが、時間的に連続した観測ができるようになります。</p>
 <p>この授業では、上空から広域を観測するリモセンを「鳥の眼」リモセン、定点から狭い領域を高頻度に観測するリモせんを「虫の眼」リモセンと呼びます。「虫の眼」的なリモセンとして、近年の生態学分野では毎日決まった時間に自動的に録音を行う音声レコーダーを用いた観測手法が普及しつつあります。鳥類やカエル類、セミやコオロギといった昆虫など、音を種内でのコミュニケーションに用いる生物は多く存在します（ヒトもそうですね）。環境中に広がる鳴き声を観測することで、こういった動物の行動や生物季節について知ることができます。</p>
@@ -251,19 +302,27 @@ ul.task-list li input[type="checkbox"] {
 <figcaption>リモセンにおける「鳥の眼」と「虫の眼」リモセンのメリットは通常、センサーを人工衛星などに取り付けて広域を均質に観測できる点にあるが、センサーを地上の定点に固定すると、長時間連続して観測ができる。</figcaption>
 </figure>
 </div>
+<p>例えば、鳥類を対象とした大規模な音響観測ネットワークを用いた研究では、都市化による光害が鳥類の活動期間を延ばしていることが指摘されています（<span class="citation" data-cites="Pease2025Science">Pease and Gilbert (<a href="references.html#ref-Pease2025Science" role="doc-biblioref">2025</a>)</span>、下図）。</p>
+<p><img src="https://www.science.org/cms/10.1126/science.adv9472/asset/f7f4a93a-f2f8-4cf7-98db-a9f0333bdf05/assets/images/large/science.adv9472-f2.jpg" class="img-fluid"></p>
 </section>
-<section id="より深く知りたい方へ" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="より深く知りたい方へ"><span class="header-section-number">2.3</span> より深く知りたい方へ</h2>
+<section id="より深く知りたい方へ" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="より深く知りたい方へ"><span class="header-section-number">2.4</span> より深く知りたい方へ</h2>
 <p>以下の資料に加えて、さくらインターネットが運営する「<a href="https://sorabatake.jp/">宙畑（そらばたけ）</a>」の<a href="https://sorabatake.jp/satellite/introduction/">入門記事</a>もおすすめです。ライトで読み物的にも面白い解説記事や、最近の宇宙ビジネスに関するインタビューなども豊富に読めます。</p>
 <ul>
 <li><a href="https://earth.jaxa.jp/conseo/news/20231225-1/document_6.pdf">JAXA村木さんの解説スライド「今さら聞けない!!文系でもわかるリモートセンシングのキホン」</a></li>
 <li><a href="https://earth.jaxa.jp/ja/eo-knowledge/remote-sensing/index.html">JAXA Earth-graphy リモートセンシングと放射伝達</a></li>
-<li><a href="https://sorabatake.jp/3364/">SAR（合成開口レーダ）のキホン～事例、分かること、センサ、衛星、波長～</a></li>
+<li><a href="https://sorabatake.jp/364/">宙畑 光の波長って何？ なぜ人工衛星は人間の目に見えないものが見えるのか</a></li>
+<li><a href="https://sorabatake.jp/3364/">宙畑 SAR（合成開口レーダ）のキホン～事例、分かること、センサ、衛星、波長～</a></li>
 <li><a href="https://sorabatake.jp/14216/">宙畑「衛星搭載ライダーのキホン<sub>事例、分かること、仕組み、種類、衛星</sub>」</a></li>
 <li><a href="https://tenbou.nies.go.jp/science/description/detail.php?id=86">国立環境研究所　環境技術解説　『リモートセンシング』</a></li>
 </ul>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Pease2025Science" class="csl-entry" role="listitem">
+Pease, Brent S, and Neil A Gilbert. 2025. <span>“Light Pollution Prolongs Avian Activity.”</span> <em>Science</em> 389 (August): 818–21. <a href="https://doi.org/10.1126/science.adv9472">https://doi.org/10.1126/science.adv9472</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

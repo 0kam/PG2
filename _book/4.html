@@ -231,15 +231,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#テーマ1.-demデータで遊ぶ" id="toc-テーマ1.-demデータで遊ぶ" class="nav-link active" data-scroll-target="#テーマ1.-demデータで遊ぶ"><span class="header-section-number">4.1</span> テーマ1. DEMデータで遊ぶ</a>
+  <li><a href="#本当に雑なrの基礎" id="toc-本当に雑なrの基礎" class="nav-link active" data-scroll-target="#本当に雑なrの基礎"><span class="header-section-number">4.1</span> （本当に雑な）Rの基礎</a>
   <ul class="collapse">
-  <li><a href="#データの準備" id="toc-データの準備" class="nav-link" data-scroll-target="#データの準備"><span class="header-section-number">4.1.1</span> データの準備</a></li>
-  <li><a href="#まずはrで読み込んでみる" id="toc-まずはrで読み込んでみる" class="nav-link" data-scroll-target="#まずはrで読み込んでみる"><span class="header-section-number">4.1.2</span> まずはRで読み込んでみる</a></li>
-  <li><a href="#ベクターデータと組み合わせてみる" id="toc-ベクターデータと組み合わせてみる" class="nav-link" data-scroll-target="#ベクターデータと組み合わせてみる"><span class="header-section-number">4.1.3</span> ベクターデータと組み合わせてみる</a></li>
+  <li><a href="#簡単な演算" id="toc-簡単な演算" class="nav-link" data-scroll-target="#簡単な演算"><span class="header-section-number">4.1.1</span> 簡単な演算</a></li>
+  <li><a href="#naって何" id="toc-naって何" class="nav-link" data-scroll-target="#naって何"><span class="header-section-number">4.1.2</span> NAって何？</a></li>
+  <li><a href="#rの基本はデータフレーム" id="toc-rの基本はデータフレーム" class="nav-link" data-scroll-target="#rの基本はデータフレーム"><span class="header-section-number">4.1.3</span> Rの基本はデータフレーム</a></li>
+  <li><a href="#パイプで処理を繋げる" id="toc-パイプで処理を繋げる" class="nav-link" data-scroll-target="#パイプで処理を繋げる"><span class="header-section-number">4.1.4</span> パイプで処理を繋げる</a></li>
+  <li><a href="#mutateで新しい列を作る" id="toc-mutateで新しい列を作る" class="nav-link" data-scroll-target="#mutateで新しい列を作る"><span class="header-section-number">4.1.5</span> <code>mutate()</code>で新しい列を作る</a></li>
+  <li><a href="#filterで行を絞り込む" id="toc-filterで行を絞り込む" class="nav-link" data-scroll-target="#filterで行を絞り込む"><span class="header-section-number">4.1.6</span> <code>filter()</code>で行を絞り込む</a></li>
+  <li><a href="#selectで列を選ぶ" id="toc-selectで列を選ぶ" class="nav-link" data-scroll-target="#selectで列を選ぶ"><span class="header-section-number">4.1.7</span> <code>select()</code>で列を選ぶ</a></li>
+  <li><a href="#ggplotで図を作る" id="toc-ggplotで図を作る" class="nav-link" data-scroll-target="#ggplotで図を作る"><span class="header-section-number">4.1.8</span> <code>ggplot()</code>で図を作る</a></li>
   </ul></li>
-  <li><a href="#テーマ2." id="toc-テーマ2." class="nav-link" data-scroll-target="#テーマ2."><span class="header-section-number">4.2</span> テーマ2.</a></li>
+  <li><a href="#実践-demデータで遊ぶ" id="toc-実践-demデータで遊ぶ" class="nav-link" data-scroll-target="#実践-demデータで遊ぶ"><span class="header-section-number">4.2</span> 実践： DEMデータで遊ぶ</a>
+  <ul class="collapse">
+  <li><a href="#データの準備" id="toc-データの準備" class="nav-link" data-scroll-target="#データの準備"><span class="header-section-number">4.2.1</span> データの準備</a></li>
+  <li><a href="#まずはrで読み込んでみる" id="toc-まずはrで読み込んでみる" class="nav-link" data-scroll-target="#まずはrで読み込んでみる"><span class="header-section-number">4.2.2</span> まずはRで読み込んでみる</a></li>
+  <li><a href="#市区ごとの標高をグラフにする" id="toc-市区ごとの標高をグラフにする" class="nav-link" data-scroll-target="#市区ごとの標高をグラフにする"><span class="header-section-number">4.2.3</span> 市区ごとの標高をグラフにする</a></li>
+  <li><a href="#地形の断面を見てみる" id="toc-地形の断面を見てみる" class="nav-link" data-scroll-target="#地形の断面を見てみる"><span class="header-section-number">4.2.4</span> 地形の断面を見てみる</a></li>
+  <li><a href="#河川の標高と傾斜をグラフにする" id="toc-河川の標高と傾斜をグラフにする" class="nav-link" data-scroll-target="#河川の標高と傾斜をグラフにする"><span class="header-section-number">4.2.5</span> 河川の標高と傾斜をグラフにする</a></li>
+  </ul></li>
   <li><a href="#余談プログラミングに入門するときのコツ" id="toc-余談プログラミングに入門するときのコツ" class="nav-link" data-scroll-target="#余談プログラミングに入門するときのコツ"><span class="header-section-number">4.3</span> 余談：プログラミングに入門するときのコツ</a></li>
-  <li><a href="#参考資料" id="toc-参考資料" class="nav-link" data-scroll-target="#参考資料"><span class="header-section-number">4.4</span> 参考資料</a></li>
+  <li><a href="#より深く知りたい方へ" id="toc-より深く知りたい方へ" class="nav-link" data-scroll-target="#より深く知りたい方へ"><span class="header-section-number">4.4</span> より深く知りたい方へ</a></li>
   </ul>
 </nav>
     </div>
@@ -266,11 +278,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>ここでは、二回にわたってRを用いた地理情報解析を実践してゆきます。 まずは、解析用のフォルダを前回作成した<code>PG2/</code>以下に<code>PG2/4/</code>として作成しましょう。</p>
-<section id="テーマ1.-demデータで遊ぶ" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="テーマ1.-demデータで遊ぶ"><span class="header-section-number">4.1</span> テーマ1. DEMデータで遊ぶ</h2>
+<section id="本当に雑なrの基礎" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="本当に雑なrの基礎"><span class="header-section-number">4.1</span> （本当に雑な）Rの基礎</h2>
+<p>ここでは、本書でよく使うRの基本的な文法やデータ操作について触れます。Rの基礎をしっかりと学ぶ時間はないので、ざっくり本書で取り扱うサンプルコードの意図が汲み取れる状態を目指して、よく使う構文を攫っていきましょう。きちんと基礎から学びたい人には、<a href="https://tomoecon.github.io/R_for_graduate_thesis/">卒業論文のためのR</a>をお勧めします。</p>
+<section id="簡単な演算" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="簡単な演算"><span class="header-section-number">4.1.1</span> 簡単な演算</h3>
+</section>
+<section id="naって何" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="naって何"><span class="header-section-number">4.1.2</span> NAって何？</h3>
+</section>
+<section id="rの基本はデータフレーム" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="rの基本はデータフレーム"><span class="header-section-number">4.1.3</span> Rの基本はデータフレーム</h3>
+</section>
+<section id="パイプで処理を繋げる" class="level3" data-number="4.1.4">
+<h3 data-number="4.1.4" class="anchored" data-anchor-id="パイプで処理を繋げる"><span class="header-section-number">4.1.4</span> パイプで処理を繋げる</h3>
+</section>
+<section id="mutateで新しい列を作る" class="level3" data-number="4.1.5">
+<h3 data-number="4.1.5" class="anchored" data-anchor-id="mutateで新しい列を作る"><span class="header-section-number">4.1.5</span> <code>mutate()</code>で新しい列を作る</h3>
+</section>
+<section id="filterで行を絞り込む" class="level3" data-number="4.1.6">
+<h3 data-number="4.1.6" class="anchored" data-anchor-id="filterで行を絞り込む"><span class="header-section-number">4.1.6</span> <code>filter()</code>で行を絞り込む</h3>
+</section>
+<section id="selectで列を選ぶ" class="level3" data-number="4.1.7">
+<h3 data-number="4.1.7" class="anchored" data-anchor-id="selectで列を選ぶ"><span class="header-section-number">4.1.7</span> <code>select()</code>で列を選ぶ</h3>
+</section>
+<section id="ggplotで図を作る" class="level3" data-number="4.1.8">
+<h3 data-number="4.1.8" class="anchored" data-anchor-id="ggplotで図を作る"><span class="header-section-number">4.1.8</span> <code>ggplot()</code>で図を作る</h3>
+</section>
+</section>
+<section id="実践-demデータで遊ぶ" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="実践-demデータで遊ぶ"><span class="header-section-number">4.2</span> 実践： DEMデータで遊ぶ</h2>
 <p>今回のテーマは、前回軽く扱った国土地理院の数値標高モデル（DEM）データを用いて実践的な解析を行うことです。</p>
-<section id="データの準備" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="データの準備"><span class="header-section-number">4.1.1</span> データの準備</h3>
+<section id="データの準備" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="データの準備"><span class="header-section-number">4.2.1</span> データの準備</h3>
 <p>もう少し広い範囲のDEMデータを準備して、Rを駆使しながら遊んでみましょう。 まずは、前回と同様に<a href="https://service.gsi.go.jp/kiban/app/">基盤地図情報ダウンロードサービス</a>からDEMデータをダウンロードします。墨田区から武蔵野市にかけて、東西方向に3つのタイルを選択します。</p>
 <p><img src="images/4/1_1.png" class="img-fluid"></p>
 <p>「ダウンロードリストに全て追加」→「ダウンロード等へ」→「まとめてダウンロード」を選択し、メールで送られてきたリンクからダウンロードします。 今回は、<code>2025xxxxxxxxxxxx-001.zip</code>のようなZIPファイルがダウンロードされているので、これを<code>PG2/4/</code>に移動し、解凍します。</p>
@@ -290,8 +330,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="images/4/1_5.png" class="img-fluid"></p>
 <p>ファイルエクスプローラを使って、<code>PG2/4/dem_tokyo.tif</code>が存在することを確かめます。</p>
 </section>
-<section id="まずはrで読み込んでみる" class="level3" data-number="4.1.2">
-<h3 data-number="4.1.2" class="anchored" data-anchor-id="まずはrで読み込んでみる"><span class="header-section-number">4.1.2</span> まずはRで読み込んでみる</h3>
+<section id="まずはrで読み込んでみる" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="まずはrで読み込んでみる"><span class="header-section-number">4.2.2</span> まずはRで読み込んでみる</h3>
 <p>それでは、RStudioに画面を切り替えます。 RStudioの左上にある新規作成ボタン（白紙に緑のプラスマーク）を押し、<code>R Script</code>を選択します。<code>Ctrl + S</code>（Macの場合は<code>Cmd + S</code>）を押すと、保存先のファイル名を聞かれるので、<code>PG2/4/1_read_dem.R</code>として保存します。</p>
 <p>次に、Rを実行する場所を指定します。<code>Session → Set Working Directory → To Source File Location</code>を選んで、RStudioに作業場所が<code>PG2/4/</code>であることを教えます。</p>
 <p><img src="images/4/1_6.png" class="img-fluid"></p>
@@ -325,11 +365,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ## max value   :     74.44</code></pre>
 </div>
 </section>
-<section id="ベクターデータと組み合わせてみる" class="level3" data-number="4.1.3">
-<h3 data-number="4.1.3" class="anchored" data-anchor-id="ベクターデータと組み合わせてみる"><span class="header-section-number">4.1.3</span> ベクターデータと組み合わせてみる</h3>
+<section id="市区ごとの標高をグラフにする" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="市区ごとの標高をグラフにする"><span class="header-section-number">4.2.3</span> 市区ごとの標高をグラフにする</h3>
 <p>次に、ベクターデータと組み合わせて解析してみましょう。 満遍なく均一にデータが敷き詰められたラスターデータを、ベクターデータで特定のエリアごとに分割して集計する作業を行います。</p>
-<section id="市区ごとの標高をグラフにする" class="level4" data-number="4.1.3.1">
-<h4 data-number="4.1.3.1" class="anchored" data-anchor-id="市区ごとの標高をグラフにする"><span class="header-section-number">4.1.3.1</span> 市区ごとの標高をグラフにする</h4>
 <p>まずは簡単な例として、DEMデータを市区ごとに分割し、市区ごとの標高分布をグラフにしてみます。</p>
 <p><code>dem_tokyo.tif</code>には武蔵野市、杉並区、中野区、新宿区、文京区、千代田区、台東区、墨田区が（おおむね）含まれているので、これらの市区間で比較しましょう。</p>
 <p>書き始める前に、日本の自治体の地理情報をまとめたRパッケージ<code>jpndistrict</code>をインストールします。 <code>Console</code>ペインに以下を貼り付けて実行します。</p>
@@ -461,10 +499,13 @@ remotes::install_github("uribo/jpndistrict")</code></pre>
 </div>
 </div>
 </section>
-<section id="地形の断面を見てみる" class="level4" data-number="4.1.3.2">
-<h4 data-number="4.1.3.2" class="anchored" data-anchor-id="地形の断面を見てみる"><span class="header-section-number">4.1.3.2</span> 地形の断面を見てみる</h4>
+<section id="地形の断面を見てみる" class="level3" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="地形の断面を見てみる"><span class="header-section-number">4.2.4</span> 地形の断面を見てみる</h3>
 <p>次に、地図上に線を引いて地形の断面を見てみましょう。 まずは断面の元になる線をQGISで引きます。</p>
-<p><img src="images/4/1_7.png" class="img-fluid"> <code>新規シェイプファイルレイヤ</code>をクリックし、<code>ジオメトリ型</code>には<code>ラインストリング</code>を指定、<code>PG2/4/line_tokyo.shp</code>として保存します。 <img src="images/4/1_8.png" class="img-fluid"> <code>編集モードを切り替え</code>、<code>線の地物を追加</code>を押してから地図上に適当な線を引きます。ダブルクリックすると線の描画を終了できます。最後に<code>レイヤ編集内容を保存</code>を押して保存しましょう。</p>
+<p><img src="images/4/1_7.png" class="img-fluid"></p>
+<p><code>新規シェイプファイルレイヤ</code>をクリックし、<code>ジオメトリ型</code>には<code>ラインストリング</code>を指定、<code>PG2/4/line_tokyo.shp</code>として保存します。</p>
+<p><img src="images/4/1_8.png" class="img-fluid"></p>
+<p><code>編集モードを切り替え</code>、<code>線の地物を追加</code>を押してから地図上に適当な線を引きます。ダブルクリックすると線の描画を終了できます。最後に<code>レイヤ編集内容を保存</code>を押して保存しましょう。</p>
 <p>これをRで読み込みます。 新しく、<code>PG2/4/3_cross_section.R</code>を作成しましょう。</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3_cross_section.R</span></span>
@@ -528,8 +569,8 @@ remotes::install_github("uribo/jpndistrict")</code></pre>
 </div>
 </div>
 </section>
-<section id="河川の標高と傾斜をグラフにする" class="level4" data-number="4.1.3.3">
-<h4 data-number="4.1.3.3" class="anchored" data-anchor-id="河川の標高と傾斜をグラフにする"><span class="header-section-number">4.1.3.3</span> 河川の標高と傾斜をグラフにする</h4>
+<section id="河川の標高と傾斜をグラフにする" class="level3" data-number="4.2.5">
+<h3 data-number="4.2.5" class="anchored" data-anchor-id="河川の標高と傾斜をグラフにする"><span class="header-section-number">4.2.5</span> 河川の標高と傾斜をグラフにする</h3>
 <p>最後に、河川に沿って同様の図を描いてみましょう。折よくこのエリアには神田川が流れているので、神田川に沿って、標高の変化をグラフにします。今回は追加で、DEMから傾斜角も算出してみます。</p>
 <p>まずは、河川のデータを取得します。 <a href="https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-W05.html#!">国土数値情報ダウンロードサイト</a>から河川データがダウンロードできます。データの選択で東京都を選び、ダウンロードしてください。</p>
 <p><code>W05_08_13_GML.zip</code>がダウンロードされたと思うので、これを<code>PG2/4/</code>に移動して解凍します。中には<code>Stream.shp</code>と、<code>RiverNode.shp</code>の二つが入っていますが、今回は前者を使います。</p>
@@ -665,27 +706,35 @@ remotes::install_github("uribo/jpndistrict")</code></pre>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span>  <span class="co"># Add default OpenStreetMap map tiles</span></span>
 <span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-28fe0f5a9a9372849ce9" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-28fe0f5a9a9372849ce9">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[35.70303223926791,35.70313929531326,35.7031453353735,35.70300890503935,35.70576380382061,35.70663893731215],[139.7497117411159,139.7486161861963,139.7475113269894,139.746435356433,139.7440781028729,139.7438109937727],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[35.70300890503935,35.70663893731215],"lng":[139.7438109937727,139.7497117411159]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-9e610409aad82211cc97" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-9e610409aad82211cc97">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[35.70303223926791,35.70313929531326,35.7031453353735,35.70300890503935,35.70576380382061,35.70663893731215],[139.7497117411159,139.7486161861963,139.7475113269894,139.746435356433,139.7440781028729,139.7438109937727],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[35.70300890503935,35.70663893731215],"lng":[139.7438109937727,139.7497117411159]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
+<p>首都高でした！ここですね。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/KandaRiver_nearly_IshikiriBridge.jpg" class="img-fluid figure-img"></p>
+<figcaption>首都高5号池袋線の下を流れる神田川。Wikipedia「神田川」より</figcaption>
+</figure>
+</div>
 </section>
-</section>
-</section>
-<section id="テーマ2." class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="テーマ2."><span class="header-section-number">4.2</span> テーマ2.</h2>
 </section>
 <section id="余談プログラミングに入門するときのコツ" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="余談プログラミングに入門するときのコツ"><span class="header-section-number">4.3</span> 余談：プログラミングに入門するときのコツ</h2>
 <p>いきなり意味のわからないプログラムが出てきてやる気なくしますよね（普通そうだと思います）。しかし、ちょっとした解析やデータの整理、グラフ作成を行う能力はきっと将来役に立つはずです。Rはそのためのツールとしてとても優れています。とはいえ、「コピペだけしても何もわかった気にならない」みたいな気持ちを持ったまま授業に臨むのは辛いので、ここでは僕がプログラミングに入門する際に重要だと思っていることを書きます。</p>
 <ol type="1">
-<li><p>雑にやる プログラムの意味が分かってなくても、動けばいいです。 「なんか絵が出た！」という素朴な楽しさを大切にしましょう。</p></li>
-<li><p>エラーメッセージは「怒られ」ではない エラーが出たらちょっとびっくりしますよね。エラーが出ると怒られた気持ちになってプログラミングを挫折したという話も聞いたことがあります。しかし、エラーが出ないように気をつけてプログラムを書くのは、（R初学者にとっては）あまり良いとは思いません。エラーをたくさん読むことが、プログラムのルールを学ぶ近道だと思います。自信がなくてもとりあえず実行してみて、結果を見ながら改善する、というループをできるだけたくさん回しましょう。</p></li>
+<li><p>雑にやる<br>
+プログラムの意味が分かってなくても、動けばいいです。 「なんか絵が出た！」という素朴な楽しさを大切にしましょう。</p></li>
+<li><p>エラーメッセージは「怒られ」ではない<br>
+エラーが出たらちょっとびっくりしますよね。エラーが出ると怒られた気持ちになってプログラミングを挫折したという話も聞いたことがあります。しかし、エラーが出ないように気をつけてプログラムを書くのは、（R初学者にとっては）あまり良いとは思いません。エラーをたくさん読むことが、プログラムのルールを学ぶ近道だと思います。自信がなくてもとりあえず実行してみて、結果を見ながら改善する、というループをできるだけたくさん回しましょう。</p></li>
+<li><p>とにかく確認する<br>
+なぜかプログラムが動かない、そんな時は悩まずにプログラムの途中で生成されている変数やデータフレームを確認する癖をつけましょう。例えば<code>df</code>という名前のデータフレームをいじっているのならば、まずはConsoleペインに<code>df</code>と打って中身を見てみます。パイプで処理をつなげているときは、どこで問題が起きているか区別するためにそれぞれの段階の結果を出力してみると良いでしょう。</p></li>
 </ol>
 </section>
-<section id="参考資料" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="参考資料"><span class="header-section-number">4.4</span> 参考資料</h2>
+<section id="より深く知りたい方へ" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="より深く知りたい方へ"><span class="header-section-number">4.4</span> より深く知りたい方へ</h2>
 <ul>
+<li><a href="https://r4ds.hadley.nz/data-visualize.html">R for Data Science</a></li>
 <li><a href="https://r.geocompx.org/jp/index.html">Geocomputation with R</a></li>
 </ul>
 
