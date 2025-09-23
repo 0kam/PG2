@@ -233,14 +233,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#本当に雑なrの基礎" id="toc-本当に雑なrの基礎" class="nav-link active" data-scroll-target="#本当に雑なrの基礎"><span class="header-section-number">4.1</span> （本当に雑な）Rの基礎</a>
   <ul class="collapse">
-  <li><a href="#簡単な演算" id="toc-簡単な演算" class="nav-link" data-scroll-target="#簡単な演算"><span class="header-section-number">4.1.1</span> 簡単な演算</a></li>
-  <li><a href="#naって何" id="toc-naって何" class="nav-link" data-scroll-target="#naって何"><span class="header-section-number">4.1.2</span> NAって何？</a></li>
+  <li><a href="#演算" id="toc-演算" class="nav-link" data-scroll-target="#演算"><span class="header-section-number">4.1.1</span> 演算</a></li>
+  <li><a href="#型" id="toc-型" class="nav-link" data-scroll-target="#型"><span class="header-section-number">4.1.2</span> 型</a></li>
   <li><a href="#rの基本はデータフレーム" id="toc-rの基本はデータフレーム" class="nav-link" data-scroll-target="#rの基本はデータフレーム"><span class="header-section-number">4.1.3</span> Rの基本はデータフレーム</a></li>
-  <li><a href="#パイプで処理を繋げる" id="toc-パイプで処理を繋げる" class="nav-link" data-scroll-target="#パイプで処理を繋げる"><span class="header-section-number">4.1.4</span> パイプで処理を繋げる</a></li>
-  <li><a href="#mutateで新しい列を作る" id="toc-mutateで新しい列を作る" class="nav-link" data-scroll-target="#mutateで新しい列を作る"><span class="header-section-number">4.1.5</span> <code>mutate()</code>で新しい列を作る</a></li>
-  <li><a href="#filterで行を絞り込む" id="toc-filterで行を絞り込む" class="nav-link" data-scroll-target="#filterで行を絞り込む"><span class="header-section-number">4.1.6</span> <code>filter()</code>で行を絞り込む</a></li>
-  <li><a href="#selectで列を選ぶ" id="toc-selectで列を選ぶ" class="nav-link" data-scroll-target="#selectで列を選ぶ"><span class="header-section-number">4.1.7</span> <code>select()</code>で列を選ぶ</a></li>
-  <li><a href="#ggplotで図を作る" id="toc-ggplotで図を作る" class="nav-link" data-scroll-target="#ggplotで図を作る"><span class="header-section-number">4.1.8</span> <code>ggplot()</code>で図を作る</a></li>
+  <li><a href="#mutateで新しい列を作る" id="toc-mutateで新しい列を作る" class="nav-link" data-scroll-target="#mutateで新しい列を作る"><span class="header-section-number">4.1.4</span> <code>mutate()</code>で新しい列を作る</a></li>
+  <li><a href="#filterで行を絞り込む" id="toc-filterで行を絞り込む" class="nav-link" data-scroll-target="#filterで行を絞り込む"><span class="header-section-number">4.1.5</span> <code>filter()</code>で行を絞り込む</a></li>
+  <li><a href="#selectで列を選ぶ" id="toc-selectで列を選ぶ" class="nav-link" data-scroll-target="#selectで列を選ぶ"><span class="header-section-number">4.1.6</span> <code>select()</code>で列を選ぶ</a></li>
+  <li><a href="#ggplotで図を作る" id="toc-ggplotで図を作る" class="nav-link" data-scroll-target="#ggplotで図を作る"><span class="header-section-number">4.1.7</span> <code>ggplot()</code>で図を作る</a></li>
+  <li><a href="#進む前に" id="toc-進む前に" class="nav-link" data-scroll-target="#進む前に"><span class="header-section-number">4.1.8</span> 進む前に</a></li>
   </ul></li>
   <li><a href="#実践-demデータで遊ぶ" id="toc-実践-demデータで遊ぶ" class="nav-link" data-scroll-target="#実践-demデータで遊ぶ"><span class="header-section-number">4.2</span> 実践： DEMデータで遊ぶ</a>
   <ul class="collapse">
@@ -250,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#地形の断面を見てみる" id="toc-地形の断面を見てみる" class="nav-link" data-scroll-target="#地形の断面を見てみる"><span class="header-section-number">4.2.4</span> 地形の断面を見てみる</a></li>
   <li><a href="#河川の標高と傾斜をグラフにする" id="toc-河川の標高と傾斜をグラフにする" class="nav-link" data-scroll-target="#河川の標高と傾斜をグラフにする"><span class="header-section-number">4.2.5</span> 河川の標高と傾斜をグラフにする</a></li>
   </ul></li>
-  <li><a href="#余談プログラミングに入門するときのコツ" id="toc-余談プログラミングに入門するときのコツ" class="nav-link" data-scroll-target="#余談プログラミングに入門するときのコツ"><span class="header-section-number">4.3</span> 余談：プログラミングに入門するときのコツ</a></li>
+  <li><a href="#sec-kotsu" id="toc-sec-kotsu" class="nav-link" data-scroll-target="#sec-kotsu"><span class="header-section-number">4.3</span> 余談：プログラミングに入門するときのコツ</a></li>
   <li><a href="#より深く知りたい方へ" id="toc-より深く知りたい方へ" class="nav-link" data-scroll-target="#より深く知りたい方へ"><span class="header-section-number">4.4</span> より深く知りたい方へ</a></li>
   </ul>
 </nav>
@@ -281,34 +281,331 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="本当に雑なrの基礎" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="本当に雑なrの基礎"><span class="header-section-number">4.1</span> （本当に雑な）Rの基礎</h2>
 <p>ここでは、本書でよく使うRの基本的な文法やデータ操作について触れます。Rの基礎をしっかりと学ぶ時間はないので、ざっくり本書で取り扱うサンプルコードの意図が汲み取れる状態を目指して、よく使う構文を攫っていきましょう。きちんと基礎から学びたい人には、<a href="https://tomoecon.github.io/R_for_graduate_thesis/">卒業論文のためのR</a>をお勧めします。</p>
-<section id="簡単な演算" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="簡単な演算"><span class="header-section-number">4.1.1</span> 簡単な演算</h3>
+<p>それではRStudioを開いて、<code>Console</code>と書かれた左下のペインにサンプルコードをコピペしながらRの使い方を学んでいきましょう！</p>
+<section id="演算" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="演算"><span class="header-section-number">4.1.1</span> 演算</h3>
+<section id="簡単な演算" class="level4" data-number="4.1.1.1">
+<h4 data-number="4.1.1.1" class="anchored" data-anchor-id="簡単な演算"><span class="header-section-number">4.1.1.1</span> 簡単な演算</h4>
+<p>まずは簡単な四則演算を行ってみましょう。 Rはじめ、多くのプログラミング言語では全角文字は使えません。 実行時に無視される「コメント」以外では使わないようにしましょう。 以下では、プログラムの実行結果を<code>##</code>で表現します。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 半角シャープ以降は「コメント」です。Rの実行時には無視されます。</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="co"># 足し算</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span> <span class="co"># 引き算</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">*</span> <span class="dv">4</span> <span class="co"># 掛け算はアスタリスク</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 12</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span> <span class="sc">/</span> <span class="dv">2</span> <span class="co"># 割り算</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
-<section id="naって何" class="level3" data-number="4.1.2">
-<h3 data-number="4.1.2" class="anchored" data-anchor-id="naって何"><span class="header-section-number">4.1.2</span> NAって何？</h3>
+<section id="変数" class="level4" data-number="4.1.1.2">
+<h4 data-number="4.1.1.2" class="anchored" data-anchor-id="変数"><span class="header-section-number">4.1.1.2</span> 変数</h4>
+<p>次に、「変数」を使ってみます。変数を使うと、計算結果などの任意の値に名前をつけることができます。変数に値を代入する際には、<code>&lt;-</code>を使います。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>a</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">4</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>b</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 12</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> a <span class="sc">+</span> b</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>c</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 15</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="関数" class="level4" data-number="4.1.1.3">
+<h4 data-number="4.1.1.3" class="anchored" data-anchor-id="関数"><span class="header-section-number">4.1.1.3</span> 関数</h4>
+<p><code>-</code>や<code>+</code>以外の、もっと複雑な操作には「関数」を使います。 「関数」は、受け取った値に対して所定の処理を行い返す手続きのことです。 例えば<code>sum()</code>関数では、<code>()</code>の中に受け取った値を足し合わせて返します。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) <span class="co"># 足し合わせる</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 10</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) <span class="co"># 平均</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) <span class="co"># 最大値</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) <span class="co"># 最小値</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>range <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) <span class="sc">-</span> <span class="fu">min</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) <span class="co"># 値の幅</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>range</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>関数は星の数ほどあるので、使い方を覚えるのは無理です。わからなくなった際には、<code>Console</code>に<code>?関数名</code>（例：<code>?sum</code>）と打つと、右下の<code>Help</code>ペインに使い方が表示されます。</p>
+</section>
+<section id="ベクトル" class="level4" data-number="4.1.1.4">
+<h4 data-number="4.1.1.4" class="anchored" data-anchor-id="ベクトル"><span class="header-section-number">4.1.1.4</span> ベクトル</h4>
+<p>最後の例では、<code>min()</code>と<code>max()</code>の両方に、<code>1,2,3,4</code>という同じ値の組み合わせを入れていました。<code>1,2,3,4</code>をまとめて一つの変数に代入できれば便利そうですね。そういった時には、「ベクトル」を使います。ベクトルは同じ種類の値を複数個まとめたもので、<code>c()</code>関数で作ります。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>a</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 2 3 4</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(a)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 10</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>range <span class="ot">&lt;-</span> <span class="fu">max</span>(a) <span class="sc">-</span> <span class="fu">min</span>(a)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>range</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="型" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="型"><span class="header-section-number">4.1.2</span> 型</h3>
+<p>上記では数字だけを取り扱ってきましたが、Rは数字以外のデータを扱うこともできます。 プログラミング言語では、データの種類のことを「型」と呼びます。 例えば、数字の1と文字としての”1”は全く別のものとして取り扱われます。 したがって、以下の例では文字である”1”を足し算で用いることができないため、エラーが生じます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="st">"1"</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in 1 + "1": 二項演算子の引数が数値ではありません</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>それでは、Rで用いられる（主な）型をみていきましょう。</p>
+<section id="数値-numeric" class="level4" data-number="4.1.2.1">
+<h4 data-number="4.1.2.1" class="anchored" data-anchor-id="数値-numeric"><span class="header-section-number">4.1.2.1</span> 数値 (numeric)</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.3333333</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="文字列-character" class="level4" data-number="4.1.2.2">
+<h4 data-number="4.1.2.2" class="anchored" data-anchor-id="文字列-character"><span class="header-section-number">4.1.2.2</span> 文字列 (character)</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="st">"a"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "a"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Hello"</span>, <span class="st">" "</span>, <span class="st">"R"</span>) <span class="co"># paste()で文字列を結合します。半角スペースも立派な文字です。</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "Hello   R"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="論理-logical" class="level4" data-number="4.1.2.3">
+<h4 data-number="4.1.2.3" class="anchored" data-anchor-id="論理-logical"><span class="header-section-number">4.1.2.3</span> 論理 (logical)</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>a <span class="sc">==</span> <span class="dv">5</span> <span class="co"># 「同じか」は ==</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>a <span class="sc">!=</span> <span class="dv">5</span> <span class="co"># 「違うか」は !=</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>a <span class="sc">&lt;</span> <span class="dv">4</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>a <span class="sc">&gt;</span> <span class="dv">2</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="欠損値など-na-inf" class="level4" data-number="4.1.2.4">
+<h4 data-number="4.1.2.4" class="anchored" data-anchor-id="欠損値など-na-inf"><span class="header-section-number">4.1.2.4</span> 欠損値など (NA, Inf)</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cn">NA</span> <span class="co"># 欠損値（あるはずの値がないもの、Not Available）</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] NA</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span><span class="dv">0</span> <span class="co"># 無限大はInfになる</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] Inf</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(a) <span class="co"># is.na()で欠損値か確認できる</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
 </section>
 <section id="rの基本はデータフレーム" class="level3" data-number="4.1.3">
 <h3 data-number="4.1.3" class="anchored" data-anchor-id="rの基本はデータフレーム"><span class="header-section-number">4.1.3</span> Rの基本はデータフレーム</h3>
+<p>ここからは、もう少し実践的な内容に移っていきます。 少し極端な言い方ですが、Rで取り扱うデータはほとんど「データフレーム」です。 データフレームとは、雑に言えばExcelで作られるような表形式のデータのことです。 例を挙げましょう。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rにデフォルトで入っているpenguinsデータを使う</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(penguins, <span class="dv">10</span>) <span class="co"># 長いので10行目まで表示</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    species    island bill_len bill_dep flipper_len body_mass    sex year</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 1   Adelie Torgersen     39.1     18.7         181      3750   male 2007</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 2   Adelie Torgersen     39.5     17.4         186      3800 female 2007</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 3   Adelie Torgersen     40.3     18.0         195      3250 female 2007</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 4   Adelie Torgersen       NA       NA          NA        NA   &lt;NA&gt; 2007</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 5   Adelie Torgersen     36.7     19.3         193      3450 female 2007</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 6   Adelie Torgersen     39.3     20.6         190      3650   male 2007</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 7   Adelie Torgersen     38.9     17.8         181      3625 female 2007</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 8   Adelie Torgersen     39.2     19.6         195      4675   male 2007</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 9   Adelie Torgersen     34.1     18.1         193      3475   &lt;NA&gt; 2007</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  Adelie Torgersen     42.0     20.2         190      4250   &lt;NA&gt; 2007</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>penguins</code>はRにサンプルデータとして含まれているデータセットで、文字通りペンギンの種類や体重などに関するデータが含まれています。上記のように、データフレームでは縦方向（列）に同じ種類、横方向（行）に同じ観測（この場合は個体）が来るようにデータが配置されます。</p>
+<p>それでは、このデータで少し遊んでみましょう。</p>
 </section>
-<section id="パイプで処理を繋げる" class="level3" data-number="4.1.4">
-<h3 data-number="4.1.4" class="anchored" data-anchor-id="パイプで処理を繋げる"><span class="header-section-number">4.1.4</span> パイプで処理を繋げる</h3>
+<section id="mutateで新しい列を作る" class="level3" data-number="4.1.4">
+<h3 data-number="4.1.4" class="anchored" data-anchor-id="mutateで新しい列を作る"><span class="header-section-number">4.1.4</span> <code>mutate()</code>で新しい列を作る</h3>
+<p>以降では、<code>tidyverse</code>というパッケージ（群）を使います。<code>tidyverse</code>はデータフレームの処理やビジュアライゼーションを簡単に行うためのパッケージです。 パッケージの読み込みは<code>library()</code>で行います。</p>
+<p>まずは、既存の列の値を使って新しい列を作る<code>mutate()</code>関数を使ってみます。 ここでは、<code>|&gt;</code>という記号で処理を繋いでいますね。これは「パイプ」と呼ばれるもので、その名の通り複数の処理を繋ぐためのものです。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">bill_size =</span> bill_len <span class="sc">*</span> bill_dep, <span class="co"># 嘴の長さと高さを掛けて大きさにする</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">bill_aspect =</span> bill_len <span class="sc">/</span> bill_dep <span class="co"># 嘴の縦横比</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">relative_bill_size =</span> bill_size <span class="sc">/</span> body_mass <span class="co"># 体重に比した嘴の大きさ</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df, <span class="dv">10</span>) <span class="co"># 10行目まで表示</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="do">##    species    island bill_len bill_dep flipper_len body_mass    sex year</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 1   Adelie Torgersen     39.1     18.7         181      3750   male 2007</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 2   Adelie Torgersen     39.5     17.4         186      3800 female 2007</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 3   Adelie Torgersen     40.3     18.0         195      3250 female 2007</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 4   Adelie Torgersen       NA       NA          NA        NA   &lt;NA&gt; 2007</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 5   Adelie Torgersen     36.7     19.3         193      3450 female 2007</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 6   Adelie Torgersen     39.3     20.6         190      3650   male 2007</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="do">## 7   Adelie Torgersen     38.9     17.8         181      3625 female 2007</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 8   Adelie Torgersen     39.2     19.6         195      4675   male 2007</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 9   Adelie Torgersen     34.1     18.1         193      3475   &lt;NA&gt; 2007</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  Adelie Torgersen     42.0     20.2         190      4250   &lt;NA&gt; 2007</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="do">##    bill_size bill_aspect relative_bill_size</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="do">## 1     731.17    2.090909          0.1949787</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="do">## 2     687.30    2.270115          0.1808684</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="do">## 3     725.40    2.238889          0.2232000</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="do">## 4         NA          NA                 NA</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="do">## 5     708.31    1.901554          0.2053072</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="do">## 6     809.58    1.907767          0.2218027</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="do">## 7     692.42    2.185393          0.1910124</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="do">## 8     768.32    2.000000          0.1643465</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="do">## 9     617.21    1.883978          0.1776144</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="do">## 10    848.40    2.079208          0.1996235</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>以上では、<code>bill_size</code>、<code>bill_aspect</code>, <code>relatibe_bill_size</code>という３つの列を作ってみました。</p>
 </section>
-<section id="mutateで新しい列を作る" class="level3" data-number="4.1.5">
-<h3 data-number="4.1.5" class="anchored" data-anchor-id="mutateで新しい列を作る"><span class="header-section-number">4.1.5</span> <code>mutate()</code>で新しい列を作る</h3>
+<section id="filterで行を絞り込む" class="level3" data-number="4.1.5">
+<h3 data-number="4.1.5" class="anchored" data-anchor-id="filterで行を絞り込む"><span class="header-section-number">4.1.5</span> <code>filter()</code>で行を絞り込む</h3>
+<p>次に、特定の列の値を使って行を絞り込みます。例えば、メス個体のデータだけ集めてみましょう。 <code>filter()</code>には絞り込みたい条件式（論理型を返す）を書きます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"female"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>) <span class="co"># はじめの10行を表示</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    species    island bill_len bill_dep flipper_len body_mass    sex year</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 1   Adelie Torgersen     39.5     17.4         186      3800 female 2007</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 2   Adelie Torgersen     40.3     18.0         195      3250 female 2007</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 3   Adelie Torgersen     36.7     19.3         193      3450 female 2007</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 4   Adelie Torgersen     38.9     17.8         181      3625 female 2007</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 5   Adelie Torgersen     41.1     17.6         182      3200 female 2007</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 6   Adelie Torgersen     36.6     17.8         185      3700 female 2007</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 7   Adelie Torgersen     38.7     19.0         195      3450 female 2007</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 8   Adelie Torgersen     34.4     18.4         184      3325 female 2007</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 9   Adelie    Biscoe     37.8     18.3         174      3400 female 2007</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  Adelie    Biscoe     35.9     19.2         189      3800 female 2007</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="do">##    bill_size bill_aspect relative_bill_size</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 1     687.30    2.270115          0.1808684</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 2     725.40    2.238889          0.2232000</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 3     708.31    1.901554          0.2053072</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 4     692.42    2.185393          0.1910124</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="do">## 5     723.36    2.335227          0.2260500</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 6     651.48    2.056180          0.1760757</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 7     735.30    2.036842          0.2131304</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="do">## 8     632.96    1.869565          0.1903639</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="do">## 9     691.74    2.065574          0.2034529</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="do">## 10    689.28    1.869792          0.1813895</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
-<section id="filterで行を絞り込む" class="level3" data-number="4.1.6">
-<h3 data-number="4.1.6" class="anchored" data-anchor-id="filterで行を絞り込む"><span class="header-section-number">4.1.6</span> <code>filter()</code>で行を絞り込む</h3>
+<section id="selectで列を選ぶ" class="level3" data-number="4.1.6">
+<h3 data-number="4.1.6" class="anchored" data-anchor-id="selectで列を選ぶ"><span class="header-section-number">4.1.6</span> <code>select()</code>で列を選ぶ</h3>
+<p>最後に、欲しい列だけ選ぶ<code>select()</code>を使ってみます。<code>select()</code>ではかなり柔軟に列を選ぶことができます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 列名で選択</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(species, body_mass, year) <span class="sc">|&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    species body_mass year</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 1   Adelie      3750 2007</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 2   Adelie      3800 2007</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 3   Adelie      3250 2007</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 4   Adelie        NA 2007</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 5   Adelie      3450 2007</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 6   Adelie      3650 2007</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 7   Adelie      3625 2007</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 8   Adelie      4675 2007</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 9   Adelie      3475 2007</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  Adelie      4250 2007</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co"># "bill" で始まる列を選択</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"bill"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="do">##    bill_len bill_dep bill_size bill_aspect</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      39.1     18.7    731.17    2.090909</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="do">## 2      39.5     17.4    687.30    2.270115</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="do">## 3      40.3     18.0    725.40    2.238889</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="do">## 4        NA       NA        NA          NA</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="do">## 5      36.7     19.3    708.31    1.901554</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="do">## 6      39.3     20.6    809.58    1.907767</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="do">## 7      38.9     17.8    692.42    2.185393</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a><span class="do">## 8      39.2     19.6    768.32    2.000000</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="do">## 9      34.1     18.1    617.21    1.883978</span></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="do">## 10     42.0     20.2    848.40    2.079208</span></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="co"># "len"で終わる列を選択</span></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"len"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a><span class="do">##    bill_len flipper_len</span></span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      39.1         181</span></span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a><span class="do">## 2      39.5         186</span></span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a><span class="do">## 3      40.3         195</span></span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a><span class="do">## 4        NA          NA</span></span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a><span class="do">## 5      36.7         193</span></span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a><span class="do">## 6      39.3         190</span></span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a><span class="do">## 7      38.9         181</span></span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a><span class="do">## 8      39.2         195</span></span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a><span class="do">## 9      34.1         193</span></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a><span class="do">## 10     42.0         190</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
-<section id="selectで列を選ぶ" class="level3" data-number="4.1.7">
-<h3 data-number="4.1.7" class="anchored" data-anchor-id="selectで列を選ぶ"><span class="header-section-number">4.1.7</span> <code>select()</code>で列を選ぶ</h3>
+<section id="ggplotで図を作る" class="level3" data-number="4.1.7">
+<h3 data-number="4.1.7" class="anchored" data-anchor-id="ggplotで図を作る"><span class="header-section-number">4.1.7</span> <code>ggplot()</code>で図を作る</h3>
+<p>お疲れ様です（書いてる僕も疲れました）。最後のステップ、いよいよデータを図にしてみましょう。図の作成には<code>ggplot()</code>を使います。基本的な使い方としては、</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> X軸に使う列名, <span class="at">y =</span> Y軸に使う列名, ...)) <span class="sc">+</span> <span class="co"># どの列をどの軸に使うか</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  geom_グラフの種類() <span class="co"># グラフの種類を指定（例：geom_box()で箱ひげ図、geom_point()で散布図）</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>のように書きます。<code>ggplot()</code>以降はパイプではなく<code>+</code>で処理を繋いでいきます（なぜ？僕に分かりません…）。他にも使う色のセットや文字の大きさなど、細かい設定を順次<code>+</code>で足していけるので、論文でそのまま使える綺麗な図を作成することができます。設定できる項目が膨大なのでちょっととっつきづらいですが、ググれば参考になる情報は多いので心配ありません。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># まず簡単な例。bill_lenとbody_massの関係をみてみます</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> <span class="co"># ここはパイプ</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span> <span class="co"># NAを含む行を削除</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass, <span class="at">y =</span> bill_len, <span class="at">color =</span> species)) <span class="sc">+</span> <span class="co"># aes()でどの列をx軸、y軸、色に割り当てるかを指定</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="4_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 次に、種ごと、島ごと、性別ごとの体重をプロットしてみる</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> island, <span class="at">y =</span> body_mass, <span class="at">fill =</span> sex)) <span class="sc">+</span> <span class="co"># 輪郭や点の色はcolour、塗りつぶしの色はfillで指定</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span> <span class="co"># バイオリンプロット。見慣れないかもしれないけど、箱ひげ図の進化形です。</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species) <span class="co"># 種ごとに図を分ける</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="4_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 最後に、さっき作った列を使ってみる</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> relative_bill_size, <span class="at">y =</span> bill_aspect, <span class="at">colour =</span> sex)) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="4_files/figure-html/unnamed-chunk-15-3.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="ggplotで図を作る" class="level3" data-number="4.1.8">
-<h3 data-number="4.1.8" class="anchored" data-anchor-id="ggplotで図を作る"><span class="header-section-number">4.1.8</span> <code>ggplot()</code>で図を作る</h3>
+<section id="進む前に" class="level3" data-number="4.1.8">
+<h3 data-number="4.1.8" class="anchored" data-anchor-id="進む前に"><span class="header-section-number">4.1.8</span> 進む前に</h3>
+<p>さて、ここまできてプチ絶望している人も多いと想像しますが、次に行く前に <a href="#sec-kotsu" class="quarto-xref"><span>Section 4.3</span></a> を読んでみてください。 プログラミングで大事なのは、<strong>悩まず手を動かす（試す、ググる、ChatGPTに聞く）こと、気楽に取り組むこと</strong>、です。</p>
 </section>
 </section>
 <section id="実践-demデータで遊ぶ" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="実践-demデータで遊ぶ"><span class="header-section-number">4.2</span> 実践： DEMデータで遊ぶ</h2>
-<p>今回のテーマは、前回軽く扱った国土地理院の数値標高モデル（DEM）データを用いて実践的な解析を行うことです。</p>
+<p>それでは地理情報解析に取り組んでみましょう。今回のテーマは、前章で軽く扱った国土地理院の数値標高モデル（DEM）データを用いて実践的な解析を行うことです。</p>
 <section id="データの準備" class="level3" data-number="4.2.1">
 <h3 data-number="4.2.1" class="anchored" data-anchor-id="データの準備"><span class="header-section-number">4.2.1</span> データの準備</h3>
 <p>もう少し広い範囲のDEMデータを準備して、Rを駆使しながら遊んでみましょう。 まずは、前回と同様に<a href="https://service.gsi.go.jp/kiban/app/">基盤地図情報ダウンロードサービス</a>からDEMデータをダウンロードします。墨田区から武蔵野市にかけて、東西方向に3つのタイルを選択します。</p>
@@ -337,20 +634,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="images/4/1_6.png" class="img-fluid"></p>
 <p>それでは、以下をコピペして<code>Source</code>と書かれたボタンを押します。右下のペインにDEMが表示されるはずです。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1_read_dem.R</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"~/Documents/PG2/4/"</span>) <span class="co"># 人によって違うかもしれません</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>dem <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">'dem_tokyo.tif'</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>dem</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Rで図を書く際には、ggplotライブラリを使います。</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="co"># まずggplotを初期化し、+で要素を足していきます。</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> dem) <span class="co"># 次にgeom_spatraster()という種類の図を追加します。</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1_read_dem.R</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"~/Documents/PG2/4/"</span>) <span class="co"># 人によって違うかもしれません</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>dem <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">'dem_tokyo.tif'</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>dem</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Rで図を書く際には、ggplotライブラリを使います。</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="co"># まずggplotを初期化し、+で要素を足していきます。</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> dem) <span class="co"># 次にgeom_spatraster()という種類の図を追加します。</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="4_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="2100"></p>
+<p><img src="4_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="2100"></p>
 </figure>
 </div>
 </div>
@@ -375,125 +672,125 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 remotes::install_github("uribo/jpndistrict")</code></pre>
 <p>それでは、解析用のRスクリプトを<code>PG2/4/2_dem_cities.R</code>として作成します。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2_dem_cities.R</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jpndistrict)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"~/Documents/PG2/4/"</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>dem <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">'dem_tokyo.tif'</span>)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 欲しい市区の名称</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>city_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"武蔵野市"</span>, <span class="st">"杉並区"</span>, <span class="st">"中野区"</span>, <span class="st">"新宿区"</span>, </span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">"文京区"</span>, <span class="st">"千代田区"</span>, <span class="st">"台東区"</span>, <span class="st">"墨田区"</span>)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 都道府県のJISコードを確認する</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 東京は13</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>jpnprefs <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">20</span>)</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 47 × 11</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="do">##    jis_code prefecture capital      region major_island prefecture_en capital_en</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;    &lt;fct&gt;      &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;         &lt;chr&gt;     </span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 01       北海道     札幌市       北海道 北海道       Hokkaido      Sapporo-s…</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 02       青森県     青森市       東北   本州         Aomori-ken    Aomori-shi</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 03       岩手県     盛岡市       東北   本州         Iwate-ken     Morioka-s…</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 04       宮城県     仙台市       東北   本州         Miyagi-ken    Sendai-shi</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 05       秋田県     秋田市       東北   本州         Akita-ken     Akita-shi </span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 06       山形県     山形市       東北   本州         Yamagata-ken  Yamagata-…</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 07       福島県     福島市       東北   本州         Fukushima-ken Fukushima…</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 08       茨城県     水戸市       関東   本州         Ibaraki-ken   Mito-shi  </span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 09       栃木県     宇都宮市     関東   本州         Tochigi-ken   Utsunomiy…</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 10       群馬県     前橋市       関東   本州         Gunma-ken     Maebashi-…</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="do">## 11 11       埼玉県     さいたま市   関東   本州         Saitama-ken   Saitama-s…</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="do">## 12 12       千葉県     千葉市       関東   本州         Chiba-ken     Chiba-shi </span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="do">## 13 13       東京都     新宿区 （東京23区）… 関東   本州         Tokyo-to      Shinjuku-…</span></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="do">## 14 14       神奈川県   横浜市       関東   本州         Kanagawa-ken  Yokohama-…</span></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="do">## 15 15       新潟県     新潟市       中部   本州         Niigata-ken   Niigata-s…</span></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="do">## 16 16       富山県     富山市       中部   本州         Toyama-ken    Toyama-shi</span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="do">## 17 17       石川県     金沢市       中部   本州         Ishikawa-ken  Kanazawa-…</span></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="do">## 18 18       福井県     福井市       中部   本州         Fukui-ken     Fukui-shi </span></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="do">## 19 19       山梨県     甲府市       中部   本州         Yamanashi-ken Kofu-shi  </span></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="do">## 20 20       長野県     長野市       中部   本州         Nagano-ken    Nagano-shi</span></span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ 27 more rows</span></span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ 4 more variables: region_en &lt;chr&gt;, major_island_en &lt;chr&gt;,</span></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="do">## #   capital_latitude &lt;dbl&gt;, capital_longitude &lt;dbl&gt;</span></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>cities <span class="ot">&lt;-</span> <span class="fu">jpn_cities</span>(<span class="at">jis_code =</span> <span class="dv">13</span>, <span class="at">admin_name =</span> city_names)</span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="co"># geometry列に市区のポリゴンデータが入っている</span></span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>cities</span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 8 features and 2 fields</span></span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="do">## Geometry type: POLYGON</span></span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="do">## Dimension:     XY</span></span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="do">## Bounding box:  xmin: 139.5251 ymin: 35.66571 xmax: 139.8422 ymax: 35.74351</span></span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="do">## Geodetic CRS:  WGS 84</span></span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 8 × 3</span></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="do">##   city_code city                                                        geometry</span></span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="do">## * &lt;chr&gt;     &lt;chr&gt;                                                  &lt;POLYGON [°]&gt;</span></span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 13101     千代田区 ((139.7299 35.68555, 139.7333 35.67916, 139.7367 35.67876,…</span></span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 13104     新宿区   ((139.6735 35.71852, 139.679 35.71817, 139.6792 35.71464, …</span></span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 13105     文京区   ((139.7174 35.71455, 139.7232 35.71032, 139.7317 35.70918,…</span></span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 13106     台東区   ((139.7632 35.72184, 139.7685 35.71589, 139.7644 35.7173, …</span></span>
-<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 13107     墨田区   ((139.8095 35.68689, 139.812 35.68851, 139.8116 35.69181, …</span></span>
-<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 13114     中野区   ((139.6321 35.71686, 139.6417 35.71468, 139.6428 35.71141,…</span></span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a><span class="do">## 7 13115     杉並区   ((139.5939 35.68901, 139.5905 35.68701, 139.593 35.68283, …</span></span>
-<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a><span class="do">## 8 13203     武蔵野市 ((139.5271 35.70982, 139.5324 35.70901, 139.5322 35.70215,…</span></span>
-<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a><span class="co"># DEMデータに合わせるように、市区データをラスタライズする</span></span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>cities_raster <span class="ot">&lt;-</span> cities <span class="sc">|&gt;</span></span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rasterize</span>(dem, <span class="at">field =</span> <span class="st">"city"</span>)</span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning in y@pntr$rasterize(x@pntr, field, values, background, touches[1], :</span></span>
-<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a><span class="do">## GDAL Message 1: DeprecationWarning: 'Memory' driver is deprecated since GDAL</span></span>
-<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a><span class="do">## 3.11. Use 'MEM' onwards. Further messages of this type will be suppressed.</span></span>
-<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a><span class="co"># DEMデータのセルに市区名が入ったデータが出来上がる</span></span>
-<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> cities_raster)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2_dem_cities.R</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jpndistrict)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"~/Documents/PG2/4/"</span>)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>dem <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">'dem_tokyo.tif'</span>)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 欲しい市区の名称</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>city_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"武蔵野市"</span>, <span class="st">"杉並区"</span>, <span class="st">"中野区"</span>, <span class="st">"新宿区"</span>, </span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">"文京区"</span>, <span class="st">"千代田区"</span>, <span class="st">"台東区"</span>, <span class="st">"墨田区"</span>)</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 都道府県のJISコードを確認する</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 東京は13</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>jpnprefs <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">20</span>)</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 47 × 11</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a><span class="do">##    jis_code prefecture capital      region major_island prefecture_en capital_en</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;    &lt;fct&gt;      &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;         &lt;chr&gt;     </span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 01       北海道     札幌市       北海道 北海道       Hokkaido      Sapporo-s…</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 02       青森県     青森市       東北   本州         Aomori-ken    Aomori-shi</span></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 03       岩手県     盛岡市       東北   本州         Iwate-ken     Morioka-s…</span></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 04       宮城県     仙台市       東北   本州         Miyagi-ken    Sendai-shi</span></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 05       秋田県     秋田市       東北   本州         Akita-ken     Akita-shi </span></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 06       山形県     山形市       東北   本州         Yamagata-ken  Yamagata-…</span></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 07       福島県     福島市       東北   本州         Fukushima-ken Fukushima…</span></span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 08       茨城県     水戸市       関東   本州         Ibaraki-ken   Mito-shi  </span></span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 09       栃木県     宇都宮市     関東   本州         Tochigi-ken   Utsunomiy…</span></span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 10       群馬県     前橋市       関東   本州         Gunma-ken     Maebashi-…</span></span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a><span class="do">## 11 11       埼玉県     さいたま市   関東   本州         Saitama-ken   Saitama-s…</span></span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a><span class="do">## 12 12       千葉県     千葉市       関東   本州         Chiba-ken     Chiba-shi </span></span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a><span class="do">## 13 13       東京都     新宿区 （東京23区）… 関東   本州         Tokyo-to      Shinjuku-…</span></span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a><span class="do">## 14 14       神奈川県   横浜市       関東   本州         Kanagawa-ken  Yokohama-…</span></span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a><span class="do">## 15 15       新潟県     新潟市       中部   本州         Niigata-ken   Niigata-s…</span></span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a><span class="do">## 16 16       富山県     富山市       中部   本州         Toyama-ken    Toyama-shi</span></span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a><span class="do">## 17 17       石川県     金沢市       中部   本州         Ishikawa-ken  Kanazawa-…</span></span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a><span class="do">## 18 18       福井県     福井市       中部   本州         Fukui-ken     Fukui-shi </span></span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a><span class="do">## 19 19       山梨県     甲府市       中部   本州         Yamanashi-ken Kofu-shi  </span></span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a><span class="do">## 20 20       長野県     長野市       中部   本州         Nagano-ken    Nagano-shi</span></span>
+<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ 27 more rows</span></span>
+<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ 4 more variables: region_en &lt;chr&gt;, major_island_en &lt;chr&gt;,</span></span>
+<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a><span class="do">## #   capital_latitude &lt;dbl&gt;, capital_longitude &lt;dbl&gt;</span></span>
+<span id="cb22-45"><a href="#cb22-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a>cities <span class="ot">&lt;-</span> <span class="fu">jpn_cities</span>(<span class="at">jis_code =</span> <span class="dv">13</span>, <span class="at">admin_name =</span> city_names)</span>
+<span id="cb22-47"><a href="#cb22-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-48"><a href="#cb22-48" aria-hidden="true" tabindex="-1"></a><span class="co"># geometry列に市区のポリゴンデータが入っている</span></span>
+<span id="cb22-49"><a href="#cb22-49" aria-hidden="true" tabindex="-1"></a>cities</span>
+<span id="cb22-50"><a href="#cb22-50" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 8 features and 2 fields</span></span>
+<span id="cb22-51"><a href="#cb22-51" aria-hidden="true" tabindex="-1"></a><span class="do">## Geometry type: POLYGON</span></span>
+<span id="cb22-52"><a href="#cb22-52" aria-hidden="true" tabindex="-1"></a><span class="do">## Dimension:     XY</span></span>
+<span id="cb22-53"><a href="#cb22-53" aria-hidden="true" tabindex="-1"></a><span class="do">## Bounding box:  xmin: 139.5251 ymin: 35.66571 xmax: 139.8422 ymax: 35.74351</span></span>
+<span id="cb22-54"><a href="#cb22-54" aria-hidden="true" tabindex="-1"></a><span class="do">## Geodetic CRS:  WGS 84</span></span>
+<span id="cb22-55"><a href="#cb22-55" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 8 × 3</span></span>
+<span id="cb22-56"><a href="#cb22-56" aria-hidden="true" tabindex="-1"></a><span class="do">##   city_code city                                                        geometry</span></span>
+<span id="cb22-57"><a href="#cb22-57" aria-hidden="true" tabindex="-1"></a><span class="do">## * &lt;chr&gt;     &lt;chr&gt;                                                  &lt;POLYGON [°]&gt;</span></span>
+<span id="cb22-58"><a href="#cb22-58" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 13101     千代田区 ((139.7299 35.68555, 139.7333 35.67916, 139.7367 35.67876,…</span></span>
+<span id="cb22-59"><a href="#cb22-59" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 13104     新宿区   ((139.6735 35.71852, 139.679 35.71817, 139.6792 35.71464, …</span></span>
+<span id="cb22-60"><a href="#cb22-60" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 13105     文京区   ((139.7174 35.71455, 139.7232 35.71032, 139.7317 35.70918,…</span></span>
+<span id="cb22-61"><a href="#cb22-61" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 13106     台東区   ((139.7632 35.72184, 139.7685 35.71589, 139.7644 35.7173, …</span></span>
+<span id="cb22-62"><a href="#cb22-62" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 13107     墨田区   ((139.8095 35.68689, 139.812 35.68851, 139.8116 35.69181, …</span></span>
+<span id="cb22-63"><a href="#cb22-63" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 13114     中野区   ((139.6321 35.71686, 139.6417 35.71468, 139.6428 35.71141,…</span></span>
+<span id="cb22-64"><a href="#cb22-64" aria-hidden="true" tabindex="-1"></a><span class="do">## 7 13115     杉並区   ((139.5939 35.68901, 139.5905 35.68701, 139.593 35.68283, …</span></span>
+<span id="cb22-65"><a href="#cb22-65" aria-hidden="true" tabindex="-1"></a><span class="do">## 8 13203     武蔵野市 ((139.5271 35.70982, 139.5324 35.70901, 139.5322 35.70215,…</span></span>
+<span id="cb22-66"><a href="#cb22-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-67"><a href="#cb22-67" aria-hidden="true" tabindex="-1"></a><span class="co"># DEMデータに合わせるように、市区データをラスタライズする</span></span>
+<span id="cb22-68"><a href="#cb22-68" aria-hidden="true" tabindex="-1"></a>cities_raster <span class="ot">&lt;-</span> cities <span class="sc">|&gt;</span></span>
+<span id="cb22-69"><a href="#cb22-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rasterize</span>(dem, <span class="at">field =</span> <span class="st">"city"</span>)</span>
+<span id="cb22-70"><a href="#cb22-70" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning in y@pntr$rasterize(x@pntr, field, values, background, touches[1], :</span></span>
+<span id="cb22-71"><a href="#cb22-71" aria-hidden="true" tabindex="-1"></a><span class="do">## GDAL Message 1: DeprecationWarning: 'Memory' driver is deprecated since GDAL</span></span>
+<span id="cb22-72"><a href="#cb22-72" aria-hidden="true" tabindex="-1"></a><span class="do">## 3.11. Use 'MEM' onwards. Further messages of this type will be suppressed.</span></span>
+<span id="cb22-73"><a href="#cb22-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-74"><a href="#cb22-74" aria-hidden="true" tabindex="-1"></a><span class="co"># DEMデータのセルに市区名が入ったデータが出来上がる</span></span>
+<span id="cb22-75"><a href="#cb22-75" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb22-76"><a href="#cb22-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> cities_raster)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="4_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="2100"></p>
+<p><img src="4_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="2100"></p>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># DEMデータと市区名ラスターを結合し、データフレームに変える</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>dem_city <span class="ot">&lt;-</span> <span class="fu">c</span>(dem, cities_raster) <span class="sc">|&gt;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> <span class="co"># データフレームに変換</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">city =</span> <span class="fu">factor</span>(city, <span class="at">levels =</span> city_names)) <span class="sc">|&gt;</span> <span class="co"># 表示順をcity_namesの順番にする</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>dem_city </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 4,069,252 × 2</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="do">##    dem_tokyo city  </span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="do">##        &lt;dbl&gt; &lt;fct&gt; </span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  1         0 墨田区</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  2         0 墨田区</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  3         0 墨田区</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  4         0 墨田区</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  5         0 墨田区</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  6         0 墨田区</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  7         0 墨田区</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  8         0 墨田区</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  9         0 墨田区</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 10         0 墨田区</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ 4,069,242 more rows</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_histgram()でヒストグラムを作成</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co"># x軸は標高にしたいので、dem_tokyoを指定</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co"># facet_wrap()でcity別にヒストグラムを作る</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co"># labs()で軸のラベルを変える</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>dem_city <span class="sc">|&gt;</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dem_tokyo)) <span class="sc">+</span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>city) <span class="sc">+</span></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"DEMデータの標高（m）"</span>, <span class="at">y =</span> <span class="st">"頻度"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># DEMデータと市区名ラスターを結合し、データフレームに変える</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>dem_city <span class="ot">&lt;-</span> <span class="fu">c</span>(dem, cities_raster) <span class="sc">|&gt;</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> <span class="co"># データフレームに変換</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">city =</span> <span class="fu">factor</span>(city, <span class="at">levels =</span> city_names)) <span class="sc">|&gt;</span> <span class="co"># 表示順をcity_namesの順番にする</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>dem_city </span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 4,069,252 × 2</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="do">##    dem_tokyo city  </span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="do">##        &lt;dbl&gt; &lt;fct&gt; </span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  1         0 墨田区</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  2         0 墨田区</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  3         0 墨田区</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  4         0 墨田区</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  5         0 墨田区</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  6         0 墨田区</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  7         0 墨田区</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  8         0 墨田区</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  9         0 墨田区</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 10         0 墨田区</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ 4,069,242 more rows</span></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_histgram()でヒストグラムを作成</span></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a><span class="co"># x軸は標高にしたいので、dem_tokyoを指定</span></span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a><span class="co"># facet_wrap()でcity別にヒストグラムを作る</span></span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a><span class="co"># labs()で軸のラベルを変える</span></span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>dem_city <span class="sc">|&gt;</span></span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dem_tokyo)) <span class="sc">+</span></span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>city) <span class="sc">+</span></span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"DEMデータの標高（m）"</span>, <span class="at">y =</span> <span class="st">"頻度"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="4_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="2100"></p>
+<p><img src="4_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid figure-img" width="2100"></p>
 </figure>
 </div>
 </div>
@@ -508,62 +805,62 @@ remotes::install_github("uribo/jpndistrict")</code></pre>
 <p><code>編集モードを切り替え</code>、<code>線の地物を追加</code>を押してから地図上に適当な線を引きます。ダブルクリックすると線の描画を終了できます。最後に<code>レイヤ編集内容を保存</code>を押して保存しましょう。</p>
 <p>これをRで読み込みます。 新しく、<code>PG2/4/3_cross_section.R</code>を作成しましょう。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3_cross_section.R</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jpndistrict)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"~/Documents/PG2/4/"</span>)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># DEMを読み込む</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>dem <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"dem_tokyo.tif"</span>)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 線を読み込む</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>section <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"line_tokyo.shp"</span>)</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Reading layer `line_tokyo' from data source </span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="do">##   `/Users/okamoto/Documents/PG2/4/line_tokyo.shp' using driver `ESRI Shapefile'</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 1 feature and 1 field</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Geometry type: LINESTRING</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Dimension:     XY</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Bounding box:  xmin: 139.5015 ymin: 35.70942 xmax: 139.87 ymax: 35.70942</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Geodetic CRS:  WGS 84</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 市区のデータをDEMに合わせてラスターにする</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>city_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"武蔵野市"</span>, <span class="st">"杉並区"</span>, <span class="st">"中野区"</span>, <span class="st">"新宿区"</span>, </span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>                <span class="st">"文京区"</span>, <span class="st">"千代田区"</span>, <span class="st">"台東区"</span>, <span class="st">"墨田区"</span>)</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>cities_raster <span class="ot">&lt;-</span> <span class="fu">jpn_cities</span>(<span class="at">jis_code =</span> <span class="dv">13</span>, <span class="at">admin_name =</span> city_names) <span class="sc">|&gt;</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rasterize</span>(dem, <span class="at">field =</span> <span class="st">"city"</span>)</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co"># とりあえずプロット</span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> dem) <span class="sc">+</span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> section, <span class="at">colour =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3_cross_section.R</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jpndistrict)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"~/Documents/PG2/4/"</span>)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="co"># DEMを読み込む</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>dem <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"dem_tokyo.tif"</span>)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 線を読み込む</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>section <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"line_tokyo.shp"</span>)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Reading layer `line_tokyo' from data source </span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="do">##   `/Users/okamoto/Documents/PG2/4/line_tokyo.shp' using driver `ESRI Shapefile'</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 1 feature and 1 field</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Geometry type: LINESTRING</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Dimension:     XY</span></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Bounding box:  xmin: 139.5015 ymin: 35.70942 xmax: 139.87 ymax: 35.70942</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Geodetic CRS:  WGS 84</span></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 市区のデータをDEMに合わせてラスターにする</span></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>city_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"武蔵野市"</span>, <span class="st">"杉並区"</span>, <span class="st">"中野区"</span>, <span class="st">"新宿区"</span>, </span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>                <span class="st">"文京区"</span>, <span class="st">"千代田区"</span>, <span class="st">"台東区"</span>, <span class="st">"墨田区"</span>)</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>cities_raster <span class="ot">&lt;-</span> <span class="fu">jpn_cities</span>(<span class="at">jis_code =</span> <span class="dv">13</span>, <span class="at">admin_name =</span> city_names) <span class="sc">|&gt;</span></span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rasterize</span>(dem, <span class="at">field =</span> <span class="st">"city"</span>)</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a><span class="co"># とりあえずプロット</span></span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> dem) <span class="sc">+</span></span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> section, <span class="at">colour =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="4_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="2100"></p>
+<p><img src="4_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="2100"></p>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 線に沿って標高と市区名を取得</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># x（経度）,y（緯度）, 値の入ったデータフレームが返ってくる </span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>elevation <span class="ot">&lt;-</span> <span class="fu">extractAlong</span>(dem, section, <span class="at">xy =</span> <span class="cn">TRUE</span>, <span class="at">ID =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>cities <span class="ot">&lt;-</span> <span class="fu">extractAlong</span>(cities_raster, section, <span class="at">xy =</span> <span class="cn">TRUE</span>, <span class="at">ID=</span> <span class="cn">FALSE</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 両者を結合し、横軸を経度、縦軸を標高、色を市区名にした折れ線グラフを描く</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>elevation <span class="sc">|&gt;</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">city =</span> <span class="fu">factor</span>(cities<span class="sc">$</span>city, <span class="at">levels =</span> city_names)) <span class="sc">|&gt;</span> <span class="co"># 新しい列としてcityを追加</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> dem_tokyo, <span class="at">colour =</span> city)) <span class="sc">+</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"経度"</span>, <span class="at">y =</span> <span class="st">"標高"</span>, <span class="at">colour =</span> <span class="st">"市区名"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 線に沿って標高と市区名を取得</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># x（経度）,y（緯度）, 値の入ったデータフレームが返ってくる </span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>elevation <span class="ot">&lt;-</span> <span class="fu">extractAlong</span>(dem, section, <span class="at">xy =</span> <span class="cn">TRUE</span>, <span class="at">ID =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>cities <span class="ot">&lt;-</span> <span class="fu">extractAlong</span>(cities_raster, section, <span class="at">xy =</span> <span class="cn">TRUE</span>, <span class="at">ID=</span> <span class="cn">FALSE</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 両者を結合し、横軸を経度、縦軸を標高、色を市区名にした折れ線グラフを描く</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>elevation <span class="sc">|&gt;</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">city =</span> <span class="fu">factor</span>(cities<span class="sc">$</span>city, <span class="at">levels =</span> city_names)) <span class="sc">|&gt;</span> <span class="co"># 新しい列としてcityを追加</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> dem_tokyo, <span class="at">colour =</span> city)) <span class="sc">+</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"経度"</span>, <span class="at">y =</span> <span class="st">"標高"</span>, <span class="at">colour =</span> <span class="st">"市区名"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="4_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="2100"></p>
+<p><img src="4_files/figure-html/unnamed-chunk-18-2.png" class="img-fluid figure-img" width="2100"></p>
 </figure>
 </div>
 </div>
@@ -576,138 +873,138 @@ remotes::install_github("uribo/jpndistrict")</code></pre>
 <p><code>W05_08_13_GML.zip</code>がダウンロードされたと思うので、これを<code>PG2/4/</code>に移動して解凍します。中には<code>Stream.shp</code>と、<code>RiverNode.shp</code>の二つが入っていますが、今回は前者を使います。</p>
 <p>それではRスクリプトを書いていきましょう。 今回のファイル名は<code>PG2/4/4_stream.R</code>にします。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4_stream.R</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jpndistrict)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"~/Documents/PG2/4/"</span>)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>dem <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"dem_tokyo.tif"</span>)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>stream <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"W05-08_13_GML/W05-08_13-g_Stream.shp"</span>)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Reading layer `W05-08_13-g_Stream' from data source </span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="do">##   `/Users/okamoto/Documents/PG2/4/W05-08_13_GML/W05-08_13-g_Stream.shp' </span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="do">##   using driver `ESRI Shapefile'</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 1388 features and 10 fields</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Geometry type: LINESTRING</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Dimension:     XY</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Bounding box:  xmin: 138.9525 ymin: 26.63934 xmax: 142.2142 ymax: 35.89437</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="do">## CRS:           NA</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>stream</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 1388 features and 10 fields</span></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="do">## Geometry type: LINESTRING</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Dimension:     XY</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="do">## Bounding box:  xmin: 138.9525 ymin: 26.63934 xmax: 142.2142 ymax: 35.89437</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="do">## CRS:           NA</span></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="do">## First 10 features:</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="do">##    W05_001    W05_002 W05_003  W05_004 W05_005 W05_006       W05_007</span></span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="do">## 1   830305 8303050000       0   小川谷       3       1 #gb03_1300005</span></span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="do">## 2   830305 8303050000       0   小川谷       3       1 #gb03_1300005</span></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="do">## 3   830305 8303050000       0   コツ谷       4       1 #gb03_1300004</span></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="do">## 4   830305 8303050000       0   小川谷       3       1 #gb03_1300005</span></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="do">## 5   830305 8303050000       0   小川谷       3       1 #gb03_1300005</span></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="do">## 6   830305 8303050000       0   タキ谷       4       1 #gb03_1300013</span></span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a><span class="do">## 7   830305 8303050000       0 名称不明       4       1 #gb03_1300014</span></span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a><span class="do">## 8   830305 8303050000       0 名称不明       4       1 #gb03_1300018</span></span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="do">## 9   830305 8303050000       0   小川谷       3       1 #gb03_1300005</span></span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  830305 8303050000       0 スクレ谷       3       1 #gb03_1300011</span></span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a><span class="do">##          W05_008       W05_009       W05_010                       geometry</span></span>
-<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a><span class="do">## 1  #gb03_1300079 #gb03_1300005 #gb03_1300006 LINESTRING (139.0178 35.889...</span></span>
-<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="do">## 2  #gb03_1300079 #gb03_1300006 #gb03_1300007 LINESTRING (139.018 35.8895...</span></span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a><span class="do">## 3  #gb03_1300007 #gb03_1300004 #gb03_1300007 LINESTRING (139.0123 35.890...</span></span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a><span class="do">## 4  #gb03_1300079 #gb03_1300007 #gb03_1300008 LINESTRING (139.018 35.8891...</span></span>
-<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="do">## 5  #gb03_1300079 #gb03_1300008 #gb03_1300009 LINESTRING (139.0221 35.881...</span></span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="do">## 6  #gb03_1300008 #gb03_1300013 #gb03_1300008 LINESTRING (139.0142 35.880...</span></span>
-<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a><span class="do">## 7  #gb03_1300017 #gb03_1300014 #gb03_1300017 LINESTRING (139.0438 35.879...</span></span>
-<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a><span class="do">## 8  #gb03_1300017 #gb03_1300018 #gb03_1300017 LINESTRING (139.0424 35.876...</span></span>
-<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a><span class="do">## 9  #gb03_1300079 #gb03_1300009 #gb03_1300020 LINESTRING (139.0222 35.881...</span></span>
-<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 #gb03_1300021 #gb03_1300011 #gb03_1300021 LINESTRING (139.0361 35.880...</span></span>
-<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a><span class="co"># W05_004には河川名称が入っているので、これが神田川の行だけ選ぶ</span></span>
-<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a><span class="co"># 距離の計算に使いやすいように、st_transform()でCRSをUTM(54)に変換</span></span>
-<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>kandagawa <span class="ot">&lt;-</span> stream <span class="sc">|&gt;</span></span>
-<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(W05_004 <span class="sc">==</span> <span class="st">"神田川"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_set_crs</span>(<span class="dv">4326</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_union</span>() <span class="sc">|&gt;</span></span>
-<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="dv">6691</span>)</span>
-<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>kandagawa</span>
-<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a><span class="do">## Geometry set for 1 feature </span></span>
-<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a><span class="do">## Geometry type: LINESTRING</span></span>
-<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a><span class="do">## Dimension:     XY</span></span>
-<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a><span class="do">## Bounding box:  xmin: 371328.3 ymin: 3948213 xmax: 390425.7 ymax: 3953163</span></span>
-<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a><span class="do">## Projected CRS: JGD2011 / UTM zone 54N</span></span>
-<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a><span class="co"># 1mあたり0.01個の密度（=100 m間隔）で神田川に沿って点をサンプリング</span></span>
-<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>kandagawa_points <span class="ot">&lt;-</span> <span class="fu">st_line_sample</span>(kandagawa, <span class="at">density =</span> <span class="fl">0.01</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_cast</span>(<span class="st">"POINT"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span></span>
-<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="fu">row_number</span>())) <span class="sc">|&gt;</span> <span class="co"># 順序を反転させ</span></span>
-<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">distance =</span> (<span class="fu">row_number</span>() <span class="sc">*</span> <span class="dv">100</span>)) <span class="co"># 河口からの距離を計算</span></span>
-<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a><span class="co"># 欲しい市区の名前をDEMの各セルに紐付け</span></span>
-<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>city_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"武蔵野市"</span>, <span class="st">"杉並区"</span>, <span class="st">"中野区"</span>, <span class="st">"新宿区"</span>, </span>
-<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>                <span class="st">"文京区"</span>, <span class="st">"千代田区"</span>, <span class="st">"台東区"</span>, <span class="st">"墨田区"</span>)</span>
-<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a>cities_raster <span class="ot">&lt;-</span> <span class="fu">jpn_cities</span>(<span class="at">jis_code =</span> <span class="dv">13</span>, <span class="at">admin_name =</span> city_names) <span class="sc">|&gt;</span></span>
-<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rasterize</span>(dem, <span class="at">field =</span> <span class="st">"city"</span>)</span>
-<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a><span class="co"># 重ねてみる</span></span>
-<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> dem) <span class="sc">+</span></span>
-<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> kandagawa_points, <span class="fu">aes</span>(<span class="at">colour =</span> distance)) <span class="sc">+</span></span>
-<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span> <span class="co"># 河口からの距離はカラーマップを変える</span></span>
-<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour =</span> <span class="st">"河口からの距離 (m)"</span>, <span class="at">fill =</span> <span class="st">"標高"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4_stream.R</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jpndistrict)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"~/Documents/PG2/4/"</span>)</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>dem <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"dem_tokyo.tif"</span>)</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>stream <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"W05-08_13_GML/W05-08_13-g_Stream.shp"</span>)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Reading layer `W05-08_13-g_Stream' from data source </span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="do">##   `/Users/okamoto/Documents/PG2/4/W05-08_13_GML/W05-08_13-g_Stream.shp' </span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="do">##   using driver `ESRI Shapefile'</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 1388 features and 10 fields</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Geometry type: LINESTRING</span></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Dimension:     XY</span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Bounding box:  xmin: 138.9525 ymin: 26.63934 xmax: 142.2142 ymax: 35.89437</span></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="do">## CRS:           NA</span></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>stream</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 1388 features and 10 fields</span></span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a><span class="do">## Geometry type: LINESTRING</span></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Dimension:     XY</span></span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a><span class="do">## Bounding box:  xmin: 138.9525 ymin: 26.63934 xmax: 142.2142 ymax: 35.89437</span></span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a><span class="do">## CRS:           NA</span></span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a><span class="do">## First 10 features:</span></span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a><span class="do">##    W05_001    W05_002 W05_003  W05_004 W05_005 W05_006       W05_007</span></span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a><span class="do">## 1   830305 8303050000       0   小川谷       3       1 #gb03_1300005</span></span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a><span class="do">## 2   830305 8303050000       0   小川谷       3       1 #gb03_1300005</span></span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a><span class="do">## 3   830305 8303050000       0   コツ谷       4       1 #gb03_1300004</span></span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a><span class="do">## 4   830305 8303050000       0   小川谷       3       1 #gb03_1300005</span></span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a><span class="do">## 5   830305 8303050000       0   小川谷       3       1 #gb03_1300005</span></span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a><span class="do">## 6   830305 8303050000       0   タキ谷       4       1 #gb03_1300013</span></span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a><span class="do">## 7   830305 8303050000       0 名称不明       4       1 #gb03_1300014</span></span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a><span class="do">## 8   830305 8303050000       0 名称不明       4       1 #gb03_1300018</span></span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a><span class="do">## 9   830305 8303050000       0   小川谷       3       1 #gb03_1300005</span></span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  830305 8303050000       0 スクレ谷       3       1 #gb03_1300011</span></span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a><span class="do">##          W05_008       W05_009       W05_010                       geometry</span></span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a><span class="do">## 1  #gb03_1300079 #gb03_1300005 #gb03_1300006 LINESTRING (139.0178 35.889...</span></span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a><span class="do">## 2  #gb03_1300079 #gb03_1300006 #gb03_1300007 LINESTRING (139.018 35.8895...</span></span>
+<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a><span class="do">## 3  #gb03_1300007 #gb03_1300004 #gb03_1300007 LINESTRING (139.0123 35.890...</span></span>
+<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a><span class="do">## 4  #gb03_1300079 #gb03_1300007 #gb03_1300008 LINESTRING (139.018 35.8891...</span></span>
+<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a><span class="do">## 5  #gb03_1300079 #gb03_1300008 #gb03_1300009 LINESTRING (139.0221 35.881...</span></span>
+<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a><span class="do">## 6  #gb03_1300008 #gb03_1300013 #gb03_1300008 LINESTRING (139.0142 35.880...</span></span>
+<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a><span class="do">## 7  #gb03_1300017 #gb03_1300014 #gb03_1300017 LINESTRING (139.0438 35.879...</span></span>
+<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a><span class="do">## 8  #gb03_1300017 #gb03_1300018 #gb03_1300017 LINESTRING (139.0424 35.876...</span></span>
+<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a><span class="do">## 9  #gb03_1300079 #gb03_1300009 #gb03_1300020 LINESTRING (139.0222 35.881...</span></span>
+<span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 #gb03_1300021 #gb03_1300011 #gb03_1300021 LINESTRING (139.0361 35.880...</span></span>
+<span id="cb26-49"><a href="#cb26-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-50"><a href="#cb26-50" aria-hidden="true" tabindex="-1"></a><span class="co"># W05_004には河川名称が入っているので、これが神田川の行だけ選ぶ</span></span>
+<span id="cb26-51"><a href="#cb26-51" aria-hidden="true" tabindex="-1"></a><span class="co"># 距離の計算に使いやすいように、st_transform()でCRSをUTM(54)に変換</span></span>
+<span id="cb26-52"><a href="#cb26-52" aria-hidden="true" tabindex="-1"></a>kandagawa <span class="ot">&lt;-</span> stream <span class="sc">|&gt;</span></span>
+<span id="cb26-53"><a href="#cb26-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(W05_004 <span class="sc">==</span> <span class="st">"神田川"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb26-54"><a href="#cb26-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_set_crs</span>(<span class="dv">4326</span>) <span class="sc">|&gt;</span></span>
+<span id="cb26-55"><a href="#cb26-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_union</span>() <span class="sc">|&gt;</span></span>
+<span id="cb26-56"><a href="#cb26-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="dv">6691</span>)</span>
+<span id="cb26-57"><a href="#cb26-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-58"><a href="#cb26-58" aria-hidden="true" tabindex="-1"></a>kandagawa</span>
+<span id="cb26-59"><a href="#cb26-59" aria-hidden="true" tabindex="-1"></a><span class="do">## Geometry set for 1 feature </span></span>
+<span id="cb26-60"><a href="#cb26-60" aria-hidden="true" tabindex="-1"></a><span class="do">## Geometry type: LINESTRING</span></span>
+<span id="cb26-61"><a href="#cb26-61" aria-hidden="true" tabindex="-1"></a><span class="do">## Dimension:     XY</span></span>
+<span id="cb26-62"><a href="#cb26-62" aria-hidden="true" tabindex="-1"></a><span class="do">## Bounding box:  xmin: 371328.3 ymin: 3948213 xmax: 390425.7 ymax: 3953163</span></span>
+<span id="cb26-63"><a href="#cb26-63" aria-hidden="true" tabindex="-1"></a><span class="do">## Projected CRS: JGD2011 / UTM zone 54N</span></span>
+<span id="cb26-64"><a href="#cb26-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-65"><a href="#cb26-65" aria-hidden="true" tabindex="-1"></a><span class="co"># 1mあたり0.01個の密度（=100 m間隔）で神田川に沿って点をサンプリング</span></span>
+<span id="cb26-66"><a href="#cb26-66" aria-hidden="true" tabindex="-1"></a>kandagawa_points <span class="ot">&lt;-</span> <span class="fu">st_line_sample</span>(kandagawa, <span class="at">density =</span> <span class="fl">0.01</span>) <span class="sc">|&gt;</span></span>
+<span id="cb26-67"><a href="#cb26-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_cast</span>(<span class="st">"POINT"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb26-68"><a href="#cb26-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span></span>
+<span id="cb26-69"><a href="#cb26-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="fu">row_number</span>())) <span class="sc">|&gt;</span> <span class="co"># 順序を反転させ</span></span>
+<span id="cb26-70"><a href="#cb26-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">distance =</span> (<span class="fu">row_number</span>() <span class="sc">*</span> <span class="dv">100</span>)) <span class="co"># 河口からの距離を計算</span></span>
+<span id="cb26-71"><a href="#cb26-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-72"><a href="#cb26-72" aria-hidden="true" tabindex="-1"></a><span class="co"># 欲しい市区の名前をDEMの各セルに紐付け</span></span>
+<span id="cb26-73"><a href="#cb26-73" aria-hidden="true" tabindex="-1"></a>city_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"武蔵野市"</span>, <span class="st">"杉並区"</span>, <span class="st">"中野区"</span>, <span class="st">"新宿区"</span>, </span>
+<span id="cb26-74"><a href="#cb26-74" aria-hidden="true" tabindex="-1"></a>                <span class="st">"文京区"</span>, <span class="st">"千代田区"</span>, <span class="st">"台東区"</span>, <span class="st">"墨田区"</span>)</span>
+<span id="cb26-75"><a href="#cb26-75" aria-hidden="true" tabindex="-1"></a>cities_raster <span class="ot">&lt;-</span> <span class="fu">jpn_cities</span>(<span class="at">jis_code =</span> <span class="dv">13</span>, <span class="at">admin_name =</span> city_names) <span class="sc">|&gt;</span></span>
+<span id="cb26-76"><a href="#cb26-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rasterize</span>(dem, <span class="at">field =</span> <span class="st">"city"</span>)</span>
+<span id="cb26-77"><a href="#cb26-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-78"><a href="#cb26-78" aria-hidden="true" tabindex="-1"></a><span class="co"># 重ねてみる</span></span>
+<span id="cb26-79"><a href="#cb26-79" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb26-80"><a href="#cb26-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> dem) <span class="sc">+</span></span>
+<span id="cb26-81"><a href="#cb26-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> kandagawa_points, <span class="fu">aes</span>(<span class="at">colour =</span> distance)) <span class="sc">+</span></span>
+<span id="cb26-82"><a href="#cb26-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span> <span class="co"># 河口からの距離はカラーマップを変える</span></span>
+<span id="cb26-83"><a href="#cb26-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour =</span> <span class="st">"河口からの距離 (m)"</span>, <span class="at">fill =</span> <span class="st">"標高"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="4_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="2100"></p>
+<p><img src="4_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="2100"></p>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 神田川沿いにサンプリングした100m間隔の点の標高を取得</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>elevation <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">extract</span>(dem, kandagawa_points, <span class="at">bind =</span> <span class="cn">TRUE</span>, <span class="at">exact =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>()</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [extract] transforming vector data to the CRS of the raster</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 同様に、点の市区名を取得。</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>cities <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">extract</span>(cities_raster, kandagawa_points, <span class="at">bind =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>()</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [extract] transforming vector data to the CRS of the raster</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 河口からの距離と標高をプロットしてみる。</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>elevation <span class="sc">|&gt;</span> </span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">city =</span> cities<span class="sc">$</span>city) <span class="sc">|&gt;</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> distance, <span class="at">y =</span> dem_tokyo, <span class="at">colour =</span> city)) <span class="sc">+</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="co"># X軸は降順にする</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"河口からの距離 (m)"</span>, <span class="at">y =</span> <span class="st">"標高"</span>, <span class="at">colour =</span> <span class="st">"市区"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 神田川沿いにサンプリングした100m間隔の点の標高を取得</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>elevation <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">extract</span>(dem, kandagawa_points, <span class="at">bind =</span> <span class="cn">TRUE</span>, <span class="at">exact =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>()</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [extract] transforming vector data to the CRS of the raster</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 同様に、点の市区名を取得。</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>cities <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">extract</span>(cities_raster, kandagawa_points, <span class="at">bind =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>()</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [extract] transforming vector data to the CRS of the raster</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 河口からの距離と標高をプロットしてみる。</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>elevation <span class="sc">|&gt;</span> </span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">city =</span> cities<span class="sc">$</span>city) <span class="sc">|&gt;</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> distance, <span class="at">y =</span> dem_tokyo, <span class="at">colour =</span> city)) <span class="sc">+</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="co"># X軸は降順にする</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"河口からの距離 (m)"</span>, <span class="at">y =</span> <span class="st">"標高"</span>, <span class="at">colour =</span> <span class="st">"市区"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="4_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="2100"></p>
+<p><img src="4_files/figure-html/unnamed-chunk-19-2.png" class="img-fluid figure-img" width="2100"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>あれ、川は坂を登ることはないはずですが、文京区と新宿区のあたりで妙な挙動を示していますね。神田川を地図にプロットして何が起きてるかみてみましょう。 以下を書き加えます。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4_stream.R（続き）</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>elevation <span class="sc">|&gt;</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">city =</span> cities<span class="sc">$</span>city) <span class="sc">|&gt;</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="dv">4326</span>) <span class="sc">|&gt;</span> <span class="co"># Leafletで表示するために緯度経度に直す</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(city <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"新宿区"</span>, <span class="st">"文京区"</span>)) <span class="sc">|&gt;</span> <span class="co"># 新宿区or文京区で</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dem_tokyo <span class="sc">&gt;</span> <span class="fl">2.5</span> <span class="sc">&amp;</span> dem_tokyo <span class="sc">&lt;</span> <span class="dv">5</span>) <span class="sc">|&gt;</span>  <span class="co"># 標高が2.5 ~ 5 m</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(distance <span class="sc">&lt;</span> <span class="dv">6000</span>) <span class="sc">|&gt;</span>                  <span class="co"># 河口からの距離が6km以内の場所に絞る</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">leaflet</span>() <span class="sc">|&gt;</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span>  <span class="co"># Add default OpenStreetMap map tiles</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4_stream.R（続き）</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>elevation <span class="sc">|&gt;</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">city =</span> cities<span class="sc">$</span>city) <span class="sc">|&gt;</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="dv">4326</span>) <span class="sc">|&gt;</span> <span class="co"># Leafletで表示するために緯度経度に直す</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(city <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"新宿区"</span>, <span class="st">"文京区"</span>)) <span class="sc">|&gt;</span> <span class="co"># 新宿区or文京区で</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dem_tokyo <span class="sc">&gt;</span> <span class="fl">2.5</span> <span class="sc">&amp;</span> dem_tokyo <span class="sc">&lt;</span> <span class="dv">5</span>) <span class="sc">|&gt;</span>  <span class="co"># 標高が2.5 ~ 5 m</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(distance <span class="sc">&lt;</span> <span class="dv">6000</span>) <span class="sc">|&gt;</span>                  <span class="co"># 河口からの距離が6km以内の場所に絞る</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">leaflet</span>() <span class="sc">|&gt;</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span>  <span class="co"># Add default OpenStreetMap map tiles</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-9e610409aad82211cc97" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-9e610409aad82211cc97">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[35.70303223926791,35.70313929531326,35.7031453353735,35.70300890503935,35.70576380382061,35.70663893731215],[139.7497117411159,139.7486161861963,139.7475113269894,139.746435356433,139.7440781028729,139.7438109937727],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[35.70300890503935,35.70663893731215],"lng":[139.7438109937727,139.7497117411159]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-58ae2eed9c6b7652741e" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-58ae2eed9c6b7652741e">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[35.70303223926791,35.70313929531326,35.7031453353735,35.70300890503935,35.70576380382061,35.70663893731215],[139.7497117411159,139.7486161861963,139.7475113269894,139.746435356433,139.7440781028729,139.7438109937727],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[35.70300890503935,35.70663893731215],"lng":[139.7438109937727,139.7497117411159]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>首都高でした！ここですね。</p>
@@ -719,12 +1016,21 @@ remotes::install_github("uribo/jpndistrict")</code></pre>
 </div>
 </section>
 </section>
-<section id="余談プログラミングに入門するときのコツ" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="余談プログラミングに入門するときのコツ"><span class="header-section-number">4.3</span> 余談：プログラミングに入門するときのコツ</h2>
+<section id="sec-kotsu" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="sec-kotsu"><span class="header-section-number">4.3</span> 余談：プログラミングに入門するときのコツ</h2>
 <p>いきなり意味のわからないプログラムが出てきてやる気なくしますよね（普通そうだと思います）。しかし、ちょっとした解析やデータの整理、グラフ作成を行う能力はきっと将来役に立つはずです。Rはそのためのツールとしてとても優れています。とはいえ、「コピペだけしても何もわかった気にならない」みたいな気持ちを持ったまま授業に臨むのは辛いので、ここでは僕がプログラミングに入門する際に重要だと思っていることを書きます。</p>
 <ol type="1">
 <li><p>雑にやる<br>
 プログラムの意味が分かってなくても、動けばいいです。 「なんか絵が出た！」という素朴な楽しさを大切にしましょう。</p></li>
+<li><p>考える前に調べる<br>
+はじめのうちは考えても無駄です。とにかく、ちょっとでも躓いたらすぐさま調べるようにしましょう。調べる方法は3つあります。</p>
+<ul>
+<li>RのHelpを使う<br>
+関数の使い方がわからない時は、まずこれをします。Consoleに<code>?調べたい関数名</code>（例：<code>?sum</code>）と入れると、関数の説明書が出てきます。</li>
+<li>ググる<br>
+Rは日本語ユーザーも多いので、高確率で何か出てきます。ググる際には、「R 関数名 エラーの内容」「R パッケージ名　やりたいこと」などの形式で調べると良いでしょう。 　- チャッピー<br>
+　 結局これが一番いい気がしてきました…ChatGPTに聞きましょう！コードを貼って、このエラーが出たけどなんで？とか、こういうことをしたいんだけどどうすればいい？と聞けばいつでも朗らかなチャッピーが優しく教えてくれます。</li>
+</ul></li>
 <li><p>エラーメッセージは「怒られ」ではない<br>
 エラーが出たらちょっとびっくりしますよね。エラーが出ると怒られた気持ちになってプログラミングを挫折したという話も聞いたことがあります。しかし、エラーが出ないように気をつけてプログラムを書くのは、（R初学者にとっては）あまり良いとは思いません。エラーをたくさん読むことが、プログラムのルールを学ぶ近道だと思います。自信がなくてもとりあえず実行してみて、結果を見ながら改善する、というループをできるだけたくさん回しましょう。</p></li>
 <li><p>とにかく確認する<br>

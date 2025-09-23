@@ -1,5 +1,6 @@
 project:
   type: book
+  output-dir: _book
 
 book:
   title: "自然地理学特説II"

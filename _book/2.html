@@ -213,6 +213,7 @@ div.csl-indent {
   <li><a href="#アクティブセンサ" id="toc-アクティブセンサ" class="nav-link" data-scroll-target="#アクティブセンサ"><span class="header-section-number">2.2</span> アクティブセンサ</a></li>
   <li><a href="#鳥の眼虫の眼" id="toc-鳥の眼虫の眼" class="nav-link" data-scroll-target="#鳥の眼虫の眼"><span class="header-section-number">2.3</span> 鳥の眼、虫の眼</a></li>
   <li><a href="#より深く知りたい方へ" id="toc-より深く知りたい方へ" class="nav-link" data-scroll-target="#より深く知りたい方へ"><span class="header-section-number">2.4</span> より深く知りたい方へ</a></li>
+  <li><a href="#次回までの課題" id="toc-次回までの課題" class="nav-link" data-scroll-target="#次回までの課題"><span class="header-section-number">2.5</span> 次回までの課題</a></li>
   </ul>
 </nav>
     </div>
@@ -238,7 +239,8 @@ div.csl-indent {
 </header>
 
 
-<p>リモートセンシング（Remote Sensing、以下「リモセン」）はその名前の通り、対象を遠隔から（Remote）計測する（Sensing）技術の総称です。一般には、人工衛星や航空機、ドローンに搭載されたセンサー（e.g., カメラ）を用いて地球を観測する技術を指しますが、カメラやLiDAR（Light Detection and Ranging）による地上からの観測や、マイクを用いた音響観測もリモセンに含まれます。リモセンの利点には、非接触・非破壊であること、広域を均質かつ効率的に調査でき、空間的なパターンの発見や外挿を行いやすいことがあげられます。生態学においては、植生の分布やその生理学的な状態（e.g., 熱ストレス、光合成量）の観測、動植物の季節的な変化や分布・行動パターンの解明など幅広く活用されています。</p>
+<p>生態系を観測する手法は古典的な現地調査をはじめとして無数にありますが、この授業では特に「リモートセンシング」と呼ばれる観測手法に着目します。</p>
+<p>リモートセンシング（Remote Sensing、以下「リモセン」）はその名前の通り、対象を遠隔（Remote）から計測する（Sensing）技術の総称です。一般には、人工衛星や航空機、ドローンに搭載されたセンサ（e.g., カメラ）を用いて地球を観測する技術を指しますが、定点カメラなどを用いた地上からの観測や、音声レコーダを用いた音響観測も広い意味でリモセンに含まれます。リモセンの利点には、非接触・非破壊であること、広域を均質かつ効率的に調査でき、空間的なパターンの発見や外挿を行いやすいこと、定期的な観測の実施が行いやすいことがあげられます。</p>
 <section id="パッシブセンサとアクティブセンサ" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="パッシブセンサとアクティブセンサ"><span class="header-section-number">2.1</span> パッシブセンサとアクティブセンサ</h2>
 <section id="パッシブセンサ" class="level3" data-number="2.1.1">
@@ -249,7 +251,7 @@ div.csl-indent {
 <ul>
 <li>光源（太陽や照明）から出た光が物体に当たり、反射したものを目がとらえる<br>
 </li>
-<li>目には赤・青・緑（Red Green Blue でRGBと呼びます）の三種類の受容体があり、三色の組み合わせで「色」を感じている</li>
+<li>目には赤・青・緑（Red Green Blue でRGBと呼びます）の三種類の受容体があり、三色の組み合わせが「色」として認識される</li>
 </ul>
 <p>植物の葉が緑に見えるのは、葉が緑の光を強く反射し、赤や青を吸収しているからです。一方で、鳥類や昆虫、霊長類以外の哺乳類は人間とは異なった色覚を持っており、中にはヒトよりも細かく色を分解して見ている生き物もいます。</p>
 <div class="quarto-figure quarto-figure-center">
@@ -293,15 +295,10 @@ div.csl-indent {
 </section>
 <section id="鳥の眼虫の眼" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="鳥の眼虫の眼"><span class="header-section-number">2.3</span> 鳥の眼、虫の眼</h2>
-<p>上記のように、「リモセン」というと一般的には人工衛星を用いたリモセンを指すことが多いです。より細かい空間解像度が必要な場合には、航空機やドローンにカメラを搭載して観測を行うこともあります。航空機やドローンはその都度飛ばす必要があるため、撮影回数がどうしても下がりがちです。</p>
+<p>次に、センサを乗せるプラットフォームに種類からリモセンを分類してみましょう。上記のように、「リモセン」というと一般的には人工衛星を用いたリモセンを指すことが多いです。一方で、より細かい空間解像度が必要な場合には、航空機やドローンにカメラを搭載して観測を行うこともあります。しかし航空機やドローンはその都度飛ばす必要があるため、撮影回数がどうしても下がりがちです。</p>
 <p>では、高解像度かつ高頻度な観測が必要な場合にはどうすれば良いでしょうか。たとえば、植物の日毎の開花数を観測したい場合や、ある場所に訪れる動物の数の時系列変化を観測したい場合などです。思い切ってセンサを地上に固定してしまうのはどうでしょう？広域を観測できるリモセンの利点は弱くなりますが、時間的に連続した観測ができるようになります。</p>
-<p>この授業では、上空から広域を観測するリモセンを「鳥の眼」リモセン、定点から狭い領域を高頻度に観測するリモせんを「虫の眼」リモセンと呼びます。「虫の眼」的なリモセンとして、近年の生態学分野では毎日決まった時間に自動的に録音を行う音声レコーダーを用いた観測手法が普及しつつあります。鳥類やカエル類、セミやコオロギといった昆虫など、音を種内でのコミュニケーションに用いる生物は多く存在します（ヒトもそうですね）。環境中に広がる鳴き声を観測することで、こういった動物の行動や生物季節について知ることができます。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/2/antseye.png" class="img-fluid figure-img"></p>
-<figcaption>リモセンにおける「鳥の眼」と「虫の眼」リモセンのメリットは通常、センサーを人工衛星などに取り付けて広域を均質に観測できる点にあるが、センサーを地上の定点に固定すると、長時間連続して観測ができる。</figcaption>
-</figure>
-</div>
+<p>この授業では、上空から広域を観測するリモセンを「鳥の眼」リモセン、定点から狭い領域を高頻度に観測するリモセンを「虫の眼」リモセンと名付けます。</p>
+<p><img src="images/2/antseye.png" class="img-fluid" alt="リモセンにおける「鳥の眼」と「虫の眼」リモセンのメリットは通常、センサーを人工衛星などに取り付けて広域を均質に観測できる点にあるが、センサーを地上の定点に固定すると、長時間連続して観測ができる。"> 「虫の眼」的なリモセンとして、近年の生態学分野では、毎日決まった時間に自動的に録音を行う音声レコーダーを用いた観測手法が普及しつつあります。鳥類やカエル類、セミやコオロギといった昆虫など、音を種内でのコミュニケーションに用いる生物は多く存在します（ヒトもそうですね）。環境中に広がる鳴き声を観測することで、こういった動物の行動や生物季節について知ることができるのです。</p>
 <p>例えば、鳥類を対象とした大規模な音響観測ネットワークを用いた研究では、都市化による光害が鳥類の活動期間を延ばしていることが指摘されています（<span class="citation" data-cites="Pease2025Science">Pease and Gilbert (<a href="references.html#ref-Pease2025Science" role="doc-biblioref">2025</a>)</span>、下図）。</p>
 <p><img src="https://www.science.org/cms/10.1126/science.adv9472/asset/f7f4a93a-f2f8-4cf7-98db-a9f0333bdf05/assets/images/large/science.adv9472-f2.jpg" class="img-fluid"></p>
 </section>
@@ -316,6 +313,10 @@ div.csl-indent {
 <li><a href="https://sorabatake.jp/14216/">宙畑「衛星搭載ライダーのキホン<sub>事例、分かること、仕組み、種類、衛星</sub>」</a></li>
 <li><a href="https://tenbou.nies.go.jp/science/description/detail.php?id=86">国立環境研究所　環境技術解説　『リモートセンシング』</a></li>
 </ul>
+</section>
+<section id="次回までの課題" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="次回までの課題"><span class="header-section-number">2.5</span> 次回までの課題</h2>
+<p>今回は導入的な内容なので、グループワークは実施しません。代わりに、自分が興味のある対象について、リモセンを用いてどのようなことが行われているか（研究でも実務でも構いません）調べて、Oh-meijiの「振り返りコメント」に書き込んでください。</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
