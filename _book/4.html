@@ -247,8 +247,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#データの準備" id="toc-データの準備" class="nav-link" data-scroll-target="#データの準備"><span class="header-section-number">4.2.1</span> データの準備</a></li>
   <li><a href="#まずはrで読み込んでみる" id="toc-まずはrで読み込んでみる" class="nav-link" data-scroll-target="#まずはrで読み込んでみる"><span class="header-section-number">4.2.2</span> まずはRで読み込んでみる</a></li>
   <li><a href="#市区ごとの標高をグラフにする" id="toc-市区ごとの標高をグラフにする" class="nav-link" data-scroll-target="#市区ごとの標高をグラフにする"><span class="header-section-number">4.2.3</span> 市区ごとの標高をグラフにする</a></li>
-  <li><a href="#地形の断面を見てみる" id="toc-地形の断面を見てみる" class="nav-link" data-scroll-target="#地形の断面を見てみる"><span class="header-section-number">4.2.4</span> 地形の断面を見てみる</a></li>
+  <li><a href="#sec-dammen" id="toc-sec-dammen" class="nav-link" data-scroll-target="#sec-dammen"><span class="header-section-number">4.2.4</span> 地形の断面を見てみる</a></li>
   <li><a href="#河川の標高と傾斜をグラフにする" id="toc-河川の標高と傾斜をグラフにする" class="nav-link" data-scroll-target="#河川の標高と傾斜をグラフにする"><span class="header-section-number">4.2.5</span> 河川の標高と傾斜をグラフにする</a></li>
+  <li><a href="#coordinate-reference-system-crs" id="toc-coordinate-reference-system-crs" class="nav-link" data-scroll-target="#coordinate-reference-system-crs"><span class="header-section-number">4.2.6</span> Coordinate Reference System (CRS)</a></li>
+  <li><a href="#余裕がある人向けへの追加課題" id="toc-余裕がある人向けへの追加課題" class="nav-link" data-scroll-target="#余裕がある人向けへの追加課題"><span class="header-section-number">4.2.7</span> 余裕がある人向けへの追加課題</a></li>
   </ul></li>
   <li><a href="#sec-kotsu" id="toc-sec-kotsu" class="nav-link" data-scroll-target="#sec-kotsu"><span class="header-section-number">4.3</span> 余談：プログラミングに入門するときのコツ</a></li>
   <li><a href="#より深く知りたい方へ" id="toc-より深く知りたい方へ" class="nav-link" data-scroll-target="#より深く知りたい方へ"><span class="header-section-number">4.4</span> より深く知りたい方へ</a></li>
@@ -796,8 +798,8 @@ remotes::install_github("uribo/jpndistrict")</code></pre>
 </div>
 </div>
 </section>
-<section id="地形の断面を見てみる" class="level3" data-number="4.2.4">
-<h3 data-number="4.2.4" class="anchored" data-anchor-id="地形の断面を見てみる"><span class="header-section-number">4.2.4</span> 地形の断面を見てみる</h3>
+<section id="sec-dammen" class="level3" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="sec-dammen"><span class="header-section-number">4.2.4</span> 地形の断面を見てみる</h3>
 <p>次に、地図上に線を引いて地形の断面を見てみましょう。 まずは断面の元になる線をQGISで引きます。</p>
 <p><img src="images/4/1_7.png" class="img-fluid"></p>
 <p><code>新規シェイプファイルレイヤ</code>をクリックし、<code>ジオメトリ型</code>には<code>ラインストリング</code>を指定、<code>PG2/4/line_tokyo.shp</code>として保存します。</p>
@@ -927,7 +929,7 @@ remotes::install_github("uribo/jpndistrict")</code></pre>
 <span id="cb26-52"><a href="#cb26-52" aria-hidden="true" tabindex="-1"></a>kandagawa <span class="ot">&lt;-</span> stream <span class="sc">|&gt;</span></span>
 <span id="cb26-53"><a href="#cb26-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(W05_004 <span class="sc">==</span> <span class="st">"神田川"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb26-54"><a href="#cb26-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_set_crs</span>(<span class="dv">4326</span>) <span class="sc">|&gt;</span></span>
-<span id="cb26-55"><a href="#cb26-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_union</span>() <span class="sc">|&gt;</span></span>
+<span id="cb26-55"><a href="#cb26-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_union</span>() <span class="sc">|&gt;</span> <span class="co"># 河川流路が複数のラインに分割されているので、結合</span></span>
 <span id="cb26-56"><a href="#cb26-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="dv">6691</span>)</span>
 <span id="cb26-57"><a href="#cb26-57" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-58"><a href="#cb26-58" aria-hidden="true" tabindex="-1"></a>kandagawa</span>
@@ -1003,8 +1005,8 @@ remotes::install_github("uribo/jpndistrict")</code></pre>
 <span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span>  <span class="co"># Add default OpenStreetMap map tiles</span></span>
 <span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-efc5abc9a6a462381b66" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-efc5abc9a6a462381b66">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[35.70303223926791,35.70313929531326,35.7031453353735,35.70300890503935,35.70576380382061,35.70663893731215],[139.7497117411159,139.7486161861963,139.7475113269894,139.746435356433,139.7440781028729,139.7438109937727],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[35.70300890503935,35.70663893731215],"lng":[139.7438109937727,139.7497117411159]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-2e38b228da3b0d85c5e0" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-2e38b228da3b0d85c5e0">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[35.70303223926791,35.70313929531326,35.7031453353735,35.70300890503935,35.70576380382061,35.70663893731215],[139.7497117411159,139.7486161861963,139.7475113269894,139.746435356433,139.7440781028729,139.7438109937727],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[35.70300890503935,35.70663893731215],"lng":[139.7438109937727,139.7497117411159]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>首都高でした！ここですね。</p>
@@ -1014,6 +1016,32 @@ remotes::install_github("uribo/jpndistrict")</code></pre>
 <figcaption>首都高5号池袋線の下を流れる神田川。Wikipedia「神田川」より</figcaption>
 </figure>
 </div>
+</section>
+<section id="coordinate-reference-system-crs" class="level3" data-number="4.2.6">
+<h3 data-number="4.2.6" class="anchored" data-anchor-id="coordinate-reference-system-crs"><span class="header-section-number">4.2.6</span> Coordinate Reference System (CRS)</h3>
+<p>先ほどのスクリプトでしれっと重要な概念が出てきたので解説します。</p>
+<div class="cell" data-evaluate="false">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># W05_004には河川名称が入っているので、これが神田川の行だけ選ぶ</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 距離の計算に使いやすいように、st_transform()でCRSをUTM(54)に変換</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>kandagawa <span class="ot">&lt;-</span> stream <span class="sc">|&gt;</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(W05_004 <span class="sc">==</span> <span class="st">"神田川"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_set_crs</span>(<span class="dv">4326</span>) <span class="sc">|&gt;</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_union</span>() <span class="sc">|&gt;</span> <span class="co"># 河川流路が複数のラインに分割されているので、結合</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="dv">6691</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>この部分ですね。<code>4326</code>や<code>6691</code>は何を示す数字でしょうか？これは座標参照系(Coordinate Reference System, CRS)と呼ばれるもので、ある場所の地理座標を表すための体系のことです。地理座標というと、一般的には緯度経度をイメージすると思いますが、地球は楕円体なので緯度経度の差分は距離を正しく表しません。したがって、距離や面積などの幾何的な計算を行う上で、緯度経度を使うのは不便です。そこで、ユニバーサル横メルカトル座標系（Universal Transverse Mercator, UTM座標系）や平面直角座標系といった座標系が用いられています。これらの座標系では、地球の表面を多数のエリアに分割し、そのエリアを平面に投影することで幾何的な計算が容易な座標（m単位）で場所を表現します。</p>
+<p>座標系の表記にはいくつかの方法がありますが、最もシンプルなのは<a href="https://lemulus.me/column/epsg-list-gis">EPSGコード</a>による指定です。これは4~5桁の数字でぞれぞれの座標系を識別するもので、最も一般的なWGS84（GPSで使われている座標系）のEPSGコードは<code>4326</code>です。</p>
+<p>座標系は奥が深く、実際には複雑な形状を持つ地球をどのような形で近似するか、どこを原点とするかといった要素によって無数にあります。この授業の範疇を超えるので詳細は省略しますが、興味のある方は調べてみてください。</p>
+<p>さて、GSIの実践で重要になってくるのは、データによって配布されている座標系が異なっていたり、解析によっては座標系を特定のものにする必要がある、ということです。上記の例を紐解いてみましょう。</p>
+<p>まず、<code>st_set_crs(4326)</code>では、河川データのCRSがWGS84であることを明示的に指定しています。次に、<code>st_transform(6691)</code>でUTM座標系に変換することで、距離計算が容易にできるようにしているわけです。</p>
+</section>
+<section id="余裕がある人向けへの追加課題" class="level3" data-number="4.2.7">
+<h3 data-number="4.2.7" class="anchored" data-anchor-id="余裕がある人向けへの追加課題"><span class="header-section-number">4.2.7</span> 余裕がある人向けへの追加課題</h3>
+<ol type="1">
+<li>斜めに引いた線上の断面図の作成<br>
+<a href="#sec-dammen" class="quarto-xref"><span>Section 4.2.4</span></a> では経度線に沿って断面を作成しました。したがって、断面図を書く際には、X軸には経度を指定するだけで良かったわけです。そこで今度は、斜めに線を引いた際の断面図を作ることを考えてみましょう。神田川の傾斜図を描いた際のことを参考にすれば、方法がわかるはずです。線はどのように引いても構わないので、QGIS上で適当に引いてみてください。</li>
+<li><a href="#sec-dammen" class="quarto-xref"><span>Section 4.2.4</span></a> の最後では、標高が怪しい場所をインタラクティブな（拡大縮小などの操作が可能な）地図上に表示しました。これは、<a href="https://rstudio.github.io/leaflet/"><code>leaflet</code></a>というライブラリを使って作ったものです。<code>leaflet</code>の使い方を調べて、先ほど使った市区エリアのデータや標高データをインタラクティブな地図上に表示するプログラムを作ってみましょう。余裕があれば、背景地図をデフォルトのOpenStreetMapから地理院標準地図に変えてみても良いと思います。</li>
+</ol>
 </section>
 </section>
 <section id="sec-kotsu" class="level2" data-number="4.3">
@@ -1028,13 +1056,14 @@ remotes::install_github("uribo/jpndistrict")</code></pre>
 <li>RのHelpを使う<br>
 関数の使い方がわからない時は、まずこれをします。Consoleに<code>?調べたい関数名</code>（例：<code>?sum</code>）と入れると、関数の説明書が出てきます。</li>
 <li>ググる<br>
-Rは日本語ユーザーも多いので、高確率で何か出てきます。ググる際には、「R 関数名 エラーの内容」「R パッケージ名　やりたいこと」などの形式で調べると良いでしょう。 　- チャッピー<br>
-　 結局これが一番いい気がしてきました…ChatGPTに聞きましょう！コードを貼って、このエラーが出たけどなんで？とか、こういうことをしたいんだけどどうすればいい？と聞けばいつでも朗らかなチャッピーが優しく教えてくれます。</li>
+Rは日本語ユーザーも多いので、調べれば高確率で参考になる記事が出てきます。ググる際には、「R　パッケージ名　関数名（例：<a href="https://www.google.com/search?q=R+sf+st_union">R sf st_union</a>）」「R　パッケージ名　やりたいこと（例：<a href="https://www.google.com/search?q=R+sf+%E3%83%A9%E3%82%B9%E3%82%BF%E3%83%A9%E3%82%A4%E3%82%BA">R sf ラスタライズ</a>）」などの形式で調べると良いでしょう。 　</li>
+<li>チャッピー<br>
+　 結局これが一番いい気がしてきました…ChatGPTに聞きましょう！コードを貼って、このエラーが出たけどなんで？とか、こういうことをしたいんだけどどうすればいい？と聞けばいつでも朗らかなチャッピーが優しく教えてくれます。例えば、「Rとsfで河川沿いの標高変化を図にするにはどうしたらいい？」と聞いてみてください（<a href="https://chatgpt.com/share/68d8f8b0-df3c-8004-b630-22b4746b9bdd">こんな感じ</a>で答えてくれました）。</li>
 </ul></li>
 <li><p>エラーメッセージは「怒られ」ではない<br>
 エラーが出たらちょっとびっくりしますよね。エラーが出ると怒られた気持ちになってプログラミングを挫折したという話も聞いたことがあります。しかし、エラーが出ないように気をつけてプログラムを書くのは、（R初学者にとっては）あまり良いとは思いません。エラーをたくさん読むことが、プログラムのルールを学ぶ近道だと思います。自信がなくてもとりあえず実行してみて、結果を見ながら改善する、というループをできるだけたくさん回しましょう。</p></li>
 <li><p>とにかく確認する<br>
-なぜかプログラムが動かない、そんな時は悩まずにプログラムの途中で生成されている変数やデータフレームを確認する癖をつけましょう。例えば<code>df</code>という名前のデータフレームをいじっているのならば、まずはConsoleペインに<code>df</code>と打って中身を見てみます。パイプで処理をつなげているときは、どこで問題が起きているか区別するためにそれぞれの段階の結果を出力してみると良いでしょう。</p></li>
+なぜかプログラムが動かない、そんな時は悩まずにプログラムの途中で生成されている変数やデータフレームを確認する癖をつけましょう。例えば<code>df</code>という名前のデータフレームをいじっているのならば、まずはConsoleペインに<code>df</code>と打って中身を見てみます。列名や入っている値が自分の想定とが違っていませんか？パイプで処理をつなげているときは、どこで問題が起きているか区別するためにそれぞれの段階の結果を出力してみると良いでしょう。</p></li>
 </ol>
 </section>
 <section id="より深く知りたい方へ" class="level2" data-number="4.4">
@@ -1042,6 +1071,8 @@ Rは日本語ユーザーも多いので、高確率で何か出てきます。�
 <ul>
 <li><a href="https://r4ds.hadley.nz/data-visualize.html">R for Data Science</a></li>
 <li><a href="https://r.geocompx.org/jp/index.html">Geocomputation with R</a></li>
+<li><a href="https://www.esrij.com/gis-guide/coordinate-and-spatial/datum/">測地系（ESRIジャパン）</a></li>
+<li><a href="https://www.esrij.com/gis-guide/coordinate-and-spatial/coordinate-system-japan/">座標系（ESRIジャパン）</a></li>
 </ul>
 
 
