@@ -60,7 +60,7 @@ QGISは無料で使えるオープンソースの[地理情報システム（Geo
 
 #### 余裕がある人向けの発展課題
 
-東京全域のDEMをダウンロードして一つのGeoTIFFファイルにまとめ、QGIS上で表示してみましょう。 ヒント：「QGIS ラスター 結合」で検索
+東京23区全域のDEMをダウンロードして一つのGeoTIFFファイルにまとめ、QGIS上で表示してみましょう。 ヒント：「QGIS ラスター 結合」で検索
 
 ## RとRStudioのインストール
 
@@ -125,4 +125,8 @@ install.packages(c("tidyverse", "terra", "tidyterra", "lwgeom", "leaflet"))
 
 ### 日本語文字化け問題の解決
 
-このままだと、グラフを作成した際に日本語が文字化けすることがあります。 `Tools → Global Options → General → Graphics`から、`Graphic Device → Backend`を`AGG`に設定しましょう。 ![](images/3/rstudio_1.png)
+このままだと、グラフを作成した際に日本語が文字化けすることがあります。 `Tools → Global Options → General → Graphics`から、`Graphic Device → Backend`を`AGG`に設定しましょう。
+
+## 第二回の課題
+
+第二回も下準備なので特段課題はありません。今回のセットアップでつまづいた点などがあれば、Oh-meijiの「第二回授業/第二回振り返りコメント」から回答してください。ない場合も「なし」と回答お願いします。
