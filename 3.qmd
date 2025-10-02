@@ -40,7 +40,7 @@ QGISは無料で使えるオープンソースの[地理情報システム（Geo
 
 生態学や自然地理学で使う最も基本的な地理情報に、地形データがあります。 地形データは、5mや1m間隔の格子の中に、その場所の標高が格納されたラスタデータ（数値標高モデル、Digital Elevation Model (DEM)）として表現されます。 日本国内においては、国土地理院がDEMを作成・公開しており、誰でも無償で利用できます。一方、国土地理院DEMはGISでは取り扱いづらいデータ形式で配布されているため、QGISのプラグインを使ってGeoTIFF形式に変換します。
 
-ここでは、[QuickDEM4JPプラグイン](https://github.com/MIERUNE/QuickDEM4JP)を使います。 まず、QGIS上部のメニューバーから「プラグイン」→「プラグインの管理とインストール」をクリックします。 ![](images/3/qgis_dem4jp_1.png) 検索窓に`QuickDEM4JP`と入力し、「QuickDEM4JP」を選択してインストールボタンを押します。 ![](images/3/qgis_dem4jp_2.png) 試しに、駿河台キャンパス周辺のDEMをダウンロードして表示してみましょう。 まずは、基盤地図情報ダウンロードサービスのアカウントを作成します。以下のURLからメールアドレスを登録し、本登録まで進んでください。 https://service-login.gsi.go.jp/regist/agreement
+ここでは、[QuickDEM4JPプラグイン](https://github.com/MIERUNE/QuickDEM4JP)を使います。 まず、QGIS上部のメニューバーから「プラグイン」→「プラグインの管理とインストール」をクリックします。 ![](images/3/qgis_dem4jp_1.png) 検索窓に`QuickDEM4JP`と入力し、「QuickDEM4JP」を選択してインストールボタンを押します。 ![](images/3/qgis_dem4jp_2.png) 試しに、駿河台キャンパス周辺のDEMをダウンロードして表示してみましょう。 まずは、基盤地図情報ダウンロードサービスのアカウントを作成します。以下のURLからメールアドレスを登録し、本登録まで進んでください。 [ログインページ](https://service-login.gsi.go.jp)
 
 アカウントができたらDEMデータのダウンロードに移りましょう。国土地理院の[基盤地図情報ダウンロードサービス](https://service.gsi.go.jp/kiban/app/)を開き、右上の「ログイン」ボタンから、先ほど作成したアカウントにログインします。
 
@@ -126,6 +126,30 @@ install.packages(c("tidyverse", "terra", "tidyterra", "lwgeom", "leaflet"))
 ### 日本語文字化け問題の解決
 
 このままだと、グラフを作成した際に日本語が文字化けすることがあります。 `Tools → Global Options → General → Graphics`から、`Graphic Device → Backend`を`AGG`に設定しましょう。
+
+## 最初のR script
+
+それでは、先ほどダウンロードしたDEMをRで表示してみましょう。
+
+まずは、session -\> set working directoryから、tifファイルの保存されているディレクトリを選びます。
+
+RStudioの左上の白紙にプラスアイコンのボタン（New File）を押して、「R script」を選びます。左上のペイン以下をコピーします。
+
+冒頭の`setwd("~/Documents/PG2/3")`は人によって違うと思います。左下の「コンソール」ペインに`getwd()`と打って、出てきたものを入れましょう。
+
+```{r}
+#| include: true
+#| message: false
+#| collapse: true
+
+setwd("~/Documents/PG2/3")
+library(terra)
+library(tidyterra)
+library(tidyverse)
+dem <- rast("chiyodaku_dem.tif")
+ggplot() +
+  geom_spatraster(data = dem)
+```
 
 ## 第二回の課題
 
