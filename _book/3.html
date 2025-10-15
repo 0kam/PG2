@@ -239,7 +239,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#rstudioの使い方" id="toc-rstudioの使い方" class="nav-link" data-scroll-target="#rstudioの使い方"><span class="header-section-number">3.5</span> RStudioの使い方</a>
   <ul class="collapse">
-  <li><a href="#ステップ①-プロジェクトの作成" id="toc-ステップ①-プロジェクトの作成" class="nav-link" data-scroll-target="#ステップ①-プロジェクトの作成"><span class="header-section-number">3.5.1</span> ステップ①　プロジェクトの作成</a></li>
+  <li><a href="#sec-create-project" id="toc-sec-create-project" class="nav-link" data-scroll-target="#sec-create-project"><span class="header-section-number">3.5.1</span> ステップ①　プロジェクトの作成</a></li>
   <li><a href="#ステップ②-rスクリプトの作成" id="toc-ステップ②-rスクリプトの作成" class="nav-link" data-scroll-target="#ステップ②-rスクリプトの作成"><span class="header-section-number">3.5.2</span> ステップ②　Rスクリプトの作成</a></li>
   <li><a href="#ステップ③-rスクリプトの実行" id="toc-ステップ③-rスクリプトの実行" class="nav-link" data-scroll-target="#ステップ③-rスクリプトの実行"><span class="header-section-number">3.5.3</span> ステップ③　Rスクリプトの実行</a></li>
   </ul></li>
@@ -364,7 +364,7 @@ Rなどのプログラミング言語で作成されたプログラム。この�
 <section id="windows-1" class="level3" data-number="3.4.2">
 <h3 data-number="3.4.2" class="anchored" data-anchor-id="windows-1"><span class="header-section-number">3.4.2</span> Windows</h3>
 <p>RStudioの<code>Console</code>ペイン（左下）に</p>
-<pre><code>install.packages(c("tidyverse", "sf", "terra", "tidyterra", "lwgeom", "leaflet"))</code></pre>
+<pre><code>install.packages(c("tidyverse", "sf", "terra", "tidyterra", "lwgeom", "leaflet", "stars"))</code></pre>
 <p>と入力し、エンターを押します。</p>
 </section>
 <section id="mac-1" class="level3" data-number="3.4.3">
@@ -376,7 +376,7 @@ Rなどのプログラミング言語で作成されたプログラム。この�
 brew install pkg-config gdal</code></pre>
 <p>画面をRStudioに切り替え、コンソールペインに以下を貼り付けて実行します。</p>
 <pre><code>install.packages("sf", type = "source", configure.args = "--with-proj-lib=$(brew --prefix)/lib/")
-install.packages(c("tidyverse", "terra", "tidyterra", "lwgeom", "leaflet"))</code></pre>
+install.packages(c("tidyverse", "terra", "tidyterra", "lwgeom", "leaflet", "stars"))</code></pre>
 <p>エラーが出たら教えてください！</p>
 </section>
 <section id="日本語文字化け問題の解決" class="level3" data-number="3.4.4">
@@ -389,8 +389,8 @@ install.packages(c("tidyverse", "terra", "tidyterra", "lwgeom", "leaflet"))</cod
 <p>まず簡単に、RStudioの使い方を見てみましょう。 RStudioの画面は以下のように4分割されています（右半分は起動時は隠れていることがあります）。分割された領域のことを、「ペイン」と呼びます。左上が<code>編集画面</code>で、<code>新規作成</code>ボタンで作成したRスクリプトをここで編集します。左下は<code>コンソール</code>で、Rスクリプトを実行するための場所です。右側には、R上にある変数（次回説明します）の一覧や、Rが作成した図を表示するためのペインがあります。</p>
 <p><img src="images/3/rstudio_2.png" class="img-fluid"></p>
 <p>それでは、先ほどダウンロードしたDEMを表示するRスクリプトを書いてみましょう。</p>
-<section id="ステップ①-プロジェクトの作成" class="level3" data-number="3.5.1">
-<h3 data-number="3.5.1" class="anchored" data-anchor-id="ステップ①-プロジェクトの作成"><span class="header-section-number">3.5.1</span> ステップ①　プロジェクトの作成</h3>
+<section id="sec-create-project" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="sec-create-project"><span class="header-section-number">3.5.1</span> ステップ①　プロジェクトの作成</h3>
 <p>RStudioにはプロジェクトという機能があり、これを使うとファイル管理が簡単になります。 プロジェクトの作成は、左上のプロジェクト新規作成（<code>Create a Project</code>）ボタンで行います。このボタンを押すと、新しくフォルダを作るか、既存のフォルダを使うか選ぶ画面が出てきます。</p>
 <p><img src="images/3/rstudio_3.png" class="img-fluid"></p>
 <p>今回は、先ほどTIFファイルを作成したフォルダ（<code>PG2/3</code>）で作業したいので、<code>Existing Directory</code>を選びます（「フォルダ」と「ディレクトリ」は同じ意味です）。</p>

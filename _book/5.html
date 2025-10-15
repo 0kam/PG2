@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -215,8 +250,21 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#第五回の課題" id="toc-第五回の課題" class="nav-link active" data-scroll-target="#第五回の課題"><span class="header-section-number">5.1</span> 第五回の課題</a></li>
-  <li><a href="#画像の取得" id="toc-画像の取得" class="nav-link" data-scroll-target="#画像の取得"><span class="header-section-number">5.2</span> 画像の取得</a></li>
+  <li><a href="#画像の取得" id="toc-画像の取得" class="nav-link active" data-scroll-target="#画像の取得"><span class="header-section-number">5.1</span> 画像の取得</a></li>
+  <li><a href="#まずはrで読み込む" id="toc-まずはrで読み込む" class="nav-link" data-scroll-target="#まずはrで読み込む"><span class="header-section-number">5.2</span> まずはRで読み込む</a></li>
+  <li><a href="#様々な指標の計算" id="toc-様々な指標の計算" class="nav-link" data-scroll-target="#様々な指標の計算"><span class="header-section-number">5.3</span> 様々な指標の計算</a>
+  <ul class="collapse">
+  <li><a href="#ndvi" id="toc-ndvi" class="nav-link" data-scroll-target="#ndvi"><span class="header-section-number">5.3.1</span> NDVI</a></li>
+  <li><a href="#ndsi" id="toc-ndsi" class="nav-link" data-scroll-target="#ndsi"><span class="header-section-number">5.3.2</span> NDSI</a></li>
+  <li><a href="#ndwi" id="toc-ndwi" class="nav-link" data-scroll-target="#ndwi"><span class="header-section-number">5.3.3</span> NDWI</a></li>
+  <li><a href="#他の指標が気になる方へ" id="toc-他の指標が気になる方へ" class="nav-link" data-scroll-target="#他の指標が気になる方へ"><span class="header-section-number">5.3.4</span> 他の指標が気になる方へ</a></li>
+  </ul></li>
+  <li><a href="#複数の日付の画像をまとめて処理する" id="toc-複数の日付の画像をまとめて処理する" class="nav-link" data-scroll-target="#複数の日付の画像をまとめて処理する"><span class="header-section-number">5.4</span> 複数の日付の画像をまとめて処理する</a>
+  <ul class="collapse">
+  <li><a href="#関数を作る" id="toc-関数を作る" class="nav-link" data-scroll-target="#関数を作る"><span class="header-section-number">5.4.1</span> 関数を作る</a></li>
+  <li><a href="#まとめて処理する" id="toc-まとめて処理する" class="nav-link" data-scroll-target="#まとめて処理する"><span class="header-section-number">5.4.2</span> まとめて処理する</a></li>
+  </ul></li>
+  <li><a href="#第五回の課題" id="toc-第五回の課題" class="nav-link" data-scroll-target="#第五回の課題"><span class="header-section-number">5.5</span> 第五回の課題</a></li>
   </ul>
 </nav>
     </div>
@@ -244,28 +292,8 @@ window.Quarto = {
 
 <p>この章からはグループワークを含む実践的な解析に取り組んでいきます。まずは、衛星画像を用いたリモセンを体験してみましょう。ここでは、欧州宇宙機関（ESA）が2015年から運用している[Sentinel-2](<a href="https://www.restec.or.jp/satellite/sentinel-2-a-2-b.html" class="uri">https://www.restec.or.jp/satellite/sentinel-2-a-2-b.html</a>)衛星コンステレーション（複数の衛星からなる観測網）のデータを使います。Sentinel-2衛星で撮影された過去画像はオープンデータとして公開されており、誰でも無料で使うことができます。Sentinel-2には他にも、空間解像度や撮影頻度が比較的高い（解像度はバンドによるが最高10m、撮影頻度はおおよそ10日に1回）、可視光から近赤外光まで幅広いバンド（12バンド）の画像が得られるといったメリットがあります。</p>
 <p>まずは、解析用のフォルダを<code>PG2/5/</code>として作成しましょう。</p>
-<section id="第五回の課題" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="第五回の課題"><span class="header-section-number">5.1</span> 第五回の課題</h2>
-<p>自分たちで選定したエリアのSentinel-2画像をダウンロードし、他の地理情報（DEMデータや行政区画、地理統計など）と組み合わせた解析を実施してください。</p>
-<p>実施した解析について、以下の4つの項目にしたがって、7分程度のスライドを作成し、説明してください。</p>
-<ol type="1">
-<li>背景・目的<br>
-なぜそのエリアを選び、その解析を行なおうと思ったのかに関する背景と、解析の目的についての説明。</li>
-<li>材料・手法<br>
-使ったSentinel-2画像や地理情報と、行った解析手法に関する簡潔な紹介。</li>
-<li>結果<br>
-解析結果の説明。</li>
-<li>考察・展望<br>
-解析結果から言えること、示唆されることについての提案。背景・目的で提示した目的に対して何が言えそうかを説明。展望では、今後解析を続けるとしたらどのようなことに取り組むべきか、何が期待できそうかについて述べる。</li>
-</ol>
-<p>コツは以下の2点です。</p>
-<ul>
-<li><p>背景・目的と、考察・展望がきちんと対応してるか気をつける。</p></li>
-<li><p>材料・手法と結果は簡潔さを意識しながら、聞いた相手が作業を再現できるような説明を心がける。</p></li>
-</ul>
-</section>
-<section id="画像の取得" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="画像の取得"><span class="header-section-number">5.2</span> 画像の取得</h2>
+<section id="画像の取得" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="画像の取得"><span class="header-section-number">5.1</span> 画像の取得</h2>
 <p>ではまずは、Sentinel-2画像の取得を行ってみましょう。画像の検索・取得には<a href="https://browser.dataspace.copernicus.eu">Coperncus Browser</a>を使います。まずはアカウントを作成し、ログインしましょう。</p>
 <p>ここでは、試しに冬から春にかけての草津温泉周辺の衛星画像を数枚取得し、雪解けや植物の芽吹きの様子を可視化します。</p>
 <p>まずは、データが欲しい範囲（Region of Interest, ROI）を指定します。</p>
@@ -280,6 +308,438 @@ window.Quarto = {
 <p>それでは、画像をダウンロードしましょう。まず、画面右端に表示されているダウロードボタンを押します。するとダウンロード画面がポップアップで出てくるので、設定を変更します。今回は上部のタブから「Analytical」を選び、諸々の設定を以下のように変えます。「Image Format」は取得する画像の種類と画素値の表現方法を意味しています。ここでは地理座標の紐づいたTIFF形式、画素値は16bit (画素値を<span class="math inline">\(0 - 2^{16}\)</span>で表現)を指定します。解像度は10mを指定し、バンドは2(青), 3(緑), 4(赤), 8(近赤外), 11(短波赤外) を選びます。</p>
 <p><img src="images/5/3.png" class="img-fluid"></p>
 <p>同様に、2025/3/22、2025/4/21、2025/5/8の画像をダウンロードしましょう。「Browser_images.zip」というような名前のファイルがダウンロードされます。ダウンロードした画像を保管するためのフォルダ「PG2/5/images/」を作り、zipファイルを解凍した中身の画像ファイルを全てこの中にコピーします。images/直下に20枚の画像が保存されているはずです。</p>
+</section>
+<section id="まずはrで読み込む" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="まずはrで読み込む"><span class="header-section-number">5.2</span> まずはRで読み込む</h2>
+<p>それではRStudioに移ります。今回は、PG2/5をプロジェクトとして開きましょう。やり方を忘れた人は <a href="3.html#sec-create-project" class="quarto-xref"><span>Section 3.5.1</span></a> を見返してください。</p>
+<p>今回から、新しく<code>patchwork</code> ライブラリを使います。</p>
+<p>コンソールに<code>install.packages("patchwork")</code>と入力して実行しましょう。</p>
+<p>では以下の内容でRScriptを作成します。名前は<code>1_plot_s2.R</code>としておきます。</p>
+<p>今回ダウンロードしたファイルは4日分あるので、まずは2025/2/15のデータを処理してみましょう。今回は5つのバンド（B02, B03, B04, B08, B11）をダウンロードしたので、まずはそれぞれ図にしてみます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">"images/"</span>, <span class="at">pattern =</span> <span class="st">"2025-02-15"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>band_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"B02"</span>, <span class="st">"B03"</span>, <span class="st">"B04"</span>, <span class="st">"B08"</span>, <span class="st">"B11"</span>) <span class="co"># 各バンドの名前</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>image <span class="ot">&lt;-</span> <span class="fu">rast</span>(files) <span class="co"># 読み込む</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(image) <span class="ot">&lt;-</span> band_names <span class="co"># バンド名を与える</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> image) <span class="sc">+</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>lyr) <span class="sc">+</span> <span class="co"># 各レイヤー（バンド）ごとに図を分ける</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>) <span class="co"># 経度の文字を斜めにする（重なっちゃうので）</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>次に、見慣れたRGB画像を作ってみましょう。以下を先ほどのスクリプトに書き足します。Sentinel2衛星では、B02が青、B03が緑、B04が赤の波長と対応しているので、これらをそれぞれRGBに当てはめます。</p>
+<p>また、今回ダウンロードした画像は各バンドの値が16 bitで入っています。つまり、各バンドの反射率が<span class="math inline">\(0 - 2^{16}\)</span>の幅で記録されているということです。したがって、max_col_valueには<code>2**16</code>を指定します（<code>**</code>は〜乗を意味します）。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster_rgb</span>(<span class="at">data =</span> image, <span class="at">r =</span> <span class="dv">3</span>, <span class="at">g =</span> <span class="dv">2</span>, <span class="at">b =</span> <span class="dv">1</span>, <span class="at">max_col_value =</span> <span class="dv">2</span><span class="sc">**</span><span class="dv">16</span>) <span class="co"># Rに3番目（B04）、Gに2番目（B03）、Bに1番目（B02）のバンドを当てはめる</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="様々な指標の計算" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="様々な指標の計算"><span class="header-section-number">5.3</span> 様々な指標の計算</h2>
+<p>衛生画像を使う際の最も基本的な方法は、バンド間で演算を行い、特定の被写体が特徴的に見えるような「指標」を作ることです。こういった指標の代表格がNDVI (Normalized Difference Vegetation Index、正規化植生指数)で、その名の通り植生の有無や状態をとらえるのに適した指標になっています。</p>
+<p>NDVIは以下の式で算出できます。</p>
+<p><span class="math display">\[
+NDVI = \frac{NIR - R}{NIR + R}
+\]</span></p>
+<p>ここで、NIRは近赤外域の反射率、Rは赤色の反射率を表します。</p>
+<p>植物の葉に含まれる葉緑体中のクロロフィル色素は、赤色光をよく吸収しますが、近赤外光は反射します。NDVIはこの特性を利用し、クロロフィル色素の多い（「元気な」葉の多い）場所では高い値を、そうでない場所では低い値をとります(-1 ~ 1)。NDVIを用いることで、植生のある場所を抽出したり、植生の季節変化（葉が出て枯れるまで）を把握することができるのです。</p>
+<section id="ndvi" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="ndvi"><span class="header-section-number">5.3.1</span> NDVI</h3>
+<p>それでは早速NDVIを算出してみましょう。Sentinel2衛星ではB08とB04を使うことが一般的です。</p>
+<p>新しく、<code>2_ndvi.R</code>というファイルを作成し、以下を書き込みます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># --------</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 画像の読み込み</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">"images/"</span>, <span class="at">pattern =</span> <span class="st">"2025-02-15"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>band_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"B02"</span>, <span class="st">"B03"</span>, <span class="st">"B04"</span>, <span class="st">"B08"</span>, <span class="st">"B11"</span>) <span class="co"># 各バンドの名前</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>image <span class="ot">&lt;-</span> <span class="fu">rast</span>(files) <span class="co"># 読み込む</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(image) <span class="ot">&lt;-</span> band_names <span class="co"># バンド名を与える</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># --------</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># NDVIの計算</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>ndvi <span class="ot">&lt;-</span> image <span class="sc">|&gt;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NDVI =</span> (B08 <span class="sc">-</span> B04) <span class="sc">/</span> (B08 <span class="sc">+</span> B04)) <span class="sc">|&gt;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(NDVI)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># --------</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 結果のプロット</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> ndvi) <span class="sc">+</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"NDVI of 2025/2/15"</span> <span class="co"># 図のタイトルは日付にする</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>) <span class="co"># タイトルの文字サイズと位置を調整</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>   )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="ndsi" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="ndsi"><span class="header-section-number">5.3.2</span> NDSI</h3>
+<p>別の指標を試してみましょう。今回は雪解けの時期の写真を選んできたので、衛星画像から雪が抽出できたらいいですね。そんな時には、NDSI (Normarized Snow Difference Index)というものを使います。衛星画像から白く見えるものには、雪のほかに雲があります。肉眼ではどちらも似たような色に見えてしまいますが、実はこれらは近赤外域の反射率に着目することで判別可能です。</p>
+<p>雪は可視光を強く反射しますが、一方で短波長赤外（Short Wave IR、SWIR、波長1500 nm付近）の光は吸収するのです。したがって、可視光（ここでは緑）とSWIRの反射率を使ってNDVIと同様に指標を作れば、雪に覆われた場所を簡単に抽出することができます。</p>
+<p>雪とそれ以外は、NDSI &gt; 0.42である程度分離できることが<a href="https://custom-scripts.sentinel-hub.com/custom-scripts/sentinel-2/ndsi/">経験的に知られている</a>ので、この条件によって「雪に覆われた場所」を抽出することが可能です。</p>
+<p>新しく、<code>3_ndsi.R</code>を作成し、以下を貼り付けます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># --------</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 画像の読み込み</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">"images/"</span>, <span class="at">pattern =</span> <span class="st">"2025-02-15"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>band_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"B02"</span>, <span class="st">"B03"</span>, <span class="st">"B04"</span>, <span class="st">"B08"</span>, <span class="st">"B11"</span>) <span class="co"># 各バンドの名前</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>image <span class="ot">&lt;-</span> <span class="fu">rast</span>(files) <span class="co"># 読み込む</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(image) <span class="ot">&lt;-</span> band_names <span class="co"># バンド名を与える</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># --------</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># NDSIの計算</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>ndsi <span class="ot">&lt;-</span> image <span class="sc">|&gt;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">NDSI =</span> (B03 <span class="sc">-</span> B11) <span class="sc">/</span> (B03 <span class="sc">+</span> B11)) <span class="sc">|&gt;</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">is_snow =</span> NDSI <span class="sc">&gt;</span> <span class="fl">0.42</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(NDSI, is_snow)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># --------</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># NDSIのプロット</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_spatraster</span>(<span class="at">data =</span> ndsi <span class="sc">|&gt;</span> <span class="fu">select</span>(NDSI)) <span class="sc">+</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"NDSI of 2025/2/15"</span> <span class="co"># 図のタイトルは日付にする</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>) <span class="co"># タイトルの文字サイズと位置を調整</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>   )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># --------</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 雪の判別結果のプロット</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_spatraster</span>(<span class="at">data =</span> ndsi <span class="sc">|&gt;</span> <span class="fu">select</span>(is_snow)) <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Snow-covered area of 2025/2/15"</span> <span class="co"># 図のタイトルは日付にする</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>) <span class="co"># タイトルの文字サイズと位置を調整</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>   )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="ndwi" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="ndwi"><span class="header-section-number">5.3.3</span> NDWI</h3>
+<p>最後に、NDWIを紹介します。さて、名前の付け方にだんだん慣れてきた頃ではないでしょうか？”W”は何を意味すると思いますか？正解は”Water”です！</p>
+<p>水は可視光（ここでは緑）を良く吸収するのに対して、近赤外光を反射します。したがって、この二つで指標を作ると水域が抽出できます。こちらもNDWI &gt; 0.5が「水かどうか」の<a href="https://custom-scripts.sentinel-hub.com/custom-scripts/sentinel-2/ndwi/">基準になる</a>ので、この条件で水域を抽出してみましょう。</p>
+<p><code>4_ndwi.R</code>というファイルを作成し、以下を貼り付けます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># --------</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 画像の読み込み</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">"images/"</span>, <span class="at">pattern =</span> <span class="st">"2025-02-15"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>band_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"B02"</span>, <span class="st">"B03"</span>, <span class="st">"B04"</span>, <span class="st">"B08"</span>, <span class="st">"B11"</span>) <span class="co"># 各バンドの名前</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>image <span class="ot">&lt;-</span> <span class="fu">rast</span>(files) <span class="co"># 読み込む</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(image) <span class="ot">&lt;-</span> band_names <span class="co"># バンド名を与える</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># --------</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># NDWIの計算</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>ndwi <span class="ot">&lt;-</span> image <span class="sc">|&gt;</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NDWI =</span> (B03 <span class="sc">-</span> B08) <span class="sc">/</span> (B03 <span class="sc">+</span> B08)) <span class="sc">|&gt;</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_water =</span> NDWI <span class="sc">&gt;</span> <span class="fl">0.5</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(NDWI, is_water)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># --------</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># NDWIのプロット</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_spatraster</span>(<span class="at">data =</span> ndwi <span class="sc">|&gt;</span> <span class="fu">select</span>(NDWI)) <span class="sc">+</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"NDWI of 2025/2/15"</span> <span class="co"># 図のタイトルは日付にする</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>) <span class="co"># タイトルの文字サイズと位置を調整</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>   )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># --------</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 水域の判別結果のプロット</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_spatraster</span>(<span class="at">data =</span> ndwi <span class="sc">|&gt;</span> <span class="fu">select</span>(is_water)) <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Water-covered area"</span> <span class="co"># 図のタイトルは日付にする</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>) <span class="co"># タイトルの文字サイズと位置を調整</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>   )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>草津白根山の湯釜（火口湖、左）と上州湯の湖（右）が拾えてますね！</p>
+<p>NDWIの計算に使ったB03, B08の空間解像度は10mなので、これより細い河川などは拾えてないことに注意しましょう。（雪で埋もれている可能性もあります）</p>
+</section>
+<section id="他の指標が気になる方へ" class="level3" data-number="5.3.4">
+<h3 data-number="5.3.4" class="anchored" data-anchor-id="他の指標が気になる方へ"><span class="header-section-number">5.3.4</span> 他の指標が気になる方へ</h3>
+<p><a href="https://sorabatake.jp/5192/" class="uri">https://sorabatake.jp/5192/</a></p>
+</section>
+</section>
+<section id="複数の日付の画像をまとめて処理する" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="複数の日付の画像をまとめて処理する"><span class="header-section-number">5.4</span> 複数の日付の画像をまとめて処理する</h2>
+<p>さて、次はそれぞれの指標が季節によってどう変わっていくか、特に雪が溶け、緑が芽吹く様子を見てみましょう。さっきと同じことを日付を変えて4回繰り返せばできますが、それは面倒です。</p>
+<p>同じ処理を繰り返す必要がある時には、その処理を関数としてまとめておくと便利です。</p>
+<p>今回は、</p>
+<ol type="1">
+<li><p>日付を受け取り、その日付の画像を読み込む</p></li>
+<li><p>画像を受け取り、NDVIを読み込む</p></li>
+</ol>
+<p>関数を作り、ダウンロードした画像を全てまとめて処理するスクリプトを書いてみましょう。</p>
+<section id="関数を作る" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="関数を作る"><span class="header-section-number">5.4.1</span> 関数を作る</h3>
+<p>まずこちらから始めてみましょう。</p>
+<p>Rでは関数は</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(受け取る値) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  やりたい処理</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>のように作成するんでしたね。</p>
+<p>では冒頭で作成した画像を読み込む処理を関数(<code>read_sentinel2</code>)にしてみます。</p>
+<p>冒頭のスクリプトでは、<code>list.files()</code> の<code>pattern</code> という引数に、画像ファイルに含まれる日付の文字列（“2025-02-15”）を入れていました。これを引数にとる関数を作ることで、任意の日付の画像を読むことができるようになります。</p>
+<p>新しく、<code>5_use_function.R</code> を作成し、以下を貼り付けます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>read_sentinel2 <span class="ot">&lt;-</span> <span class="cf">function</span>(date) {</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># dateには、画像ファイル名に含まれる日付のパターンを文字列で入れる</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 例：read_sentinel2("2025-02-15")</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">"images/"</span>, <span class="at">pattern =</span> date, <span class="at">full.names =</span> <span class="cn">TRUE</span>) <span class="co"># 検索パターンをdateにする</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  band_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"B02"</span>, <span class="st">"B03"</span>, <span class="st">"B04"</span>, <span class="st">"B08"</span>, <span class="st">"B11"</span>) <span class="co"># 各バンドの名前</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  image <span class="ot">&lt;-</span> <span class="fu">rast</span>(files) <span class="co"># 読み込む</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(image) <span class="ot">&lt;-</span> band_names <span class="co"># バンド名を与える</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(image)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>image <span class="ot">&lt;-</span> <span class="fu">read_sentinel2</span>(<span class="st">"2025-02-15"</span>)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>image</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="do">## class       : SpatRaster </span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="do">## size        : 771, 1206, 5  (nrow, ncol, nlyr)</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="do">## resolution  : 10.00164, 9.998199  (x, y)</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="do">## extent      : 276869.4, 288931.4, 4053089, 4060797  (xmin, xmax, ymin, ymax)</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="do">## coord. ref. : WGS 84 / UTM zone 54N (EPSG:32654) </span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="do">## sources     : 2025-02-15-00:00_2025-02-15-23:59_Sentinel-2_L2A_B02_(Raw).tiff  </span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="do">##               2025-02-15-00:00_2025-02-15-23:59_Sentinel-2_L2A_B03_(Raw).tiff  </span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="do">##               2025-02-15-00:00_2025-02-15-23:59_Sentinel-2_L2A_B04_(Raw).tiff  </span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="do">##               ... and 2 more sources</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="do">## names       : B02, B03, B04, B08, B11</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>ついでに、RGB画像をプロットする関数も作ってみましょう。以下を付け加えます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plot_sentinel2_rgb <span class="ot">&lt;-</span> <span class="cf">function</span>(image) {</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># imageには、read_sentinel2()で読み込んだ画像データを入れる</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  　<span class="fu">geom_spatraster_rgb</span>(<span class="at">data =</span> image, <span class="at">r =</span> <span class="dv">3</span>, <span class="at">g =</span> <span class="dv">2</span>, <span class="at">b =</span> <span class="dv">1</span>, <span class="at">max_col_value =</span> <span class="dv">2</span><span class="sc">**</span><span class="dv">16</span>) <span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>) <span class="co"># 経度を斜めに表示</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>これらがちゃんと動くか試してみます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_sentinel2</span>(<span class="st">"2025-02-15"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_sentinel2_rgb</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_sentinel2</span>(<span class="st">"2025-03-22"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_sentinel2_rgb</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>動きました！どうやら、2/15から3/22の間で草津白根山の上部では雪が降ったみたいですね。</p>
+<p>それでは最後に、NDVIを計算し、プロットする関数を作ってみます。</p>
+<p>以下を付け加えます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>calc_ndvi <span class="ot">&lt;-</span> <span class="cf">function</span>(image) {</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># NDVIを計算する関数</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># image にはread_sentinel2()で読み込んだ画像を入れる</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  image <span class="sc">|&gt;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">NDVI =</span> (B08 <span class="sc">-</span> B04) <span class="sc">/</span> (B08 <span class="sc">+</span> B04)) <span class="sc">|&gt;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(NDVI)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>plot_ndvi <span class="ot">&lt;-</span> <span class="cf">function</span>(ndvi) {</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 計算したNDVIを表示する関数</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ndviには、calc_ndviで計算した結果を入れる</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_spatraster</span>(<span class="at">data =</span> ndvi) <span class="sc">+</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>) <span class="co"># 経度を斜めに表示</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>こちらも動くか試してみます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_sentinel2</span>(<span class="st">"2025-03-22"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calc_ndvi</span>() <span class="sc">|&gt;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_ndvi</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="まとめて処理する" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="まとめて処理する"><span class="header-section-number">5.4.2</span> まとめて処理する</h3>
+<p>それでは最後に、これらの関数をダウンロードした画像全部に適用してみましょう。</p>
+<p>今回は、4日分の画像があるので、これらの日付をまずはベクトルにしておきます。</p>
+<p>0やハイフンを忘れないようにしましょう。</p>
+<p>以下を先ほどの<code>5_use_function.R</code>に付け加えます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>dates <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"2025-02-15"</span>, <span class="st">"2025-03-22"</span>, <span class="st">"2025-04-21"</span>, <span class="st">"2025-05-08"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>これらに対して、<code>read_sentinel2()</code> → <code>calc_ndvi()</code> → <code>plot_ndvi()</code> という一連の処理をそれぞれ適用させたいわけです。</p>
+<p>こういう時には、<code>map()</code> 関数というものを使います。<code>map()</code> 関数は、</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(ベクトルやリスト, 適用させたい関数名)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>のように使い、二つ目の引数に入れた関数の処理結果をリスト形式で返します。リストはベクトルと同じようなもので、複数のデータを格納するものです。</p>
+<p>複数作られたプロットを並べて表示するには、冒頭でインストールした<code>patchwork</code>ライブラリの<code>wrap_plots()</code>関数を使います。</p>
+<p>したがって、NDVIの表示は以下のように書けます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>dates <span class="sc">|&gt;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(read_sentinel2) <span class="sc">|&gt;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(calc_ndvi) <span class="sc">|&gt;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(plot_ndvi) <span class="sc">|&gt;</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wrap_plots</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>季節が進むにつれてNDVI値が高くなっていくことが見て取れますね！</p>
+<p>RGB画像も同様にプロットしてみます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>dates <span class="sc">|&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(read_sentinel2) <span class="sc">|&gt;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(plot_sentinel2_rgb) <span class="sc">|&gt;</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wrap_plots</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>雪も溶けているようです！</p>
+<p>ということで、ここで演習問題。</p>
+<p>NDWIに関しても、計算する関数、プロットする関数をそれぞれ作り、日毎の雪解けをみてみましょう。</p>
+</section>
+</section>
+<section id="第五回の課題" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="第五回の課題"><span class="header-section-number">5.5</span> 第五回の課題</h2>
+<p>自分たちで選定したエリアのSentinel-2画像をダウンロードし、他の地理情報（DEMデータや行政区画、地理統計など）と組み合わせた解析を実施してください。</p>
+<p>解析方法に関しては、@sec-elevation-by-cities を見返してみると良いと思います。</p>
+<p>実施した解析について、以下の4つの項目にしたがって、10分程度でスライドを使いながら説明してください。</p>
+<ol type="1">
+<li>背景・目的<br>
+なぜそのエリアを選び、その解析を行なおうと思ったのかに関する背景と、解析の目的についての説明。</li>
+<li>材料・手法<br>
+使ったSentinel-2画像や地理情報と、行った解析手法に関する簡潔な紹介。</li>
+<li>結果<br>
+解析結果の説明。</li>
+<li>考察・展望<br>
+解析結果から言えること、示唆されることについての提案。背景・目的で提示した目的に対して何が言えそうかを説明。展望では、今後解析を続けるとしたらどのようなことに取り組むべきか、何が期待できそうかについて述べる。</li>
+</ol>
+<p>コツは以下の3点です。</p>
+<ul>
+<li><p>背景・目的と、考察・展望がきちんと対応してるか気をつける。</p></li>
+<li><p>材料・手法と結果は簡潔さを意識しながら、聞いた相手が作業を再現できるような説明を心がける。</p></li>
+<li><p>スライドは1分1枚が基本。詰め込みすぎないようにする。</p></li>
+</ul>
+<p>発表は次回授業の後半から行います。前半は準備に使えますが、それまでに最低限、見せたい図の作成は終わらせておきましょう。</p>
 
 
 </section>
