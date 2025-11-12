@@ -20,7 +20,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -71,6 +126,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -181,8 +265,22 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#国環研高山帯モニタリング" id="toc-国環研高山帯モニタリング" class="nav-link active" data-scroll-target="#国環研高山帯モニタリング"><span class="header-section-number">6.0.1</span> 国環研高山帯モニタリング</a></li>
+  <li><a href="#画像の取得" id="toc-画像の取得" class="nav-link" data-scroll-target="#画像の取得"><span class="header-section-number">6.0.2</span> 画像の取得</a></li>
+  <li><a href="#画像の下処理" id="toc-画像の下処理" class="nav-link" data-scroll-target="#画像の下処理"><span class="header-section-number">6.0.3</span> 画像の下処理</a></li>
+  <li><a href="#雪渓の融雪過程を調べる" id="toc-雪渓の融雪過程を調べる" class="nav-link" data-scroll-target="#雪渓の融雪過程を調べる"><span class="header-section-number">6.0.4</span> 雪渓の融雪過程を調べる</a></li>
+  <li><a href="#緑葉フェノロジーの観測" id="toc-緑葉フェノロジーの観測" class="nav-link" data-scroll-target="#緑葉フェノロジーの観測"><span class="header-section-number">6.1</span> 緑葉フェノロジーの観測</a></li>
+  <li><a href="#紅葉フェノロジーの観測" id="toc-紅葉フェノロジーの観測" class="nav-link" data-scroll-target="#紅葉フェノロジーの観測"><span class="header-section-number">6.2</span> 紅葉フェノロジーの観測</a></li>
+  <li><a href="#全部まとめてプロットしてみる" id="toc-全部まとめてプロットしてみる" class="nav-link" data-scroll-target="#全部まとめてプロットしてみる"><span class="header-section-number">6.3</span> 全部まとめてプロットしてみる</a></li>
+  <li><a href="#発展例岡本の博論紹介" id="toc-発展例岡本の博論紹介" class="nav-link" data-scroll-target="#発展例岡本の博論紹介"><span class="header-section-number">6.4</span> 発展例：岡本の博論紹介</a></li>
+  <li><a href="#第六回の課題" id="toc-第六回の課題" class="nav-link" data-scroll-target="#第六回の課題"><span class="header-section-number">6.5</span> 第六回の課題</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -206,8 +304,693 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>今回は、地上に設置された定点カメラを用いたリモートセンシングに焦点を当てます。</p>
+<p>地上設置カメラは衛星画像や航空写真と比較して撮影範囲は狭いですが、一方で雲に影響されにくい、極めて高頻度な撮影が簡単にできる、安価といったメリットがあります。</p>
+<p>例として、日本の高山帯に設置された定点カメラを用いて、融雪・植生の観測を行ってみましょう。</p>
+<section id="国環研高山帯モニタリング" class="level3" data-number="6.0.1">
+<h3 data-number="6.0.1" class="anchored" data-anchor-id="国環研高山帯モニタリング"><span class="header-section-number">6.0.1</span> 国環研高山帯モニタリング</h3>
+<p>ここでは、サンプルデータとして国立環境研究所の気候変動影響モニタリング事業で収集された画像を例に解析を行ってみます。</p>
+<p><a href="https://db.cger.nies.go.jp/gem/ja/mountain/" class="uri">https://db.cger.nies.go.jp/gem/ja/mountain/</a></p>
+<p>この事業では、高山帯における気候変動影響の観測を目的に、中部山岳域を中心に約30箇所で観測を行っています。 上記ページでは設置された日別、月別、年別で各観測サイトの画像を検索することができます。 ここでは、中央アルプス木曽駒ヶ岳の極楽平を撮影している定点カメラ画像を使ってみます。</p>
+</section>
+<section id="画像の取得" class="level3" data-number="6.0.2">
+<h3 data-number="6.0.2" class="anchored" data-anchor-id="画像の取得"><span class="header-section-number">6.0.2</span> 画像の取得</h3>
+<p>極楽平の画像を、2025年の5月から10月にかけて各月4枚程度取得します。 まずは、<code>PG2/6/</code>以下に<code>gokuraku_images/</code>というフォルダを作ります。</p>
+<p>次に下記のURLから、「日毎画像検索」をクリックし、2025年5月の毎日12時の写真を検索します。</p>
+<p><a href="https://db.cger.nies.go.jp/gem/ja/mountain/station.html?id=7" class="uri">https://db.cger.nies.go.jp/gem/ja/mountain/station.html?id=7</a></p>
+<p>下の図のように、候補の写真が一覧で出てくるはずです。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/6/1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>この中から、霧がかかっていないものを4枚程度、できるだけ等間隔に選びます。 5/5, 5/13, 5/20, 5/29が良いと思います。 影も少ないほうが良いです。</p>
+<p>各日付のサムネイルをクリックすると新しい画面で画像が開かれます。この状態で右クリックし、「名前をつけて画像を保存」しましょう。 保存先は先ほど作った<code>gokuraku_images/</code>です。画像のファイル名は、<code>2025_0505.jpg</code>のように<code>数字四桁_数字四桁.jpg</code>の形式に変更します。真ん中のアンダーバーを忘れないようにしましょう。</p>
+<p>同様に、6,7,8,9,10月についてもダウンロードしていきます。 以下の日付のダウンロードするのがおすすめです……この作業、無駄に大変なので、画像をまとめてGoogleDriveにアップロードしました。<a href="https://drive.google.com/drive/folders/1bv26uG-7p69abU_-gtJ8e8Xdi5zJWJUj?usp=sharing">このリンク</a>からダウンロードしてZIPファイルを展開し、中身の画像を<code>PG2/6/gokuraku_images/</code> 以下に置いてください。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>6月</th>
+<th>7月</th>
+<th>8月</th>
+<th>9月</th>
+<th>10月</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>8</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>13</td>
+<td>19</td>
+<td>16</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td>18</td>
+<td>25</td>
+<td>25</td>
+<td>21</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>28</td>
+<td>31</td>
+<td>28</td>
+<td>28</td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="画像の下処理" class="level3" data-number="6.0.3">
+<h3 data-number="6.0.3" class="anchored" data-anchor-id="画像の下処理"><span class="header-section-number">6.0.3</span> 画像の下処理</h3>
+<p>稜線より上の空を写した領域は解析に使わないので、まずは空をマスクするための下処理を行います。</p>
+<p>RStudioを開いて、<code>PG2/6</code> に新しいRProjectを作成します。</p>
+<p>以下の内容でRスクリプトを作成します。ファイル名は<code>mask_sky.R</code>にしましょう。</p>
+<p>ここでは、空が青一色の日を選び、青い部分を抜き出して白黒のマスク画像を作成します。</p>
+<p>解析には、前回と同じ<code>terra</code>パッケージを使います。<code>terra</code> は本来地理情報化されたラスターデータを処理するためのパッケージですが、地理座標の紐づいていない画像も扱うことができます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mask_sky.R</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>img <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"gokuraku_images/2025_0731.jpg"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">flip</span>() <span class="co"># 写真は左上が原点で、右下に向かって進む座標系なので反転させないとプロット時に逆さまで表示される</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(img)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="6_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sky <span class="ot">&lt;-</span> img <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colorize</span>(<span class="at">to =</span> <span class="st">"hsv"</span>) <span class="sc">|&gt;</span> <span class="co"># HSV色空間に変換</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sky =</span> (hue <span class="sc">&gt;</span> <span class="fl">0.55</span>) <span class="sc">&amp;</span> (hue <span class="sc">&lt;</span> <span class="fl">0.7</span>) <span class="sc">&amp;</span> (saturation <span class="sc">&gt;</span> <span class="fl">0.4</span>) <span class="sc">&amp;</span> (value <span class="sc">&gt;</span> <span class="fl">0.5</span>)) <span class="sc">|&gt;</span> <span class="co"># 数字は色々試して決める。要するに、「青くて鮮やかで明るい場所」</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sky)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sky) <span class="co"># 概ね悪くないが、左上のテキストボックスを消したい。</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="6_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 文字が入っている部分が残っているので上部を塗りつぶす。</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>row_numbers <span class="ot">&lt;-</span> <span class="fu">init</span>(sky, <span class="st">"row"</span>) <span class="co"># 行数が入ったラスターを作成。</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>sky <span class="ot">&lt;-</span> <span class="fu">ifel</span>(row_numbers <span class="sc">&lt;</span> <span class="dv">50</span>, <span class="cn">TRUE</span>, sky) <span class="co"># 写真は左上原点なので、上から50行目までTRUEで塗りつぶす。</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>sky <span class="ot">&lt;-</span> sky <span class="sc">*</span> <span class="dv">255</span> <span class="co"># PNG画像では、色は0-255で表記するので255倍する（現状は0-1）。</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sky) <span class="co"># ちょっと汚いけど、まあ合格でしょう！</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="6_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">writeRaster</span>(sky, <span class="st">"sky.png"</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>) <span class="co"># PNG画像として保存</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>この処理で一つ重要なのは、光の三原色であるRGB（Red, Green, Blue）で表されている色を、<a href="https://ja.wikipedia.org/wiki/HSV%E8%89%B2%E7%A9%BA%E9%96%93">HSV</a>という別の表記に変えていることです。</p>
+<p>HSVはHue, Saturation, Valueの略で、色相、彩度、明度と訳されます。色相は色味のことで、赤から紫にかけて変化する値です。彩度・明度は文字通り色の鮮やかさ・明るさを表します。HSVに変換することで、RGBで表現するより直感的に特定の色（今回の例で言えば「青」）を表現することができるのです。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/3/33/HSV_color_solid_cylinder_saturation_gray.png" class="img-fluid figure-img"></p>
+<figcaption>HSV色空間（wikipediaより）</figcaption>
+</figure>
+</div>
+</section>
+<section id="雪渓の融雪過程を調べる" class="level3" data-number="6.0.4">
+<h3 data-number="6.0.4" class="anchored" data-anchor-id="雪渓の融雪過程を調べる"><span class="header-section-number">6.0.4</span> 雪渓の融雪過程を調べる</h3>
+<p>それでは、まずは融雪過程を調べてみましょう。</p>
+<p>今回は簡単に、「明るい場所＝雪」として雪を抽出します。</p>
+<p>つまり、画像全体を「明るい場所」と「暗い場所」に分けるわけですが、こういった作業を二値化といいます。二値化の方法は色々あり、最もシンプルなのは「明るさ（HSVのvalue）」が特定の値（閾値）より大きいか小さいかで分ける方法です。しかし、これでは晴れた日の写真と曇った日の写真で同じ閾値を使うことができません。</p>
+<p>ここでは、<a href="https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%B4%A5%E3%81%AE%E4%BA%8C%E5%80%A4%E5%8C%96%E6%B3%95">大津の二値化</a>と呼ばれる手法を用いて、自動的に閾値を決定し、画像内で比較的明るい場所を雪として取得します。残雪の量が極端に少なくなってくるとこの手法は機能しないので、5、6月の写真に限定して処理を行います。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># snow.R</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 空のマスク画像</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>sky_mask <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"sky.png"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sky =</span> <span class="fu">ifelse</span>(sky <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)) <span class="co"># 空はTRUE, 空以外はFALSEにする</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 画像のパスを受け取り、雪を抽出して返す関数</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>extract_snow <span class="ot">&lt;-</span> <span class="cf">function</span>(image_path) {</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  snow <span class="ot">&lt;-</span> image_path <span class="sc">|&gt;</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rast</span>() <span class="sc">|&gt;</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">flip</span>() <span class="sc">|&gt;</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colorize</span>(<span class="at">to =</span> <span class="st">"hsv"</span>) <span class="sc">|&gt;</span> <span class="co"># HSV色空間に変換</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(value) <span class="sc">|&gt;</span> <span class="co"># 明るさを取得</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">thresh</span>(<span class="st">"otsu"</span>) <span class="sc">|&gt;</span> <span class="co"># 大津の二値化で明るい部分（雪）と暗い部分に分ける</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(sky_mask) <span class="sc">|&gt;</span> <span class="co"># 空マスクを追加</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">category =</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>      sky <span class="sc">~</span> <span class="st">"sky"</span>,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>      value <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"snow"</span>,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"non-snow"</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    )) <span class="sc">|&gt;</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(category)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(snow)</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co"># 雪の抽出結果をプロットする関数</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>plot_snow <span class="ot">&lt;-</span> <span class="cf">function</span>(snow) {</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_spatraster</span>(<span class="at">data =</span> snow) <span class="sc">+</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#8B8B83"</span>, <span class="st">"lightskyblue1"</span>, <span class="st">"#EEEEE0"</span>),</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Non-snow"</span>, <span class="st">"Sky"</span>, <span class="st">"Snow"</span>)</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">"Category"</span>) <span class="sc">+</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="co"># gokuraku_images/以下のJPEGファイル名のベクトルを取得。</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>images <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>  <span class="at">files =</span> <span class="fu">list.files</span>(<span class="st">"gokuraku_images/"</span>, <span class="st">".jpg"</span>, <span class="at">full.names =</span> T)</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">ymd</span>(files)) <span class="sc">|&gt;</span> <span class="co"># ファイル名から日付を取得</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">month</span>(date)) <span class="sc">|&gt;</span> <span class="co"># 月を取得</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(month <span class="sc">&lt;=</span> <span class="dv">6</span>) <span class="co"># 6月までの画像を選択</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>snows <span class="ot">&lt;-</span> images <span class="sc">|&gt;</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(files) <span class="sc">|&gt;</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(extract_snow)</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="co"># とりあえずプロット</span></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>snows <span class="sc">|&gt;</span></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(plot_snow) <span class="sc">|&gt;</span></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wrap_plots</span>(<span class="at">ncol =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="6_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>次に、残雪の量の季節変化を解析してみましょう。</p>
+<p>以下を書き足して、雪を抽出したラスターから、空を除いた全画素数に占める雪の画素数の割合を計算します。日付と残雪割合を示したデータフレームを、CSVファイルとして保存しておきましょう。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># snow.R（続き）</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 雪の画素数の変化を取得</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 空以外の画素のうち、Snowが占める割合を取得する関数</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>count_snow_pixel <span class="ot">&lt;-</span> <span class="cf">function</span>(snow) {</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  snow_pix <span class="ot">&lt;-</span> snow <span class="sc">|&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(category <span class="sc">==</span> <span class="st">"snow"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expanse</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(area)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  non_snow_pix <span class="ot">&lt;-</span> snow <span class="sc">|&gt;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(category <span class="sc">==</span> <span class="st">"non-snow"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expanse</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(area)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(snow_pix <span class="sc">/</span> (snow_pix <span class="sc">+</span> non_snow_pix))</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>snow_ratios <span class="ot">&lt;-</span> snows <span class="sc">|&gt;</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dbl</span>(count_snow_pixel)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [expanse] unknown CRS. Results can be wrong</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [expanse] unknown CRS. Results can be wrong</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [expanse] unknown CRS. Results can be wrong</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [expanse] unknown CRS. Results can be wrong</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [expanse] unknown CRS. Results can be wrong</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [expanse] unknown CRS. Results can be wrong</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [expanse] unknown CRS. Results can be wrong</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [expanse] unknown CRS. Results can be wrong</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [expanse] unknown CRS. Results can be wrong</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [expanse] unknown CRS. Results can be wrong</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [expanse] unknown CRS. Results can be wrong</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [expanse] unknown CRS. Results can be wrong</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [expanse] unknown CRS. Results can be wrong</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [expanse] unknown CRS. Results can be wrong</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [expanse] unknown CRS. Results can be wrong</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [expanse] unknown CRS. Results can be wrong</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>df_snow <span class="ot">&lt;-</span> images <span class="sc">|&gt;</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">snow_ratio =</span> snow_ratios)</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="co"># CSVファイルに保存</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>df_snow <span class="sc">|&gt;</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">"snow.csv"</span>)</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>df_snow <span class="sc">|&gt;</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> snow_ratio)) <span class="sc">+</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">8</span>, <span class="at">color =</span> <span class="st">"#5F9EA0"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"日付"</span>,</span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"雪の画素の割合"</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">"week"</span>) <span class="sc">+</span></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">30</span>)</span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="6_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>雪が減っていく様子がわかりますね！</p>
+<p>写真は地理情報化されていない（＝遠い画素と近い画素で実際の面積が違う）ため、この値は残雪面積を必ずしも反映はしていませんが、指標としては使えるでしょう。</p>
+</section>
+<section id="緑葉フェノロジーの観測" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="緑葉フェノロジーの観測"><span class="header-section-number">6.1</span> 緑葉フェノロジーの観測</h2>
+<p>次は、前回扱ったNDVIと同様に、葉が出て枯れるまでの様子を可視化してみます。NDVIの計算には近赤外バンドが必要でしたが、定点カメラでは普通のRGBカメラを使っているため計算できません。そこで、代わりの指標としてGreen Ratio (GR)を使います。</p>
+<p>GRは以下のように計算できるシンプルな指標で、定点カメラを用いた植物フェノロジーのモニタリングによく使われます（例: <span class="citation" data-cites="IdeOguma2010">Ide and Oguma (<a href="references.html#ref-IdeOguma2010" role="doc-biblioref">2010</a>)</span>）。</p>
+<p><span class="math display">\[
+GR = \frac{Green}{Green + Red + Blue}
+\]</span></p>
+<p>それでは、全期間を通してGRを計算してみましょう。</p>
+<p>新しく、<code>green_phenology.R</code> という名前でRスクリプトを作成します。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># green_phenology.R</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 空のマスク画像</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>sky_mask <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"sky.png"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sky =</span> <span class="fu">ifelse</span>(sky <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)) <span class="co"># 空はTRUE, 空以外はFALSEにする</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 画像のパスを受け取り、Green ratioを返す関数</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>calculate_gr <span class="ot">&lt;-</span> <span class="cf">function</span>(image_path) {</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  gr <span class="ot">&lt;-</span> image_path <span class="sc">|&gt;</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rast</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">flip</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colorize</span>(<span class="at">to =</span> <span class="st">"hsv"</span>) <span class="sc">|&gt;</span> <span class="co"># HSVに変換して戻すと、レイヤー名が勝手にred, green, blueになって便利</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colorize</span>(<span class="at">to =</span> <span class="st">"rgb"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">gr =</span> green <span class="sc">/</span> (red <span class="sc">+</span> green <span class="sc">+</span> blue)) <span class="sc">|&gt;</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(sky_mask) <span class="sc">|&gt;</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">gr =</span> <span class="fu">ifelse</span>(sky, <span class="cn">NA</span>, gr)) <span class="sc">|&gt;</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(gr)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(gr)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Green ratioをプロットする関数</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>plot_gr <span class="ot">&lt;-</span> <span class="cf">function</span>(gr) {</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_spatraster</span>(<span class="at">data =</span> gr) <span class="sc">+</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_gradient2</span>(</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">high =</span> <span class="st">"seagreen"</span>,</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">low =</span> <span class="st">"honeydew4"</span>,</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">mid =</span> <span class="st">"honeydew"</span>,</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">midpoint =</span> <span class="fl">0.34</span>,</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.8</span>)</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="co"># gokuraku_images/以下のJPEGファイル名のベクトルを取得。</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>images <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>  <span class="at">files =</span> <span class="fu">list.files</span>(<span class="st">"gokuraku_images/"</span>, <span class="st">".jpg"</span>, <span class="at">full.names =</span> T)</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">ymd</span>(files)) <span class="co"># ファイル名から日付を取得</span></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>grs <span class="ot">&lt;-</span> images <span class="sc">|&gt;</span></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(files) <span class="sc">|&gt;</span></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(calculate_gr)</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a><span class="co"># とりあえずプロット</span></span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>grs <span class="sc">|&gt;</span></span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(plot_gr) <span class="sc">|&gt;</span></span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wrap_plots</span>(<span class="at">ncol =</span> <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="6_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>季節変化が見えてきましたね。10月末になっても緑が残っているのはハイマツなどの常緑植生です。それではこちらも、日ごとに、空を除いたエリアのGRの平均値を計算して散布図にしてみます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># green_phenology.R（続き）</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># GRの変化を取得</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 空以外の画素のGreen ratioの平均を算出</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>calculate_gr_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(gr) {</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  gr <span class="sc">|&gt;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(gr) <span class="sc">|&gt;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>gr_means <span class="ot">&lt;-</span> grs <span class="sc">|&gt;</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dbl</span>(calculate_gr_mean)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>df_gr <span class="ot">&lt;-</span> images <span class="sc">|&gt;</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gr_mean =</span> gr_means)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># CSVファイルに保存</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>df_gr <span class="sc">|&gt;</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">"df_gr.csv"</span>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>df_gr <span class="sc">|&gt;</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> gr_mean)) <span class="sc">+</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">18</span>, <span class="at">color =</span> <span class="st">"green4"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"日付"</span>,</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Green Ratioの平均"</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">"2 weeks"</span>) <span class="sc">+</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">30</span>)</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="6_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>比較的綺麗に季節変化が出ました。途中一度上がってるのは撮影時の光環境の違いかもしれませんね。</p>
+</section>
+<section id="紅葉フェノロジーの観測" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="紅葉フェノロジーの観測"><span class="header-section-number">6.2</span> 紅葉フェノロジーの観測</h2>
+<p>次は紅葉です。このカメラが設置されている木曽駒岳周辺は紅葉の名所として知られており、秋にはロープウェイが大混雑します。一方、気候変動による紅葉の色づきの悪化も指摘されており（<span class="citation" data-cites="Koide2025SciRep">(<a href="references.html#ref-Koide2025SciRep" role="doc-biblioref"><strong>Koide2025SciRep?</strong></a>)</span>）、継続的なモニタリングが求められています。</p>
+<p>紅葉の度合いは、Red Ratio(RR)で求めてみましょう。式はGRとほぼ同じで、相対的な赤色の強さを表します。</p>
+<p><span class="math display">\[
+RR = \frac{Red}{Red + Green + Blue}
+\]</span></p>
+<p>それでは<code>autumn_leaf.R</code> という名前で新しいRスクリプトを作成し、以下を書き込みます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># autumn_leaf.R</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 空のマスク画像</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>sky_mask <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"sky.png"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sky =</span> <span class="fu">ifelse</span>(sky <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)) <span class="co"># 空はTRUE, 空以外はFALSEにする</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 画像のパスを受け取り、Red ratioを返す関数</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>calculate_rr <span class="ot">&lt;-</span> <span class="cf">function</span>(image_path) {</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  rr <span class="ot">&lt;-</span> image_path <span class="sc">|&gt;</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rast</span>() <span class="sc">|&gt;</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">flip</span>() <span class="sc">|&gt;</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colorize</span>(<span class="at">to =</span> <span class="st">"hsv"</span>) <span class="sc">|&gt;</span> <span class="co"># HSVに変換して戻すと、レイヤー名が勝手にred, green, blueになって便利</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colorize</span>(<span class="at">to =</span> <span class="st">"rgb"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">rr =</span> (red) <span class="sc">/</span> (red <span class="sc">+</span> green <span class="sc">+</span> blue)) <span class="sc">|&gt;</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(sky_mask) <span class="sc">|&gt;</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">rr =</span> <span class="fu">ifelse</span>(sky, <span class="cn">NA</span>, rr)) <span class="sc">|&gt;</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(rr)</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(rr)</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Red ratioをプロットする関数</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>plot_rr <span class="ot">&lt;-</span> <span class="cf">function</span>(rr) {</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_spatraster</span>(<span class="at">data =</span> rr) <span class="sc">+</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_gradient2</span>(</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">high =</span> <span class="st">"firebrick1"</span>,</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">low =</span> <span class="st">"honeydew4"</span>,</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">mid =</span> <span class="st">"honeydew"</span>,</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">midpoint =</span> <span class="fl">0.4</span>,</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>      <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.8</span>)</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a><span class="co"># gokuraku_images/以下のJPEGファイル名のベクトルを取得。</span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>images <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>  <span class="at">files =</span> <span class="fu">list.files</span>(<span class="st">"gokuraku_images/"</span>, <span class="st">".jpg"</span>, <span class="at">full.names =</span> T)</span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">ymd</span>(files)) <span class="sc">|&gt;</span> <span class="co"># ファイル名から日付を取得</span></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">month</span>(date)) <span class="sc">|&gt;</span></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(month <span class="sc">&gt;=</span> <span class="dv">9</span>)</span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>rrs <span class="ot">&lt;-</span> images <span class="sc">|&gt;</span></span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(files) <span class="sc">|&gt;</span></span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(calculate_rr)</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: [rast] unknown extent</span></span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a><span class="co"># とりあえずプロット</span></span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>rrs <span class="sc">|&gt;</span></span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(plot_rr) <span class="sc">|&gt;</span></span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wrap_plots</span>(<span class="at">ncol =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="6_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>後ろから4枚目の写真（10/3）がピークっぽいですね。</p>
+<p>また、紅葉しないハイマツなどを区別することもできそうです。</p>
+<p>それでは次は、紅葉・落葉してる植生のみに着目して、写真ごとにRRの平均値を求め、時系列でプロットしてみましょう。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># autumn_leaf.R（続き）</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># RRの全期間での最大値を画素ごとに出す</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 「RRの最大値 &gt; 0.4」という条件で常緑樹（ハイマツ）と裸地を除けそう</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>autumn_leave_mask <span class="ot">&lt;-</span> rrs <span class="sc">|&gt;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reduce</span>(c) <span class="sc">|&gt;</span> <span class="co"># 一つのラスターにレイヤーとしてまとめる</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">max</span>() <span class="sc">|&gt;</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">al =</span> max <span class="sc">&gt;</span> <span class="fl">0.4</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(al) <span class="co"># 「紅葉・落葉する植生か」</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(autumn_leave_mask)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="6_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>calculate_rr_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(rr) {</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  rr <span class="sc">|&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(autumn_leave_mask) <span class="sc">|&gt;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(al) <span class="sc">|&gt;</span> <span class="co"># al がTRUEの場所（紅葉・落葉する植生）だけ抽出</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(rr) <span class="sc">|&gt;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>rr_means <span class="ot">&lt;-</span> rrs <span class="sc">|&gt;</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dbl</span>(calculate_rr_mean)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>df_rr <span class="ot">&lt;-</span> images <span class="sc">|&gt;</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rr_mean =</span> rr_means)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co"># CSVファイルに保存</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>df_rr <span class="sc">|&gt;</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">"df_rr.csv"</span>)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>df_rr <span class="sc">|&gt;</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> rr_mean)) <span class="sc">+</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">18</span>, <span class="at">color =</span> <span class="st">"#FF4040"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"日付"</span>,</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Red Ratioの平均（常緑植生・裸地を除く）"</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">"week"</span>) <span class="sc">+</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">30</span>)</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="6_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>ここでは、常緑植生や裸地を解析から除外するために、「全期間を通したRRの最大値が一定以上であれば解析に使う」という方針にしました。紅葉は期間が短いので、緑葉と比べてシャープな形になりましたね。</p>
+</section>
+<section id="全部まとめてプロットしてみる" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="全部まとめてプロットしてみる"><span class="header-section-number">6.3</span> 全部まとめてプロットしてみる</h2>
+<p>最後に、これらの結果を全てまとめて時系列プロットを作成します。これまでの解析では、日付と残雪割合や、日付とGR/RR平均の対応をCSVファイルに保存していました。これを読み込んで一つのデータフレームにし、重ねてプロットしてみます。</p>
+<p>残雪面積は0-1の値を取るのに対して、GR/RRの値は0.3-0.7程度に限られています。従って、今回はグラフの左右に二つy軸を描画することにしました。</p>
+<p>そのせいでちょっとスクリプトが複雑ですが、そういうものだと思って動かしてみましょう（僕も調べながら書きました）。</p>
+<p><code>plot_all.R</code>というRスクリプトを作成します。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plot_all.R（続き）</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>df_snow <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"snow.csv"</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>df_gr <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"df_gr.csv"</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>df_rr <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"df_rr.csv"</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># "date" 列を基準にしてデータフレームを結合していく。</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 解析対象の日付範囲がそれぞれ異なるため、解析結果がない部分（e.g., 秋の残雪割合）についてはNAが挿入される。</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df_snow <span class="sc">|&gt;</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(df_gr, <span class="at">by =</span> <span class="st">"date"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(df_rr, <span class="at">by =</span> <span class="st">"date"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date, snow_ratio, gr_mean, rr_mean)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>df</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 24 × 4</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="do">##    date       snow_ratio gr_mean rr_mean</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;date&gt;          &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 2025-05-05     0.933    0.331      NA</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 2025-05-13     0.904    0.331      NA</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 2025-05-20     0.816    0.334      NA</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 2025-05-29     0.700    0.340      NA</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 2025-06-05     0.589    0.341      NA</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 2025-06-12     0.409    0.352      NA</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 2025-06-18     0.207    0.368      NA</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 2025-06-28     0.0285   0.413      NA</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 2025-07-05    NA        0.443      NA</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 2025-07-13    NA        0.447      NA</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ 14 more rows</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="co"># プロットする</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 残雪割合の値は、GR/RRと同じくらいの範囲に入るようにリスケールしてプロットする</span></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="co"># scale_y_continuous(sec.axis = ...)で二番目の軸(残雪割合)を作成する</span></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="co"># この際、軸の目盛りには先ほどのリスケールの逆の処理を施し、元々の残雪割合の値が表示されるようにする</span></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date)) <span class="sc">+</span></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> gr_mean), <span class="at">shape =</span> <span class="dv">18</span>, <span class="at">color =</span> <span class="st">"green4"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> rr_mean), <span class="at">shape =</span> <span class="dv">18</span>, <span class="at">color =</span> <span class="st">"#FF4040"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> snow_ratio <span class="sc">/</span> <span class="dv">5</span> <span class="sc">+</span> <span class="fl">0.3</span>), <span class="at">shape =</span> <span class="dv">8</span>, <span class="at">color =</span> <span class="st">"#5F9EA0"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> gr_mean), <span class="at">color =</span> <span class="st">"green4"</span>) <span class="sc">+</span></span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> rr_mean), <span class="at">color =</span> <span class="st">"#FF4040"</span>) <span class="sc">+</span></span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> snow_ratio <span class="sc">/</span> <span class="dv">5</span> <span class="sc">+</span> <span class="fl">0.3</span>), <span class="at">color =</span> <span class="st">"#5F9EA0"</span>) <span class="sc">+</span></span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="st">"right"</span>,</span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span> (. <span class="sc">-</span> <span class="fl">0.3</span>) <span class="sc">*</span> <span class="dv">5</span>, <span class="at">name =</span> <span class="st">"残雪の割合"</span>)</span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"日付"</span>, <span class="at">y =</span> <span class="st">"GR・RR"</span>)</span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Removed 16 rows containing missing values or values outside the scale range</span></span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a><span class="do">## (`geom_point()`).</span></span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a><span class="do">## Removed 16 rows containing missing values or values outside the scale range</span></span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a><span class="do">## (`geom_point()`).</span></span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Removed 16 rows containing missing values or values outside the scale range</span></span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a><span class="do">## (`geom_line()`).</span></span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a><span class="do">## Removed 16 rows containing missing values or values outside the scale range</span></span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a><span class="do">## (`geom_line()`).</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="6_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>雪解けと共に緑葉の展開が始まり、緑葉期が終わると紅葉が訪れることが綺麗にわかります。</p>
+<p>例えば融雪時期や気温の異なる他の年で同様の解析をしてみると、緑葉開始日や紅葉のピーク日が何によって規定されているかわかるかもしれません。降雪量や気温、標高の異なる山域間で比較してみるのも面白いでしょう。</p>
+</section>
+<section id="発展例岡本の博論紹介" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="発展例岡本の博論紹介"><span class="header-section-number">6.4</span> 発展例：岡本の博論紹介</h2>
+<p>これまでの解析では、解析結果は写真の中での相対的な割合であり、地理情報としては用いることができません。例えば、初めに作成した残雪割合は、あくまで写真内の画素の割合であって、残雪面積ではありませんでした。</p>
+<p>地上撮影写真は従来地理情報化が困難でしたが、僕の博士課程時代の研究（<span class="citation" data-cites="Okamoto2024RSEC">Okamoto, Ide, and Oguma (<a href="references.html#ref-Okamoto2024RSEC" role="doc-biblioref">2024</a>)</span>）ではこれを実現するプログラムを作成し、定点カメラ写真から植生分布の変化や残雪面積の変化を測定する手法を開発しました。</p>
+<p><a href="https://www.nies.go.jp/whatsnew/2023/20230926-2/20230926-2.html">プレスリリース：山小屋カメラを高山植生モニタリングに活用</a></p>
+<p>プログラムは（Python言語ですが）パッケージとして公開されているので、必要に迫られた際にはぜひ使ってみてもらえると嬉しいです。</p>
+<p><a href="https://github.com/0kam/alproj">山の地上撮影写真を地理情報化するためのPythonパッケージ “alproj”</a></p>
+</section>
+<section id="第六回の課題" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="第六回の課題"><span class="header-section-number">6.5</span> 第六回の課題</h2>
+<p>国環研高山帯モニタリングの定点カメラ写真を用いて、何かしらの解析をしてみましょう。 上記で試した融雪・緑葉・紅葉以外に着目しても構いません（例：天気）。</p>
+<ul>
+<li><p>撮影地間の比較</p></li>
+<li><p>撮影年間の比較</p></li>
+<li><p>気象データなどとの比較</p></li>
+</ul>
+<p>のいずれか一つ以上を盛り込んで、解析を行ってみてください。目的と考察の対応づけを忘れないように！</p>
+<p>注意事項ですが、サイトによってはカメラが時々動いてしまい、今回行ったような空のマスクなどができない場所もあります。また、機器の故障で長期間欠測になっていることもあります。解析対象のサイトを選ぶ際には、これに気を付けてください。</p>
+<p>（僕は初め涸沢雪渓の写真を使ってこの資料を書いていたのですが、写真を全部ダウンロードしてから位置ずれが大きくて使えないことに気づきました…）</p>
+<p>それではまた次回！</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-IdeOguma2010" class="csl-entry" role="listitem">
+Ide, Reiko, and Hiroyuki Oguma. 2010. <span>“Use of Digital Cameras for Phenological Observations.”</span> <em>Ecological Informatics</em> 5 (September): 339–47. <a href="https://doi.org/10.1016/J.ECOINF.2010.07.002">https://doi.org/10.1016/J.ECOINF.2010.07.002</a>.
+</div>
+<div id="ref-Okamoto2024RSEC" class="csl-entry" role="listitem">
+Okamoto, Ryotaro, Reiko Ide, and Hiroyuki Oguma. 2024. <span>“Automatically Drawing Vegetation Classification Maps Using Digital Time-Lapse Cameras in Alpine Ecosystems.”</span> <em>Remote Sensing in Ecology and Conservation</em> 10 (April): 188–202. <a href="https://doi.org/10.1002/RSE2.364">https://doi.org/10.1002/RSE2.364</a>.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -358,5 +358,65 @@
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>衛星画像による生態系観測</span>"
     ]
+  },
+  {
+    "objectID": "6.html",
+    "href": "6.html",
+    "title": "6  地上撮影写真による生態系観測",
+    "section": "",
+    "text": "6.0.1 国環研高山帯モニタリング\n今回は、地上に設置された定点カメラを用いたリモートセンシングに焦点を当てます。\n地上設置カメラは衛星画像や航空写真と比較して撮影範囲は狭いですが、一方で雲に影響されにくい、極めて高頻度な撮影が簡単にできる、安価といったメリットがあります。\n例として、日本の高山帯に設置された定点カメラを用いて、融雪・植生の観測を行ってみましょう。\nここでは、サンプルデータとして国立環境研究所の気候変動影響モニタリング事業で収集された画像を例に解析を行ってみます。\nhttps://db.cger.nies.go.jp/gem/ja/mountain/\nこの事業では、高山帯における気候変動影響の観測を目的に、中部山岳域を中心に約30箇所で観測を行っています。 上記ページでは設置された日別、月別、年別で各観測サイトの画像を検索することができます。 ここでは、中央アルプス木曽駒ヶ岳の極楽平を撮影している定点カメラ画像を使ってみます。",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>地上撮影写真による生態系観測</span>"
+    ]
+  },
+  {
+    "objectID": "6.html#緑葉フェノロジーの観測",
+    "href": "6.html#緑葉フェノロジーの観測",
+    "title": "6  地上撮影写真による生態系観測",
+    "section": "6.1 緑葉フェノロジーの観測",
+    "text": "6.1 緑葉フェノロジーの観測\n次は、前回扱ったNDVIと同様に、葉が出て枯れるまでの様子を可視化してみます。NDVIの計算には近赤外バンドが必要でしたが、定点カメラでは普通のRGBカメラを使っているため計算できません。そこで、代わりの指標としてGreen Ratio (GR)を使います。\nGRは以下のように計算できるシンプルな指標で、定点カメラを用いた植物フェノロジーのモニタリングによく使われます（例: Ide and Oguma (2010)）。\n\\[\nGR = \\frac{Green}{Green + Red + Blue}\n\\]\nそれでは、全期間を通してGRを計算してみましょう。\n新しく、green_phenology.R という名前でRスクリプトを作成します。\n\n\n# green_phenology.R\n\nlibrary(terra)\nlibrary(tidyterra)\nlibrary(tidyverse)\nlibrary(patchwork)\nlibrary(lubridate)\n\n# 空のマスク画像\nsky_mask &lt;- rast(\"sky.png\") |&gt;\n  mutate(sky = ifelse(sky &gt; 0, TRUE, FALSE)) # 空はTRUE, 空以外はFALSEにする\n\n# 画像のパスを受け取り、Green ratioを返す関数\ncalculate_gr &lt;- function(image_path) {\n  gr &lt;- image_path |&gt;\n    rast() |&gt;\n    flip() |&gt;\n    colorize(to = \"hsv\") |&gt; # HSVに変換して戻すと、レイヤー名が勝手にred, green, blueになって便利\n    colorize(to = \"rgb\") |&gt;\n    mutate(gr = green / (red + green + blue)) |&gt;\n    c(sky_mask) |&gt;\n    mutate(gr = ifelse(sky, NA, gr)) |&gt;\n    select(gr)\n\n  return(gr)\n}\n\n# Green ratioをプロットする関数\nplot_gr &lt;- function(gr) {\n  ggplot() +\n    geom_spatraster(data = gr) +\n    scale_fill_gradient2(\n      high = \"seagreen\",\n      low = \"honeydew4\",\n      mid = \"honeydew\",\n      midpoint = 0.34,\n      limits = c(0, 0.8)\n    ) +\n    theme(\n      axis.text = element_blank()\n    )\n}\n\n# gokuraku_images/以下のJPEGファイル名のベクトルを取得。\nimages &lt;- tibble(\n  files = list.files(\"gokuraku_images/\", \".jpg\", full.names = T)\n) |&gt;\n  mutate(date = ymd(files)) # ファイル名から日付を取得\n\ngrs &lt;- images |&gt;\n  pull(files) |&gt;\n  map(calculate_gr)\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n\n# とりあえずプロット\ngrs |&gt;\n  map(plot_gr) |&gt;\n  wrap_plots(ncol = 4)\n\n\n\n\n\n\n\n\n季節変化が見えてきましたね。10月末になっても緑が残っているのはハイマツなどの常緑植生です。それではこちらも、日ごとに、空を除いたエリアのGRの平均値を計算して散布図にしてみます。\n\n\n# green_phenology.R（続き）\n\n# GRの変化を取得\n# 空以外の画素のGreen ratioの平均を算出\ncalculate_gr_mean &lt;- function(gr) {\n  gr |&gt;\n    as_tibble() |&gt;\n    pull(gr) |&gt;\n    mean(na.rm = TRUE)\n}\n\ngr_means &lt;- grs |&gt;\n  map_dbl(calculate_gr_mean)\n\ndf_gr &lt;- images |&gt;\n  mutate(gr_mean = gr_means)\n\n# CSVファイルに保存\ndf_gr |&gt;\n  write_csv(\"df_gr.csv\")\n\ndf_gr |&gt;\n  ggplot(aes(x = date, y = gr_mean)) +\n  geom_point(shape = 18, color = \"green4\", size = 5) +\n  labs(\n    x = \"日付\",\n    y = \"Green Ratioの平均\"\n  ) +\n  scale_x_date(date_breaks = \"2 weeks\") +\n  theme_light() +\n  theme(\n    axis.text.x = element_text(angle = 30)\n  )\n\n\n\n\n\n\n\n\n比較的綺麗に季節変化が出ました。途中一度上がってるのは撮影時の光環境の違いかもしれませんね。",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>地上撮影写真による生態系観測</span>"
+    ]
+  },
+  {
+    "objectID": "6.html#紅葉フェノロジーの観測",
+    "href": "6.html#紅葉フェノロジーの観測",
+    "title": "6  地上撮影写真による生態系観測",
+    "section": "6.2 紅葉フェノロジーの観測",
+    "text": "6.2 紅葉フェノロジーの観測\n次は紅葉です。このカメラが設置されている木曽駒岳周辺は紅葉の名所として知られており、秋にはロープウェイが大混雑します。一方、気候変動による紅葉の色づきの悪化も指摘されており（(Koide2025SciRep?)）、継続的なモニタリングが求められています。\n紅葉の度合いは、Red Ratio(RR)で求めてみましょう。式はGRとほぼ同じで、相対的な赤色の強さを表します。\n\\[\nRR = \\frac{Red}{Red + Green + Blue}\n\\]\nそれではautumn_leaf.R という名前で新しいRスクリプトを作成し、以下を書き込みます。\n\n\nlibrary(terra)\nlibrary(tidyterra)\nlibrary(tidyverse)\nlibrary(patchwork)\nlibrary(lubridate)\n\n# autumn_leaf.R\n\n# 空のマスク画像\nsky_mask &lt;- rast(\"sky.png\") |&gt;\n  mutate(sky = ifelse(sky &gt; 0, TRUE, FALSE)) # 空はTRUE, 空以外はFALSEにする\n\n# 画像のパスを受け取り、Red ratioを返す関数\ncalculate_rr &lt;- function(image_path) {\n  rr &lt;- image_path |&gt;\n    rast() |&gt;\n    flip() |&gt;\n    colorize(to = \"hsv\") |&gt; # HSVに変換して戻すと、レイヤー名が勝手にred, green, blueになって便利\n    colorize(to = \"rgb\") |&gt;\n    mutate(rr = (red) / (red + green + blue)) |&gt;\n    c(sky_mask) |&gt;\n    mutate(rr = ifelse(sky, NA, rr)) |&gt;\n    select(rr)\n\n  return(rr)\n}\n\n# Red ratioをプロットする関数\nplot_rr &lt;- function(rr) {\n  ggplot() +\n    geom_spatraster(data = rr) +\n    theme(\n      axis.text = element_blank()\n    ) +\n    scale_fill_gradient2(\n      high = \"firebrick1\",\n      low = \"honeydew4\",\n      mid = \"honeydew\",\n      midpoint = 0.4,\n      limits = c(0, 0.8)\n    )\n}\n\n# gokuraku_images/以下のJPEGファイル名のベクトルを取得。\nimages &lt;- tibble(\n  files = list.files(\"gokuraku_images/\", \".jpg\", full.names = T)\n) |&gt;\n  mutate(date = ymd(files)) |&gt; # ファイル名から日付を取得\n  mutate(month = month(date)) |&gt;\n  filter(month &gt;= 9)\n\nrrs &lt;- images |&gt;\n  pull(files) |&gt;\n  map(calculate_rr)\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n## Warning: [rast] unknown extent\n\n# とりあえずプロット\nrrs |&gt;\n  map(plot_rr) |&gt;\n  wrap_plots(ncol = 3)\n\n\n\n\n\n\n\n\n後ろから4枚目の写真（10/3）がピークっぽいですね。\nまた、紅葉しないハイマツなどを区別することもできそうです。\nそれでは次は、紅葉・落葉してる植生のみに着目して、写真ごとにRRの平均値を求め、時系列でプロットしてみましょう。\n\n\n# autumn_leaf.R（続き）\n\n# RRの全期間での最大値を画素ごとに出す\n# 「RRの最大値 &gt; 0.4」という条件で常緑樹（ハイマツ）と裸地を除けそう\n\nautumn_leave_mask &lt;- rrs |&gt;\n  reduce(c) |&gt; # 一つのラスターにレイヤーとしてまとめる\n  max() |&gt;\n  mutate(al = max &gt; 0.4) |&gt;\n  select(al) # 「紅葉・落葉する植生か」\n\nplot(autumn_leave_mask)\n\n\n\n\n\n\n\n\ncalculate_rr_mean &lt;- function(rr) {\n  rr |&gt;\n    c(autumn_leave_mask) |&gt;\n    filter(al) |&gt; # al がTRUEの場所（紅葉・落葉する植生）だけ抽出\n    as_tibble() |&gt;\n    pull(rr) |&gt;\n    mean(na.rm = TRUE)\n}\n\nrr_means &lt;- rrs |&gt;\n  map_dbl(calculate_rr_mean)\n\ndf_rr &lt;- images |&gt;\n  mutate(rr_mean = rr_means)\n\n# CSVファイルに保存\ndf_rr |&gt;\n  write_csv(\"df_rr.csv\")\n\ndf_rr |&gt;\n  ggplot(aes(x = date, y = rr_mean)) +\n  geom_point(shape = 18, color = \"#FF4040\", size = 5) +\n  labs(\n    x = \"日付\",\n    y = \"Red Ratioの平均（常緑植生・裸地を除く）\"\n  ) +\n  scale_x_date(date_breaks = \"week\") +\n  theme_light() +\n  theme(\n    axis.text.x = element_text(angle = 30)\n  )\n\n\n\n\n\n\n\n\nここでは、常緑植生や裸地を解析から除外するために、「全期間を通したRRの最大値が一定以上であれば解析に使う」という方針にしました。紅葉は期間が短いので、緑葉と比べてシャープな形になりましたね。",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>地上撮影写真による生態系観測</span>"
+    ]
+  },
+  {
+    "objectID": "6.html#全部まとめてプロットしてみる",
+    "href": "6.html#全部まとめてプロットしてみる",
+    "title": "6  地上撮影写真による生態系観測",
+    "section": "6.3 全部まとめてプロットしてみる",
+    "text": "6.3 全部まとめてプロットしてみる\n最後に、これらの結果を全てまとめて時系列プロットを作成します。これまでの解析では、日付と残雪割合や、日付とGR/RR平均の対応をCSVファイルに保存していました。これを読み込んで一つのデータフレームにし、重ねてプロットしてみます。\n残雪面積は0-1の値を取るのに対して、GR/RRの値は0.3-0.7程度に限られています。従って、今回はグラフの左右に二つy軸を描画することにしました。\nそのせいでちょっとスクリプトが複雑ですが、そういうものだと思って動かしてみましょう（僕も調べながら書きました）。\nplot_all.RというRスクリプトを作成します。\n\n\n# plot_all.R（続き）\nlibrary(tidyverse)\n\ndf_snow &lt;- read_csv(\"snow.csv\")\ndf_gr &lt;- read_csv(\"df_gr.csv\")\ndf_rr &lt;- read_csv(\"df_rr.csv\")\n\n# \"date\" 列を基準にしてデータフレームを結合していく。\n# 解析対象の日付範囲がそれぞれ異なるため、解析結果がない部分（e.g., 秋の残雪割合）についてはNAが挿入される。\n\ndf &lt;- df_snow |&gt;\n  full_join(df_gr, by = \"date\") |&gt;\n  full_join(df_rr, by = \"date\") |&gt;\n  select(date, snow_ratio, gr_mean, rr_mean)\n\ndf\n## # A tibble: 24 × 4\n##    date       snow_ratio gr_mean rr_mean\n##    &lt;date&gt;          &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n##  1 2025-05-05     0.933    0.331      NA\n##  2 2025-05-13     0.904    0.331      NA\n##  3 2025-05-20     0.816    0.334      NA\n##  4 2025-05-29     0.700    0.340      NA\n##  5 2025-06-05     0.589    0.341      NA\n##  6 2025-06-12     0.409    0.352      NA\n##  7 2025-06-18     0.207    0.368      NA\n##  8 2025-06-28     0.0285   0.413      NA\n##  9 2025-07-05    NA        0.443      NA\n## 10 2025-07-13    NA        0.447      NA\n## # ℹ 14 more rows\n\n# プロットする\n# 残雪割合の値は、GR/RRと同じくらいの範囲に入るようにリスケールしてプロットする\n# scale_y_continuous(sec.axis = ...)で二番目の軸(残雪割合)を作成する\n# この際、軸の目盛りには先ほどのリスケールの逆の処理を施し、元々の残雪割合の値が表示されるようにする\n\ndf |&gt;\n  ggplot(aes(x = date)) +\n  geom_point(aes(y = gr_mean), shape = 18, color = \"green4\", size = 5) +\n  geom_point(aes(y = rr_mean), shape = 18, color = \"#FF4040\", size = 5) +\n  geom_point(aes(y = snow_ratio / 5 + 0.3), shape = 8, color = \"#5F9EA0\", size = 5) +\n  geom_line(aes(y = gr_mean), color = \"green4\") +\n  geom_line(aes(y = rr_mean), color = \"#FF4040\") +\n  geom_line(aes(y = snow_ratio / 5 + 0.3), color = \"#5F9EA0\") +\n  scale_y_continuous(\n    position = \"right\",\n    sec.axis = sec_axis(~ (. - 0.3) * 5, name = \"残雪の割合\")\n  ) +\n  labs(x = \"日付\", y = \"GR・RR\")\n## Warning: Removed 16 rows containing missing values or values outside the scale range\n## (`geom_point()`).\n## Removed 16 rows containing missing values or values outside the scale range\n## (`geom_point()`).\n## Warning: Removed 16 rows containing missing values or values outside the scale range\n## (`geom_line()`).\n## Removed 16 rows containing missing values or values outside the scale range\n## (`geom_line()`).\n\n\n\n\n\n\n\n\n雪解けと共に緑葉の展開が始まり、緑葉期が終わると紅葉が訪れることが綺麗にわかります。\n例えば融雪時期や気温の異なる他の年で同様の解析をしてみると、緑葉開始日や紅葉のピーク日が何によって規定されているかわかるかもしれません。降雪量や気温、標高の異なる山域間で比較してみるのも面白いでしょう。",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>地上撮影写真による生態系観測</span>"
+    ]
+  },
+  {
+    "objectID": "6.html#発展例岡本の博論紹介",
+    "href": "6.html#発展例岡本の博論紹介",
+    "title": "6  地上撮影写真による生態系観測",
+    "section": "6.4 発展例：岡本の博論紹介",
+    "text": "6.4 発展例：岡本の博論紹介\nこれまでの解析では、解析結果は写真の中での相対的な割合であり、地理情報としては用いることができません。例えば、初めに作成した残雪割合は、あくまで写真内の画素の割合であって、残雪面積ではありませんでした。\n地上撮影写真は従来地理情報化が困難でしたが、僕の博士課程時代の研究（Okamoto, Ide, and Oguma (2024)）ではこれを実現するプログラムを作成し、定点カメラ写真から植生分布の変化や残雪面積の変化を測定する手法を開発しました。\nプレスリリース：山小屋カメラを高山植生モニタリングに活用\nプログラムは（Python言語ですが）パッケージとして公開されているので、必要に迫られた際にはぜひ使ってみてもらえると嬉しいです。\n山の地上撮影写真を地理情報化するためのPythonパッケージ “alproj”",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>地上撮影写真による生態系観測</span>"
+    ]
+  },
+  {
+    "objectID": "6.html#第六回の課題",
+    "href": "6.html#第六回の課題",
+    "title": "6  地上撮影写真による生態系観測",
+    "section": "6.5 第六回の課題",
+    "text": "6.5 第六回の課題\n国環研高山帯モニタリングの定点カメラ写真を用いて、何かしらの解析をしてみましょう。 上記で試した融雪・緑葉・紅葉以外に着目しても構いません（例：天気）。\n\n撮影地間の比較\n撮影年間の比較\n気象データなどとの比較\n\nのいずれか一つ以上を盛り込んで、解析を行ってみてください。目的と考察の対応づけを忘れないように！\n注意事項ですが、サイトによってはカメラが時々動いてしまい、今回行ったような空のマスクなどができない場所もあります。また、機器の故障で長期間欠測になっていることもあります。解析対象のサイトを選ぶ際には、これに気を付けてください。\n（僕は初め涸沢雪渓の写真を使ってこの資料を書いていたのですが、写真を全部ダウンロードしてから位置ずれが大きくて使えないことに気づきました…）\nそれではまた次回！\n\n\n\n\nIde, Reiko, and Hiroyuki Oguma. 2010. “Use of Digital Cameras for Phenological Observations.” Ecological Informatics 5 (September): 339–47. https://doi.org/10.1016/J.ECOINF.2010.07.002.\n\n\nOkamoto, Ryotaro, Reiko Ide, and Hiroyuki Oguma. 2024. “Automatically Drawing Vegetation Classification Maps Using Digital Time-Lapse Cameras in Alpine Ecosystems.” Remote Sensing in Ecology and Conservation 10 (April): 188–202. https://doi.org/10.1002/RSE2.364.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>地上撮影写真による生態系観測</span>"
+    ]
   }
 ]
