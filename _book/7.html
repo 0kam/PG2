@@ -20,7 +20,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -71,6 +126,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -181,8 +265,29 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#背景" id="toc-背景" class="nav-link active" data-scroll-target="#背景"><span class="header-section-number">7.1</span> 背景</a>
+  <ul class="collapse">
+  <li><a href="#鳴き声を用いた生物多様性観測" id="toc-鳴き声を用いた生物多様性観測" class="nav-link" data-scroll-target="#鳴き声を用いた生物多様性観測"><span class="header-section-number">7.1.1</span> 鳴き声を用いた生物多様性観測</a></li>
+  <li><a href="#音を介した生物と生物生物と人間の接点" id="toc-音を介した生物と生物生物と人間の接点" class="nav-link" data-scroll-target="#音を介した生物と生物生物と人間の接点"><span class="header-section-number">7.1.2</span> 音を介した生物と生物、生物と人間の接点</a></li>
+  <li><a href="#soundscape-ecology" id="toc-soundscape-ecology" class="nav-link" data-scroll-target="#soundscape-ecology"><span class="header-section-number">7.1.3</span> Soundscape Ecology</a></li>
+  <li><a href="#音響データの基礎" id="toc-音響データの基礎" class="nav-link" data-scroll-target="#音響データの基礎"><span class="header-section-number">7.1.4</span> 音響データの基礎</a></li>
+  <li><a href="#音響景観指数" id="toc-音響景観指数" class="nav-link" data-scroll-target="#音響景観指数"><span class="header-section-number">7.1.5</span> 音響景観指数</a></li>
+  </ul></li>
+  <li><a href="#rを用いた環境音の解析" id="toc-rを用いた環境音の解析" class="nav-link" data-scroll-target="#rを用いた環境音の解析"><span class="header-section-number">7.2</span> Rを用いた環境音の解析</a>
+  <ul class="collapse">
+  <li><a href="#サンプル音源のダウンロード" id="toc-サンプル音源のダウンロード" class="nav-link" data-scroll-target="#サンプル音源のダウンロード"><span class="header-section-number">7.2.1</span> サンプル音源のダウンロード</a></li>
+  <li><a href="#スペクトログラムの作成" id="toc-スペクトログラムの作成" class="nav-link" data-scroll-target="#スペクトログラムの作成"><span class="header-section-number">7.2.2</span> スペクトログラムの作成</a></li>
+  <li><a href="#解析1.-音響景観指数soundscape-index" id="toc-解析1.-音響景観指数soundscape-index" class="nav-link" data-scroll-target="#解析1.-音響景観指数soundscape-index"><span class="header-section-number">7.2.3</span> 解析1. 音響景観指数（Soundscape Index）</a></li>
+  <li><a href="#解析2.-birdnetで鳥の鳴き声を調べる" id="toc-解析2.-birdnetで鳥の鳴き声を調べる" class="nav-link" data-scroll-target="#解析2.-birdnetで鳥の鳴き声を調べる"><span class="header-section-number">7.2.4</span> 解析2. BirdNETで鳥の鳴き声を調べる</a></li>
+  </ul></li>
+  <li><a href="#第6回の課題" id="toc-第6回の課題" class="nav-link" data-scroll-target="#第6回の課題"><span class="header-section-number">7.3</span> 第6回の課題</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -206,8 +311,406 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>今回は少し趣向を変えて、音響を介した生態系の観測に着目してみましょう。</p>
+<section id="背景" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="背景"><span class="header-section-number">7.1</span> 背景</h2>
+<p>自然界では、多くの生き物が音を使ってコミュニケーションしています。鳥類やセミや秋の虫などの昆虫類は求愛や群れの仲間とのコミュニケーションのために鳴きますし、コウモリやイルカは音を使って獲物の位置を特定します。音は繁殖や捕食といった生き物にとって極めて重要な局面で用いられているわけです。</p>
+<section id="鳴き声を用いた生物多様性観測" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="鳴き声を用いた生物多様性観測"><span class="header-section-number">7.1.1</span> 鳴き声を用いた生物多様性観測</h3>
+<p>鳴き声は同種個体間のコミュニケーションに用いられるため、多くの場合、種ごとに特徴が異なります。従って、野外に音響レコーダーを設置して環境音を録音し、含まれる鳴き声を調べることで、そこに生息する種をモニタリングすることができます。鳴き声は比較的遠くまで届くため、音響観測は広い範囲を効率的に調べられる点も利点です。</p>
+<p>また、鳴き声でコミュニケーションする生物は、トラップカメラなどの視覚的な手法では観測が難しいケースが多いことも知られています。近年では、防水性を備え、指定した時刻に自動で録音できる音響レコーダーも普及しており、これらを用いた鳥類や昆虫類の観測は、手軽に長期的な生物多様性モニタリングを行う手法として注目されています。</p>
+<p><a href="https://0kam.net/blog/posts/songmeter_extra_battery/">参考：岡本が使っているレコーダー</a></p>
+<p><img src="https://0kam.net/blog/images/songmeter/7e310b8d-08b2-4cf1-8328-cdcfaaf03035.png" width="300"></p>
+</section>
+<section id="音を介した生物と生物生物と人間の接点" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="音を介した生物と生物生物と人間の接点"><span class="header-section-number">7.1.2</span> 音を介した生物と生物、生物と人間の接点</h3>
+<p>さらに、音響の面白い点は、その混じりやすいさにあります。例えば、道路と川に面した緑地を考えてみましょう。当たり前の話ですが、緑地に生息している鳥類や昆虫類の鳴き声は、道路を走る車の走行音や川を流れる水の音と重なり合い、聞こえづらくなるかもしれません。これはつまり、人や環境の生み出す音が生物の行動に影響しうることを意味します。実際、道路騒音が鳥類の鳴き声のパターン（<span class="citation" data-cites="Slabekkoorn2006CB">Slabbekoorn and Boer-Visser (<a href="references.html#ref-Slabekkoorn2006CB" role="doc-biblioref">2006</a>)</span>）や、繁殖成功率（<span class="citation" data-cites="Senzaki2020Nature">Senzaki et al. (<a href="references.html#ref-Senzaki2020Nature" role="doc-biblioref">2020</a>)</span>）に影響を及ぼすことが知られています。</p>
+<p>参考：道路騒音が引き起こすバッタの植生変化 </p><div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/RpOAZB61XIM" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><p></p>
+</section>
+<section id="soundscape-ecology" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="soundscape-ecology"><span class="header-section-number">7.1.3</span> Soundscape Ecology</h3>
+<p>もう少し、音と地理学的な対象の関係について整理してみます。ここでは、<span class="citation" data-cites="SoundscapeEcology">Pijanowski et al. (<a href="references.html#ref-SoundscapeEcology" role="doc-biblioref">2011</a>)</span> を参考にしながら、人間による土地利用や地理的な条件がどのようにその場所の音に影響するか考えてみます。この総説、大変読みやすく面白いのでおすすめです。英語が苦手な方はAIに翻訳させてみても良いでしょう。</p>
+<p>まずタイトルにある”Soundscape”ですが、これは”Landscape”と対応した語彙で、日本語では「音響景観」と訳されることもあります（「サウンドスケープ」と書かれることの方が多いかもしれません）。生態学の文脈では「景観」というのは複数のタイプの生態系からなる、あるエリア全体のことを指します。同様に、「サウンドスケープ」はそのエリアにおける環境音の総体を指します。</p>
+<p>サウンドスケープに含まれる音は、その起源から三種類に分類されます。</p>
+<ul>
+<li>生物音（Biophony）: 生物が出す音。鳴き声や羽ばたき音など。<br>
+</li>
+<li>自然音（Geophony）: 非生物的な環境に起因する音。川のせせらぎ、風、雨など。<br>
+</li>
+<li>人工音（Anthrophony）: 人間に起因する音。車の走行音、工場の稼働音、エアコン室外機の音など。</li>
+</ul>
+<p><img src="images/7/phony.jpeg" class="img-fluid"></p>
+<p>サウンドスケープはその場の景観と強く関連しています。 以下の図を見てみましょう。</p>
+<p>ある場所の景観は、気候と景観構造（土地利用の空間分布など）によって概ね規定されます。 人はその場所の景観構造を変化させ（1）、それによって生物の分布や行動が変わります（2）。</p>
+<p>このような中で、人間活動の変化や、その自然に対する現象はその場所のサウンドスケープに反映されます（4,5）。 たとえば、都市化が進んで道路騒音が増えたり、生き物が減って鳴き声頻度が減ったりします。</p>
+<p>時には、サウンドスケープを介して人と自然の間に相互作用が働くこともあります（5-&gt;6, 4-&gt;7）。 たとえば、道路騒音によって鳥類の活動が制限されたり、あるいは秋の鳴く虫の種組成の変化によって、人が心地よいと思う音が街から減っているかもしれません（“ウェルビーイング”の低下?）。</p>
+<p><a href="https://チコちゃんに叱られる.com/26497.html">参考：なんで虫の鳴き声って心地よく聞こえるの？オーケストラになっているから（チコちゃんに叱られる）</a></p>
+<p>ある場所におけるサウンドスケープがどのようになっているか、それが人と自然のどのような関係を反映しているかを調べるのが、Soundscape Ecologyです。</p>
+<p><img src="images/7/soundscape.jpeg" class="img-fluid"></p>
+</section>
+<section id="音響データの基礎" class="level3" data-number="7.1.4">
+<h3 data-number="7.1.4" class="anchored" data-anchor-id="音響データの基礎"><span class="header-section-number">7.1.4</span> 音響データの基礎</h3>
+<p>音響データを取り扱う際に必要となる基礎的な知識について概説します。</p>
+<p>まず基本的な話として、音は空気中を伝わる振動（波）です。 音の大きさは波の高さ（振幅）と対応しており、音の高さは波の頻度（周波数）と対応しています。</p>
+<p>一方、波形データは視覚的に理解しにくいため、横軸を時間、縦軸を周波数、明るさを音の強さに対応させた2次元のヒートマップを作成することが多いです。このような図のことを<strong>スペクトログラム</strong>と呼びます。</p>
+<p>たとえば下図はウグイスのさえずりを示すスペクトログラムです。 明るい部分の動きが、音の高さの変化に対応しています。</p>
+<p><img src="images/7/uguisu.png" class="img-fluid"></p>
+<p>スペクトログラムと波形の対応を動画にしてみました。</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/zh7njkB_N5g" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>波形をズームしていくと、点が見えてきます。 音の波形をデジタルデータにする際には、一定の間隔で波形の高さ（音圧）をサンプリングしており、それぞれの点が対応しています。 このサンプリングの間隔のことをサンプリングレートと呼び、高ければ高いほど、より高音域まで録音ができることを意味します。</p>
+<p>動画の例では、48kHz（Hz、ヘルツ、は1秒間に1回、という意味の単位です）で録音を行なっているので、点の間隔は1/48,000秒です。</p>
+<section id="音響ニッチ仮説" class="level4" data-number="7.1.4.1">
+<h4 data-number="7.1.4.1" class="anchored" data-anchor-id="音響ニッチ仮説"><span class="header-section-number">7.1.4.1</span> 音響ニッチ仮説</h4>
+<p>スペクトログラムを用いてわかる現象として面白いものを一つ紹介します。</p>
+<p>下の図は <span class="citation" data-cites="Krause1987">Krause (<a href="references.html#ref-Krause1987" role="doc-biblioref">1987</a>)</span> で紹介されたボルネオのスペクトログラムです。色のついた枠は、鳴き声の種を表しています。</p>
+<p>全体として、スペクトログラム全体を枠が覆っており、さらに、各枠は重なりが少ないことがわかります。</p>
+<p>各種は鳴くタイミングをずらしたり、鳴き声の高さを他の種と被らないようにすることで、自分の鳴き声が相手（求愛相手など）に届きやすくしているのです。</p>
+<p>つまり、各種は周波数と時間で示される音響空間の中で、特定の位置（ニッチ）を獲得していると考えられ、このような仮説を「音響ニッチ仮説（Acoustic niche hypothesis）」と呼びます。</p>
+<p><img src="images/7/niche.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="音響景観指数" class="level3" data-number="7.1.5">
+<h3 data-number="7.1.5" class="anchored" data-anchor-id="音響景観指数"><span class="header-section-number">7.1.5</span> 音響景観指数</h3>
+<p>環境音の解析方法にはいくつかやり方があります。 一番思いつきやすいのは、機械学習を使って特定の種の鳴き声を調べることです。 鳥についてはある程度使えるモデルが出来上がっているので、後半で試します。</p>
+<p>他の（もっと簡単な）方法として、音響景観指数（Soundscape Index）を計算する、というものがあります。</p>
+<p>これは、環境音の特徴を指標化しようというもので、（場合によるものの）鳥類の多様性や人工音の強さを反映するとされています。</p>
+<p>ここでは、代表的な音響景観指数を3つ紹介します。</p>
+<section id="normalized-difference-soundscape-index-ndsi-kasten2012ndsi" class="level4" data-number="7.1.5.1">
+<h4 data-number="7.1.5.1" class="anchored" data-anchor-id="normalized-difference-soundscape-index-ndsi-kasten2012ndsi"><span class="header-section-number">7.1.5.1</span> Normalized Difference Soundscape Index (NDSI, <span class="citation" data-cites="Kasten2012NDSI">Kasten et al. (<a href="references.html#ref-Kasten2012NDSI" role="doc-biblioref">2012</a>)</span>)</h4>
+<p>どこかでみたことのある名前ですね…衛星リモセンの回で出てきた指数（NDVIなど）と名前が似ています。 この音響景観指数も、NDVIなどと似た計算方法で算出されるものです。</p>
+<p>NDVIでは、植生が反射する波長、吸収する波長の反射率の差をとって、植生の有無を推定しました。 NDSIでは、生物音は比較的高い周波数を持っており、人工音はそれに比べて低い周波数に集中している（道路騒音とか、エンジン音とか、そうですよね）ことを利用し、同様の計算を行います。</p>
+<p>つまり、人工音と生物音それぞれの周波数帯を定義し、それぞれ音圧を計算したのち、</p>
+<p><span class="math display">\[
+NDSI = \frac{生物音 - 人工音}{生物音 + 人工音}
+\]</span> のようにして計算することで、相対的な生物音の強さ（高い音の大きさ）を出すわけです。</p>
+</section>
+<section id="acoustic-complexity-index-aci-pieretti2011aci" class="level4" data-number="7.1.5.2">
+<h4 data-number="7.1.5.2" class="anchored" data-anchor-id="acoustic-complexity-index-aci-pieretti2011aci"><span class="header-section-number">7.1.5.2</span> Acoustic Complexity Index (ACI, <span class="citation" data-cites="Pieretti2011ACI">Pieretti, Farina, and Morri (<a href="references.html#ref-Pieretti2011ACI" role="doc-biblioref">2011</a>)</span>)</h4>
+<p>ACIは時間方向のパターンに着目した指標です。 鳥の鳴き声は短い時間に高さが頻繁に変わりますが、人工音は一定の強さで持続するものが多いです。</p>
+<p>ACIでは、音響データの時間的な複雑性を指標化します。</p>
+<ul>
+<li>まず音響データをいくつかのセグメント（5秒とか）に分割します。<br>
+</li>
+<li>さらにセグメントを周波数帯で分割します（1 kHz刻みとか）<br>
+</li>
+<li>隣接するセグメント間で周波数帯ごとに音圧の差を計算します<br>
+</li>
+<li>上記の差を合計したものがACIです。</li>
+</ul>
+</section>
+<section id="acoustic-diversity-index-adi-rivera2011le" class="level4" data-number="7.1.5.3">
+<h4 data-number="7.1.5.3" class="anchored" data-anchor-id="acoustic-diversity-index-adi-rivera2011le"><span class="header-section-number">7.1.5.3</span> Acoustic Diversity Index (ADI, <span class="citation" data-cites="Rivera2011LE">Villanueva-Rivera et al. (<a href="references.html#ref-Rivera2011LE" role="doc-biblioref">2011</a>)</span>)</h4>
+<p>ADIはその名の通り、音の周波数の多様性に着目した指標です。 音響データを周波数帯で分割し、周波数帯ごとに、どれくらいの時間音が鳴っているかを調べます。 計算された「周波数帯ごとの音の有無」からShannon指数を計算します。</p>
+<p>ADIは、周波数帯全体に均一に音が鳴っている時にもっとも高くなり、特定の周波数帯にだけ音が偏っている時に低くなります。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/7/ADI.webp" class="img-fluid figure-img"></p>
+<figcaption>周波数帯のイメージ。<span class="citation" data-cites="Rivera2011LE">Villanueva-Rivera et al. (<a href="references.html#ref-Rivera2011LE" role="doc-biblioref">2011</a>)</span> より。</figcaption>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="rを用いた環境音の解析" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="rを用いた環境音の解析"><span class="header-section-number">7.2</span> Rを用いた環境音の解析</h2>
+<p>それでは実際に音響データを用いて解析を行ってみましょう。 まずは作業用のディレクトリ（<code>PG2/7/</code>）を作成します。</p>
+<p>次に、Rプロジェクトを<code>PG2/7/</code>以下に作成します。 やり方を忘れた方は <a href="3.html#sec-create-project" class="quarto-xref"><span>Section 3.5.1</span></a> を見直してください。</p>
+<p>必要なライブラリをインストールします。 今回は音の読み込みに<code>tuneR</code>、スペクトログラムの作成に<code>seewave</code>、「音響景観指数（後述）」の計算に<code>soundecology</code>、鳥の鳴き声検出に<code>birdnetR</code>を使います。</p>
+<p>コンソールで以下を実行してください。</p>
+<pre><code>install.packages(c(("", "seewave", "birdnetR", "soundecology"))</code></pre>
+<section id="サンプル音源のダウンロード" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="サンプル音源のダウンロード"><span class="header-section-number">7.2.1</span> サンプル音源のダウンロード</h3>
+<p>試しに使えるサンプル用の音源を用意しました。 <a href="https://drive.google.com/drive/folders/12Nap_v2FIGz-b53MIRRsdPm83uwLBuIk?usp=sharing">Google Drive</a>にアップロードしたので、各自ダウンロードし、<code>PG2/7/audio/</code>以下に各wavファイルを置いてください。</p>
+<pre><code># audio/直下にwavファイルを置くこと！
+PG2
+└── 7
+    ├── audio
+        ├── entrance_hall.wav # リバティタワー1階のホールでの録音
+        ├── mainroadside.wav  # 靖国通りの路上での録音
+        ├── roadside.wav      # 明大通りの路上での録音
+        └── mountain.wav      # 南アルプス千枚岳付近の亜高山帯樹林での録音（2024年8月）</code></pre>
+</section>
+<section id="スペクトログラムの作成" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="スペクトログラムの作成"><span class="header-section-number">7.2.2</span> スペクトログラムの作成</h3>
+<p>まずはスペクトログラムを見てみます。</p>
+<p>以下を<code>spectrogram.R</code>として作成しましょう。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># spectrogram.R</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(seewave)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tuneR)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>plot_spectrogram <span class="ot">&lt;-</span> <span class="cf">function</span>(file_name) {</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readWave</span>(file_name, <span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">20</span>, <span class="at">units =</span> <span class="st">"seconds"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spectro</span>(<span class="at">osc =</span> <span class="cn">TRUE</span>, <span class="at">flog =</span> <span class="cn">TRUE</span>, <span class="at">main =</span> <span class="fu">basename</span>(file_name), <span class="at">collevels =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">50</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">"audio/"</span>, <span class="st">".wav"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>files <span class="sc">|&gt;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(plot_spectrogram)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="7_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="7_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="7_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="7_files/figure-html/unnamed-chunk-1-4.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>mountains.wavだけ明かに他と違いますね。鳥の鳴き声はロードノイズ等と比較してかなり高いことがわかります。</p>
+</section>
+<section id="解析1.-音響景観指数soundscape-index" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="解析1.-音響景観指数soundscape-index"><span class="header-section-number">7.2.3</span> 解析1. 音響景観指数（Soundscape Index）</h3>
+<p>それでは、各音源に対してNDSI、ACI、ADIを計算してみましょう。</p>
+<p>重要な点として、音源の長さが変わると指数の値に影響します。したがって、ここでは各音源の初めの20秒だけを使うようにしました。</p>
+<p>NDSIでは生物音は2 kHz - 10 kHz、人工音は1 kHz - 2 kHzとして定義しました。</p>
+<p>ACIの計算時には、1 kHz - 10 kHzの音のみを対象としています。</p>
+<p>ADIでは、0 kHz - 10 kHzの音を対象としました。</p>
+<p>また、ADIの計算時には、周波数バンド（１kHz刻み）ごとの相対的な音量も計算されますので、これもプロットしてみます。</p>
+<p>以下を<code>index.R</code>として作成します。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># index.R</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(seewave)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tuneR)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(soundecology)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 音響景観指数を計算する関数</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>calculate_index <span class="ot">&lt;-</span> <span class="cf">function</span>(file) {</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  wave <span class="ot">&lt;-</span> <span class="fu">readWave</span>(file, <span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">20</span>, <span class="at">units =</span> <span class="st">"seconds"</span>) <span class="co"># 0-20秒を切り出す</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  ndsi_value <span class="ot">&lt;-</span> <span class="fu">ndsi</span>(wave, <span class="at">anthro_min =</span> <span class="dv">1000</span>, <span class="at">anthro_max =</span> <span class="dv">2000</span>, <span class="at">bio_min =</span> <span class="dv">2000</span>, <span class="at">bio_max =</span> <span class="dv">10000</span>)<span class="sc">$</span>ndsi_left</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  aci_value <span class="ot">&lt;-</span> <span class="fu">acoustic_complexity</span>(wave, <span class="at">min_freq =</span> <span class="dv">1000</span>, <span class="at">max_freq =</span> <span class="dv">10000</span>, <span class="at">j =</span> <span class="dv">3</span>, <span class="at">fft_w =</span> <span class="dv">64</span>)<span class="sc">$</span>AciTotAll_left</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  adi_result <span class="ot">&lt;-</span> <span class="fu">acoustic_diversity</span>(wave, <span class="at">max_freq =</span> <span class="dv">10000</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  adi_value <span class="ot">&lt;-</span> adi_result<span class="sc">$</span>adi_left</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">filename =</span> <span class="fu">basename</span>(file),</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">ndsi =</span> ndsi_value,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">aci =</span> aci_value,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">adi =</span> adi_value</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 周波数バンドごとの音量を計算する関数</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>calculate_band_values <span class="ot">&lt;-</span> <span class="cf">function</span>(file) {</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  wave <span class="ot">&lt;-</span> <span class="fu">readWave</span>(file, <span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">20</span>, <span class="at">units =</span> <span class="st">"seconds"</span>)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>  adi_result <span class="ot">&lt;-</span> <span class="fu">acoustic_diversity</span>(wave)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  band_values <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">filename =</span> <span class="fu">basename</span>(file),</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">freq =</span> adi_result<span class="sc">$</span>left_bandrange_values,</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">value =</span> adi_result<span class="sc">$</span>left_band_values</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(band_values)</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="co"># 各ファイルに対して音響景観指数を計算し、データフレームにまとめる</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> files <span class="sc">|&gt;</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(calculate_index)</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="co"># 周波数バンドごとの音量も各ファイルに対して計算</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>band_values <span class="ot">&lt;-</span> files <span class="sc">|&gt;</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(calculate_band_values)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>結果を見てみましょう。以下を書き加えます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># index.R（続き）</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>index</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 4 × 4</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   filename            ndsi   aci   adi</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 entrance_hall.wav -0.483  54.0 1.14 </span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 mainroadside.wav  -0.628  53.4 1.07 </span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 mountain.wav       0.994  87.1 1.59 </span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 roadside.wav      -0.373  53.7 0.735</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># プロットしてみる</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>band_values <span class="sc">|&gt;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> freq, <span class="at">y =</span> value, <span class="at">fill =</span> filename)) <span class="sc">+</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>filename) <span class="sc">+</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="7_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>全ての指標に置いて、mountain.wavがずば抜けて高い値になっていますね！ 周波数ごとの相対的な音圧をみてみると、mountain.wavでは4-5 kHz帯にもピークがあることがわかります。</p>
+<p>この音源に含まれる鳥の鳴き声がこれくらいの周波数だったということですね。</p>
+<p>それでは、この音源には、どのような鳥が含まれているのでしょうか？</p>
+</section>
+<section id="解析2.-birdnetで鳥の鳴き声を調べる" class="level3" data-number="7.2.4">
+<h3 data-number="7.2.4" class="anchored" data-anchor-id="解析2.-birdnetで鳥の鳴き声を調べる"><span class="header-section-number">7.2.4</span> 解析2. BirdNETで鳥の鳴き声を調べる</h3>
+<p>次に、深層学習モデルを使って鳥の鳴き声を検出する手法を紹介します。</p>
+<p>ここでは、<span class="citation" data-cites="birdnet">Kahl et al. (<a href="references.html#ref-birdnet" role="doc-biblioref">2021</a>)</span> で提案されたBirdNETと呼ばれる深層学習モデルを用います。 BirdNETは米国のコーネル大学が開発した全世界の鳥類の鳴き声を分類するモデルで、<a href="https://github.com/birdnet-team/BirdNET-Analyzer">デスクトップアプリ</a>や<a href="https://birdnet.cornell.edu/">モバイルアプリ</a>にもなっています。</p>
+<p>BirdNETは3秒間の音響データを受け取り、その中に含まれる鳥の鳴き声を検出します。</p>
+<p>今回はせっかくなので、Rから使ってみましょう。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(birdnetR)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">birdnet_model_tflite</span>(<span class="at">language =</span> <span class="st">"ja"</span>) <span class="co"># 初回はダウンロードに結構（10分間くらい）時間がかかる</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">predict_species_from_audio_file</span>(model, <span class="st">"audio//mountain.wav"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>predictions</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 560 × 5</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="do">##    start   end scientific_name          common_name            confidence</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;                    &lt;chr&gt;                       &lt;dbl&gt;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  1     3     6 Certhia americana        アメリカキバシリ            0.105</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  2     6     9 Phylloscopus xanthodryas メボソムシクイ              0.919</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  3     9    12 Phylloscopus xanthodryas メボソムシクイ              0.571</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  4    12    15 Psophodes olivaceus      ムナグロシラヒゲドリ        0.180</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  5    15    18 Geothlypis formosa       メガネアメリカムシクイ      0.141</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  6    15    18 Horornis diphone         ウグイス                    0.118</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  7    18    21 Tarsiger cyanurus        ルリビタキ                  0.136</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  8    21    24 Regulus satrapa          アメリカキクイタダキ        0.248</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  9    24    27 Horornis diphone         ウグイス                    0.132</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="do">## 10    24    27 Myadestes obscurus       ハワイツグミ                0.101</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ 550 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>「アメリカキバシリ」や「アメリカキクイタダキ」など、明かに日本にいなさそうな鳥が多数含まれていますね。 BirdNETは北米や欧州で取得された音源を多く用いて訓練されているため、北米・欧州の種が誤って出やすい傾向にあります。</p>
+<p>この問題に対処するために、BirdNETには録音場所の大まかな緯度経度と季節から、各種がどの程度出現してそうかを予測するモデルが用意されています。このモデルを組み合わせてフィルタリングしてみましょう。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>meta_model <span class="ot">&lt;-</span> <span class="fu">birdnet_model_meta</span>(<span class="at">language =</span> <span class="st">"ja"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>predictions_meta <span class="ot">&lt;-</span> <span class="fu">predict_species_at_location_and_time</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  meta_model,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">latitude =</span> <span class="fl">35.5</span>, <span class="co"># 大体の緯度経度</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">longitude =</span> <span class="fl">138.2</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">week =</span> <span class="dv">30</span> <span class="co"># 年の中での週。元日から数えて8月は大体30週目くらい。</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">scientific_name =</span> <span class="fu">str_remove</span>(label, <span class="st">"_.*"</span>)) <span class="sc">|&gt;</span> <span class="co"># labelは 学名_和名の形式になっているので_以降を削除</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">confidence_meta =</span> confidence) <span class="sc">|&gt;</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(scientific_name, confidence_meta) <span class="sc">|&gt;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>predictions_with_meta <span class="ot">&lt;-</span> predictions <span class="sc">|&gt;</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(predictions_meta, <span class="at">by =</span> <span class="st">"scientific_name"</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>predictions_with_meta</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 560 × 6</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="do">##    start   end scientific_name          common_name   confidence confidence_meta</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;                    &lt;chr&gt;              &lt;dbl&gt;           &lt;dbl&gt;</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  1     3     6 Certhia americana        アメリカキバシリ……      0.105          NA    </span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  2     6     9 Phylloscopus xanthodryas メボソムシクイ……      0.919           0.314</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  3     9    12 Phylloscopus xanthodryas メボソムシクイ……      0.571           0.314</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="do">##  4    12    15 Psophodes olivaceus      ムナグロシラヒゲドリ……      0.180          NA    </span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="do">##  5    15    18 Geothlypis formosa       メガネアメリカムシクイ……      0.141          NA    </span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="do">##  6    15    18 Horornis diphone         ウグイス           0.118           0.656</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="do">##  7    18    21 Tarsiger cyanurus        ルリビタキ         0.136           0.226</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="do">##  8    21    24 Regulus satrapa          アメリカキクイタダキ……      0.248          NA    </span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="do">##  9    24    27 Horornis diphone         ウグイス           0.132           0.656</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="do">## 10    24    27 Myadestes obscurus       ハワイツグミ       0.101          NA    </span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ 550 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>明かに日本にいなさそうな種はconfidence_metaがNAになっていますね。 今回は便宜的に、<code>confidence_meta &gt; 0.15</code> を満たす種のみを抽出します。</p>
+<p>種ごとの鳴き声検出数をグラフにしてみましょう。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>predictions_with_meta <span class="ot">&lt;-</span> predictions_with_meta <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span> <span class="co"># confidence_metaがNAのものを消す</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(confidence_meta <span class="sc">&gt;</span> <span class="fl">0.15</span>) </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>predictions_with_meta <span class="sc">|&gt;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">"birdnet_preds_mountain.csv"</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>predictions_with_meta <span class="sc">|&gt;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> common_name, <span class="at">fill =</span> common_name)) <span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"BirdNETでの検出数（3秒単位）"</span>) <span class="sc">+</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="7_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>結果が出ました！地域で絞り込んでいるとはいえ、BirdNETは結構間違えます。</p>
+<p>鳴き声を自分で聞いてみて、合ってそうか確認したほうが良いでしょう。</p>
+<p><a href="https://www.suntory.co.jp/eco/birds/encyclopedia/nakigoe.html">サントリーのHP</a>にはわかりやすい鳥の鳴き声図鑑があるので、これを参考に聞き比べてみるのがおすすめです。</p>
+</section>
+</section>
+<section id="第6回の課題" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="第6回の課題"><span class="header-section-number">7.3</span> 第6回の課題</h2>
+<ul>
+<li><strong>3箇所以上の場所で実際に自分たちで音を録音して</strong>解析してみましょう。<br>
+</li>
+<li>解析には、（最低限）音響景観指数の計算を含めましょう。鳥の鳴き声を調べてもいいです。<br>
+</li>
+<li>解析結果を考察し、<strong>土地利用やエリアの特性がその場所のサウンドスケープとどう繋がっているか</strong>考察してください。<br>
+</li>
+<li>その場所を使う人にとって、現状のサウンドスケープがどのように感じられるか、それがどのようになると好ましいかについて述べることを歓迎します（岡本の個人的興味）。</li>
+<li>なお、録音はプライバシーを害しかねない行為です。私有地での録音は避け、人の話し声が聞き取れる形で録音されないように気をつけましょう。</li>
+</ul>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-birdnet" class="csl-entry" role="listitem">
+Kahl, Stefan, Connor M. Wood, Maximilian Eibl, and Holger Klinck. 2021. <span>“BirdNET: A Deep Learning Solution for Avian Diversity Monitoring.”</span> <em>Ecological Informatics</em> 61 (March): 101236. <a href="https://doi.org/10.1016/J.ECOINF.2021.101236">https://doi.org/10.1016/J.ECOINF.2021.101236</a>.
+</div>
+<div id="ref-Kasten2012NDSI" class="csl-entry" role="listitem">
+Kasten, Eric P., Stuart H. Gage, Jordan Fox, and Wooyeong Joo. 2012. <span>“The Remote Environmental Assessment Laboratory’s Acoustic Library: An Archive for Studying Soundscape Ecology.”</span> <em>Ecological Informatics</em> 12 (November): 50–67. <a href="https://doi.org/10.1016/J.ECOINF.2012.08.001">https://doi.org/10.1016/J.ECOINF.2012.08.001</a>.
+</div>
+<div id="ref-Krause1987" class="csl-entry" role="listitem">
+Krause, Bernie L. 1987. <span>“Bioacoustics, HabitatAmbience in Ecological Balance.”</span> <em>Whole Earth Review</em>.
+</div>
+<div id="ref-Pieretti2011ACI" class="csl-entry" role="listitem">
+Pieretti, N., A. Farina, and D. Morri. 2011. <span>“A New Methodology to Infer the Singing Activity of an Avian Community: The Acoustic Complexity Index (ACI).”</span> <em>Ecological Indicators</em> 11 (May): 868–73. <a href="https://doi.org/10.1016/J.ECOLIND.2010.11.005">https://doi.org/10.1016/J.ECOLIND.2010.11.005</a>.
+</div>
+<div id="ref-SoundscapeEcology" class="csl-entry" role="listitem">
+Pijanowski, Bryan C., Luis J. Villanueva-Rivera, Sarah L. Dumyahn, Almo Farina, Bernie L. Krause, Brian M. Napoletano, Stuart H. Gage, and Nadia Pieretti. 2011. <span>“Soundscape Ecology: The Science of Sound in the Landscape.”</span> <em>BioScience</em> 61 (March): 203–16. <a href="https://doi.org/10.1525/BIO.2011.61.3.6">https://doi.org/10.1525/BIO.2011.61.3.6</a>.
+</div>
+<div id="ref-Senzaki2020Nature" class="csl-entry" role="listitem">
+Senzaki, Masayuki, Jesse R. Barber, Jennifer N. Phillips, Neil H. Carter, Caren B. Cooper, Mark A. Ditmer, Kurt M. Fristrup, et al. 2020. <span>“Sensory Pollutants Alter Bird Phenology and Fitness Across a Continent.”</span> <em>Nature 2020 587:7835</em> 587 (November): 605–9. <a href="https://doi.org/10.1038/s41586-020-2903-7">https://doi.org/10.1038/s41586-020-2903-7</a>.
+</div>
+<div id="ref-Slabekkoorn2006CB" class="csl-entry" role="listitem">
+Slabbekoorn, Hans, and Ardie den Boer-Visser. 2006. <span>“Cities Change the Songs of Birds.”</span> <em>Current Biology</em> 16 (December): 2326–31. <a href="https://doi.org/10.1016/j.cub.2006.10.008">https://doi.org/10.1016/j.cub.2006.10.008</a>.
+</div>
+<div id="ref-Rivera2011LE" class="csl-entry" role="listitem">
+Villanueva-Rivera, Luis J, Bryan C Pijanowski, Jarrod Doucette, and Burak Pekin. 2011. <span>“A Primer of Acoustic Analysis for Landscape Ecologists.”</span> <em>Landscape Ecology</em> 26: 1233–46. <a href="https://doi.org/10.1007/s10980-011-9636-9">https://doi.org/10.1007/s10980-011-9636-9</a>.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
