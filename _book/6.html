@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -570,7 +590,7 @@ window.Quarto = {
 <section id="緑葉フェノロジーの観測" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="緑葉フェノロジーの観測"><span class="header-section-number">6.1</span> 緑葉フェノロジーの観測</h2>
 <p>次は、前回扱ったNDVIと同様に、葉が出て枯れるまでの様子を可視化してみます。NDVIの計算には近赤外バンドが必要でしたが、定点カメラでは普通のRGBカメラを使っているため計算できません。そこで、代わりの指標としてGreen Ratio (GR)を使います。</p>
-<p>GRは以下のように計算できるシンプルな指標で、定点カメラを用いた植物フェノロジーのモニタリングによく使われます（例: <span class="citation" data-cites="IdeOguma2010">(<a href="references.html#ref-IdeOguma2010" role="doc-biblioref"><strong>IdeOguma2010?</strong></a>)</span>）。</p>
+<p>GRは以下のように計算できるシンプルな指標で、定点カメラを用いた植物フェノロジーのモニタリングによく使われます（例: <span class="citation" data-cites="IdeOguma2010">Ide and Oguma (<a href="references.html#ref-IdeOguma2010" role="doc-biblioref">2010</a>)</span>）。</p>
 <p><span class="math display">\[
 GR = \frac{Green}{Green + Red + Blue}
 \]</span></p>
@@ -715,7 +735,7 @@ GR = \frac{Green}{Green + Red + Blue}
 </section>
 <section id="紅葉フェノロジーの観測" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="紅葉フェノロジーの観測"><span class="header-section-number">6.2</span> 紅葉フェノロジーの観測</h2>
-<p>次は紅葉です。このカメラが設置されている木曽駒岳周辺は紅葉の名所として知られており、秋にはロープウェイが大混雑します。一方、気候変動による紅葉の色づきの悪化も指摘されており（<span class="citation" data-cites="Koide2025SciRep">(<a href="references.html#ref-Koide2025SciRep" role="doc-biblioref"><strong>Koide2025SciRep?</strong></a>)</span>）、継続的なモニタリングが求められています。</p>
+<p>次は紅葉です。このカメラが設置されている木曽駒岳周辺は紅葉の名所として知られており、秋にはロープウェイが大混雑します。一方、気候変動による紅葉の色づきの悪化も指摘されており（<span class="citation" data-cites="Koide2025SciRep">Koide et al. (<a href="references.html#ref-Koide2025SciRep" role="doc-biblioref">2025</a>)</span>）、継続的なモニタリングが求められています。</p>
 <p>紅葉の度合いは、Red Ratio(RR)で求めてみましょう。式はGRとほぼ同じで、相対的な赤色の強さを表します。</p>
 <p><span class="math display">\[
 RR = \frac{Red}{Red + Green + Blue}
@@ -943,7 +963,7 @@ RR = \frac{Red}{Red + Green + Blue}
 <section id="発展例岡本の博論紹介" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="発展例岡本の博論紹介"><span class="header-section-number">6.4</span> 発展例：岡本の博論紹介</h2>
 <p>これまでの解析では、解析結果は写真の中での相対的な割合であり、地理情報としては用いることができません。例えば、初めに作成した残雪割合は、あくまで写真内の画素の割合であって、残雪面積ではありませんでした。</p>
-<p>地上撮影写真は従来地理情報化が困難でしたが、僕の博士課程時代の研究（<span class="citation" data-cites="Okamoto2024RSEC">(<a href="references.html#ref-Okamoto2024RSEC" role="doc-biblioref"><strong>Okamoto2024RSEC?</strong></a>)</span>）ではこれを実現するプログラムを作成し、定点カメラ写真から植生分布の変化や残雪面積の変化を測定する手法を開発しました。</p>
+<p>地上撮影写真は従来地理情報化が困難でしたが、僕の博士課程時代の研究（<span class="citation" data-cites="Okamoto2024RSEC">Okamoto, Ide, and Oguma (<a href="references.html#ref-Okamoto2024RSEC" role="doc-biblioref">2024</a>)</span>）ではこれを実現するプログラムを作成し、定点カメラ写真から植生分布の変化や残雪面積の変化を測定する手法を開発しました。</p>
 <p><a href="https://www.nies.go.jp/whatsnew/2023/20230926-2/20230926-2.html">プレスリリース：山小屋カメラを高山植生モニタリングに活用</a></p>
 <p>プログラムは（Python言語ですが）パッケージとして公開されているので、必要に迫られた際にはぜひ使ってみてもらえると嬉しいです。</p>
 <p><a href="https://github.com/0kam/alproj">山の地上撮影写真を地理情報化するためのPythonパッケージ “alproj”</a></p>
@@ -962,6 +982,17 @@ RR = \frac{Red}{Red + Green + Blue}
 <p>それではまた次回！</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-IdeOguma2010" class="csl-entry" role="listitem">
+Ide, Reiko, and Hiroyuki Oguma. 2010. <span>“Use of Digital Cameras for Phenological Observations.”</span> <em>Ecological Informatics</em> 5 (September): 339–47. <a href="https://doi.org/10.1016/J.ECOINF.2010.07.002">https://doi.org/10.1016/J.ECOINF.2010.07.002</a>.
+</div>
+<div id="ref-Koide2025SciRep" class="csl-entry" role="listitem">
+Koide, Dai, Reiko Ide, Hiroyuki Oguma, Keisuke Suzuki, Haruka Ohashi, and Yuji Kominami. 2025. <span>“Autumn Leaf Color Brightness of Japanese Alpine Vegetation Is Projected to Decrease Under Future Climate Change.”</span> <em>Scientific Reports</em> 15: 29064. <a href="https://doi.org/10.1038/s41598-025-14547-2">https://doi.org/10.1038/s41598-025-14547-2</a>.
+</div>
+<div id="ref-Okamoto2024RSEC" class="csl-entry" role="listitem">
+Okamoto, Ryotaro, Reiko Ide, and Hiroyuki Oguma. 2024. <span>“Automatically Drawing Vegetation Classification Maps Using Digital Time-Lapse Cameras in Alpine Ecosystems.”</span> <em>Remote Sensing in Ecology and Conservation</em> 10 (April): 188–202. <a href="https://doi.org/10.1002/RSE2.364">https://doi.org/10.1002/RSE2.364</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
