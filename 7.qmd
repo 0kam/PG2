@@ -142,7 +142,7 @@ ADIは、周波数帯全体に均一に音が鳴っている時にもっとも�
 コンソールで以下を実行してください。
 
 ```         
-install.packages(c(("", "seewave", "birdnetR", "soundecology"))
+install.packages(c("tuneR", "seewave", "birdnetR", "soundecology"))
 ```
 
 ### サンプル音源のダウンロード
