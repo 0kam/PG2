@@ -1,1 +1,1 @@
-cp -r PG2/_book/ /var/www/0kam/PG2
+cp -r _book/ /var/www/0kam/PG2
