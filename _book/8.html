@@ -188,7 +188,10 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#sdmの用途" id="toc-sdmの用途" class="nav-link active" data-scroll-target="#sdmの用途"><span class="header-section-number">8.1</span> SDMの用途</a></li>
   <li><a href="#sdmの概念" id="toc-sdmの概念" class="nav-link" data-scroll-target="#sdmの概念"><span class="header-section-number">8.2</span> SDMの概念</a></li>
-  <li><a href="#open-sdm" id="toc-open-sdm" class="nav-link" data-scroll-target="#open-sdm"><span class="header-section-number">8.3</span> Open SDM</a></li>
+  <li><a href="#open-sdm" id="toc-open-sdm" class="nav-link" data-scroll-target="#open-sdm"><span class="header-section-number">8.3</span> Open SDM</a>
+  <ul class="collapse">
+  <li><a href="#追加説明" id="toc-追加説明" class="nav-link" data-scroll-target="#追加説明"><span class="header-section-number">8.3.1</span> 追加説明</a></li>
+  </ul></li>
   <li><a href="#第7回の課題" id="toc-第7回の課題" class="nav-link" data-scroll-target="#第7回の課題"><span class="header-section-number">8.4</span> 第7回の課題</a></li>
   </ul>
 </nav>
@@ -256,14 +259,54 @@ SDMを使うことで、限られた調査データからその種が生息し�
 <h2 data-number="8.3" class="anchored" data-anchor-id="open-sdm"><span class="header-section-number">8.3</span> Open SDM</h2>
 <p>ここでは、国立環境研究所と東北大学の共同研究で開発された「<a href="https://adaptation-platform.nies.go.jp/data/open_sdm/index.html">OpenSDM</a>」を使って、SDMの概念を手を動かしながら理解してみましょう。</p>
 <p><a href="https://adaptation-platform.nies.go.jp/data/open_sdm/pdf/01_manual_r2.pdf">解説資料</a>に従って、OpenSDMをインストールし、解析を行ってみてください。</p>
+<blockquote class="blockquote">
+<p><strong>注意！</strong> 2025年12月現在、<code>install.packages(c("geodata", "rgdal"))</code>でライブラリを明示的にインストールする必要があります。 これを行わないとWorldClimeからのデータダウンロードや解析結果のラスターデータのダウンロードができません。</p>
+</blockquote>
+<p>OpenSDMでは、<a href="https://www.gbif.org/">GBIF</a>などのデータベースから種の分布情報を取得し、<a href="https://developers.google.com/earth-engine/datasets/catalog/WORLDCLIM_V1_BIO?hl=ja#bands">WorldClime bioclimatic variables</a>で提案されている生物の分布に関連する気候変数を元に分布を予測しています。</p>
+<section id="追加説明" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="追加説明"><span class="header-section-number">8.3.1</span> 追加説明</h3>
+<section id="全般" class="level4" data-number="8.3.1.1">
+<h4 data-number="8.3.1.1" class="anchored" data-anchor-id="全般"><span class="header-section-number">8.3.1.1</span> 全般</h4>
+<p>計算やデータダウンロードに時間がかかることがあります。 リロードや他のボタン操作をするとフリーズすることがあるので、触らないようにしましょう。</p>
+<p>フリーズしてしまった際は、ブラウザタブを閉じてRStudioに戻り、コンソールペインの右上にある赤いストップボタンを押して、再度<code>run_wallace()</code>を実行しましょう。</p>
+</section>
+<section id="在データ" class="level4" data-number="8.3.1.2">
+<h4 data-number="8.3.1.2" class="anchored" data-anchor-id="在データ"><span class="header-section-number">8.3.1.2</span> 1. 在データ</h4>
+<p>デフォルトでは最大地点数が100になっていますが、大きめ（e.g., 3000）に設定しましょう</p>
+</section>
+<section id="環境データ" class="level4" data-number="8.3.1.3">
+<h4 data-number="8.3.1.3" class="anchored" data-anchor-id="環境データ"><span class="header-section-number">8.3.1.3</span> 3. 環境データ</h4>
+<p>計算時間の短縮のために、解像度は5 arcminを選択することをお勧めします。</p>
+</section>
+<section id="環境データの処理" class="level4" data-number="8.3.1.4">
+<h4 data-number="8.3.1.4" class="anchored" data-anchor-id="環境データの処理"><span class="header-section-number">8.3.1.4</span> 4. 環境データの処理</h4>
+<p>対象群背景法はデータの取得に非常に時間がかかるので注意してください。</p>
+</section>
+<section id="モデル" class="level4" data-number="8.3.1.5">
+<h4 data-number="8.3.1.5" class="anchored" data-anchor-id="モデル"><span class="header-section-number">8.3.1.5</span> 6. モデル</h4>
+<p>「クランピングしますか？」の<strong>チェックを外しましょう</strong>。 チェックされたままだと予測が正しく動きません。</p>
+</section>
+<section id="投影" class="level4" data-number="8.3.1.6">
+<h4 data-number="8.3.1.6" class="anchored" data-anchor-id="投影"><span class="header-section-number">8.3.1.6</span> 8. 投影</h4>
+<p>このセクションでは、モデル作成に用いたのとは別の範囲における分布予測（e.g., 日本固有のイヌブナが仮に韓国に侵入した場合の生息適性の推定）や、将来の分布予測（i.e., 気候変動が進んだ将来、分布がどう変わるか）を行います。</p>
+<p>気候の将来予測には、コンピュータシミュレーションを用いた「気候モデル」が用いられます。気候モデルには、地球全体を対象として将来気候の予測を行う全球気候モデル（Global Climate Model; GCM）や、ある地域に限定して予測を行う領域気候モデル（Regional Climate Model; RCM 地域気候モデルとも呼ばれる。）があり、世界中の研究機関が様々な気候モデルを開発しています。（OpenSDMの「GCMを選択」の欄にたくさん候補が表示されるのはこのせいですね）</p>
+<p>ここではMIROC6を使ってみましょう。これは海洋研究開発機構（JAMSTEC）が中心となって国内の多数の大学・研究機関の協力のもと開発したGCMです。</p>
+<p>将来の地球の状態は、私たちがCO2削減に今後どの程度取り組んでいくかによって変わります。 したがって、気候モデルでは複数のCO2削減シナリオを考えるのが普通です。</p>
+<p>OpenSDMで「RCPの選択」と書かれた欄には、4つ選択肢が見えるはずです。 数字が大きいほどCO2の排出を続けたシナリオになっており、例えば585は下記のSSP5-8.5と対応します。</p>
+<p>シナリオによって分布予測がどのように変わるか試してみると面白いと思います。</p>
+<p><img src="https://adaptation-platform.nies.go.jp/climate_change_adapt/adapt/img/0105-02.jpg" class="img-fluid"> &gt;環境省<a href="https://www.env.go.jp/content/000116424.pdf">「IPCC第6次評価報告書の概要－第1作業部会（自然科学的根拠）－」</a>より）</p>
+<p><a href="https://adaptation-platform.nies.go.jp/climate_change_adapt/adapt/a-0105.html">参考：国立環境研究所「将来気候の予測方法」</a></p>
 <p>インストール時に気付いたと思いますが、この「OpenSDM」もRで作られたものです。 Rではマウス操作のアプリを作ることもできるわけですね！</p>
+</section>
+</section>
 </section>
 <section id="第7回の課題" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="第7回の課題"><span class="header-section-number">8.4</span> 第7回の課題</h2>
-<p>少なくとも2種以上の国内に生息する生物種を選んで、SDMを構築し、結果について議論して発表にまとめてください。 議論のテーマ例を以下に挙げるので参考にしてください。以下に書いていない切り口で発表を構成しても大丈夫です。</p>
+<p>少なくとも2種以上の生物種を選んで、SDMを構築し、結果について議論して発表にまとめてください。 議論のテーマ例を以下に挙げるので参考にしてください。以下に書いていない切り口で発表を構成しても大丈夫です。</p>
 <ul>
 <li>種間での気候変動への応答の違い</li>
 <li>種間での高い説明力を持つ環境変数の違いや、環境変数への応答曲線の違い</li>
+<li>他の地域に輸出された場合の分布可能性に関する比較</li>
 </ul>
 <p>発表では</p>
 <ul>
