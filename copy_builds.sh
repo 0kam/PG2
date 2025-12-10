@@ -1,0 +1,1 @@
+cp -r PG2/_book/ /var/www/0kam/PG2
