@@ -43,7 +43,7 @@ SDMが使われるモチベーションとして考えられるものをいく�
 [解説資料](https://adaptation-platform.nies.go.jp/data/open_sdm/pdf/01_manual_r2.pdf)に従って、OpenSDMをインストールし、解析を行ってみてください。
 
 >**注意！**
->2025年12月現在、`install.packages(c("geodata", "rgdal"))`でライブラリを明示的にインストールする必要があります。
+>2025年12月現在、`install.packages(c("geodata"))`でライブラリを明示的にインストールする必要があります。
 >これを行わないとWorldClimeからのデータダウンロードや解析結果のラスターデータのダウンロードができません。
 
 OpenSDMでは、[GBIF](https://www.gbif.org/)などのデータベースから種の分布情報を取得し、[WorldClime bioclimatic variables](https://developers.google.com/earth-engine/datasets/catalog/WORLDCLIM_V1_BIO?hl=ja#bands)で提案されている生物の分布に関連する気候変数を元に分布を予測しています。
@@ -67,7 +67,11 @@ OpenSDMでは、[GBIF](https://www.gbif.org/)などのデータベースから�
 
 #### 6. モデル
 「クランピングしますか？」の**チェックを外しましょう**。
-チェックされたままだと予測が正しく動きません。
+また、
+チェックされたままだと予測が正しく動きません
+
+#### 7. 可視化 
+「予測の地図化」の「予測の出力」は「logistic」を選択しましょう。
 
 #### 8. 投影
 
@@ -86,7 +90,7 @@ OpenSDMで「RCPの選択」と書かれた欄には、4つ選択肢が見える
 シナリオによって分布予測がどのように変わるか試してみると面白いと思います。
 
 ![](https://adaptation-platform.nies.go.jp/climate_change_adapt/adapt/img/0105-02.jpg)
->環境省[「IPCC第6次評価報告書の概要－第1作業部会（自然科学的根拠）－」](https://www.env.go.jp/content/000116424.pdf)より）
+>環境省[「IPCC第6次評価報告書の概要－第1作業部会（自然科学的根拠）－」](https://www.env.go.jp/content/000116424.pdf)より
 
 [参考：国立環境研究所「将来気候の予測方法」](https://adaptation-platform.nies.go.jp/climate_change_adapt/adapt/a-0105.html)
 

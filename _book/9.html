@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -181,8 +201,20 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#グリーンインフラgi" id="toc-グリーンインフラgi" class="nav-link active" data-scroll-target="#グリーンインフラgi"><span class="header-section-number">9.1</span> グリーンインフラ（GI）</a></li>
+  <li><a href="#nature-based-solutions-nbs" id="toc-nature-based-solutions-nbs" class="nav-link" data-scroll-target="#nature-based-solutions-nbs"><span class="header-section-number">9.2</span> Nature based Solutions (NbS)</a></li>
+  <li><a href="#ecosystem-based-disaster-risk-reduction-eco-drr" id="toc-ecosystem-based-disaster-risk-reduction-eco-drr" class="nav-link" data-scroll-target="#ecosystem-based-disaster-risk-reduction-eco-drr"><span class="header-section-number">9.3</span> Ecosystem-based Disaster Risk Reduction （Eco-DRR）</a></li>
+  <li><a href="#ecosystem-based-adaptationeba" id="toc-ecosystem-based-adaptationeba" class="nav-link" data-scroll-target="#ecosystem-based-adaptationeba"><span class="header-section-number">9.4</span> Ecosystem-based Adaptation（EbA）</a></li>
+  <li><a href="#まとめ" id="toc-まとめ" class="nav-link" data-scroll-target="#まとめ"><span class="header-section-number">9.5</span> まとめ</a></li>
+  <li><a href="#第9回の課題" id="toc-第9回の課題" class="nav-link" data-scroll-target="#第9回の課題"><span class="header-section-number">9.6</span> 第9回の課題</a></li>
+  <li><a href="#謝辞" id="toc-謝辞" class="nav-link" data-scroll-target="#謝辞"><span class="header-section-number">9.7</span> 謝辞</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -206,8 +238,81 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>本授業の最後に、ここまで取り扱ってきた内容（生態系の観測やモデリング）が社会でどのように活用されるのか、将来の自然の人間社会の関係性について、最近注目されているキーワードをいくつか挙げながら紹介します。</p>
+<section id="グリーンインフラgi" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="グリーンインフラgi"><span class="header-section-number">9.1</span> <a href="https://www.mlit.go.jp/common/001179745.pdf">グリーンインフラ（GI）</a></h2>
+<p>さて、まずは人間社会において地理学と密接に関わっているもの、「インフラ」について考えてみます。インフラと聞いて、みなさん何を思い浮かべますか？道路やダム、防潮堤、発電所など、コンクリートでできた人工物を思い浮かべる方が多いと思います。</p>
+<p>一方で、例えば河川に接続する湿地や氾濫原には洪水時に水の流下を遅くし、下流の市街地での水害を抑制する機能があったり（<span class="citation" data-cites="Nishihiro2020SGI">Nishihiro et al. (<a href="references.html#ref-Nishihiro2020SGI" role="doc-biblioref">2020</a>)</span>）、マングローブ林には高波を抑える防潮堤としての機能があります（<span class="citation" data-cites="Kathiresan2005ECSS">Kathiresan and Rajendran (<a href="references.html#ref-Kathiresan2005ECSS" role="doc-biblioref">2005</a>)</span>）。このような、自然の持つ多面的な機能を活用したインフラのことをグリーンインフラと呼びます。</p>
+<p>グリーンインフラに関しては国交省が<a href="https://www.mlit.go.jp/common/001180165.pdf">事例集</a>を出していたり、<a href="bookplus.nikkei.com/atcl/catalog/17/259720/">書籍</a>も複数出ているので、ぜひ興味がある方は参考にしてみてください。</p>
+<p>しかしダムや道路も、その場所の自然地理学的な条件に無関係に建てられているわけでは（当然）ありません。最近では、自然の構造や機能を基盤に、グリーン・グレー問わずインフラを捉える「トータルインフラ」という概念を考えている<a href="https://note.com/jnishihiro/n/n2965f66bda33">人</a>もいるようです。</p>
+<p>GIの持つ特徴としてよく指摘されるのは、機能の「多面性」です。例えば治水について考えてみましょう。人工のダムは治水能力ではGIよりも一般に高い能力を発揮しますが、一方で湿地や氾濫原といったGIには希少な湿地植生の保全や炭素固定、レクリエーション価値の創出といった多面的な機能があります。さらに、GIはインフラとしての持続可能性やレジリエンスに関しても優れているとされています（<span class="citation" data-cites="Iwasa2017GI">Iwasa and Nishida (<a href="references.html#ref-Iwasa2017GI" role="doc-biblioref">2017</a>)</span>）。</p>
+</section>
+<section id="nature-based-solutions-nbs" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="nature-based-solutions-nbs"><span class="header-section-number">9.2</span> <a href="https://www.env.go.jp/nature/biodiversity/nbs.html">Nature based Solutions (NbS)</a></h2>
+<p>GIの根本的な発想は、「自然の持っている機能を社会に活かす」というものでした。このアイデアをより一般に指す用語が「Nature based Solutions, NbS」です。NbSはIUCN（国際自然保護連合）が2009年に提唱した考え方で、気候変動や自然災害、水や食糧供給といった切迫した社会課題の解決に自然の持つ機能を活用しようというものです。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/9/iucn.png" class="img-fluid figure-img"></p>
+<figcaption>NbSの概念。<a href="https://nbs-japan.com/iucn-nbsgs/">大正大学地域構想研究所HP</a>より。</figcaption>
+</figure>
+</div>
+<p>NbSの中でも、特に注目されているのが、災害や気候変動に対するNbSです。これらはそれぞれ「Eco-DRR」、「EbA」と名前がついているので、こちらも紹介します。</p>
+</section>
+<section id="ecosystem-based-disaster-risk-reduction-eco-drr" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="ecosystem-based-disaster-risk-reduction-eco-drr"><span class="header-section-number">9.3</span> <a href="https://www.env.go.jp/guide/info/ecojin/eye/20230913.html">Ecosystem-based Disaster Risk Reduction （Eco-DRR）</a></h2>
+<p>Eco-DRRは生態系の保全・再生を通じて防災・減災と生物多様性の回復を両立しようという考え方です。日本語では「生態系を活用した防災・減災」と訳されます。</p>
+<p>防災・減災は一般的に、ハザード、曝露、脆弱性の低減という3つの視点に分けることができます。 Eco-DRRにおいても、この3つの視点から防災・減災を考えることが重要です。</p>
+<p><img src="images/9/ecodrr.png" class="img-fluid"></p>
+<p>Eco-DRRに関しては環境省から<a href="https://www.env.go.jp/nature/biodic/eco-drr.html">手引きやハンドブック</a>が出版されていますので、参考にしてください。</p>
+</section>
+<section id="ecosystem-based-adaptationeba" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="ecosystem-based-adaptationeba"><span class="header-section-number">9.4</span> <a href="https://www.env.go.jp/content/000305888.pdf">Ecosystem-based Adaptation（EbA）</a></h2>
+<p>気候変動対策には、1. 温室効果ガスを削減する「緩和」と2. 気候変化の悪影響を低減する<a href="https://adaptation-platform.nies.go.jp/climate_change_adapt/">「適応」</a>の二つがあります。2018年には<a href="https://www.env.go.jp/earth/earth/tekiou/page_00608.html">気候変動適応法</a>が制定され、国、地方公共団体、事業者、国民のそれぞれが適応の推進を担うことが明確化されました。気候変動適応に関する情報は、国環研の<a href="https://adaptation-platform.nies.go.jp/">「気候変動適応情報プラットフォーム」</a>にまとまっているので是非覗いてみてください。</p>
+<p>気候変動対策においても、自然を活用した対策によって生物多様性の保全・回復と両立させようという考え方があり、生態系を活用した気候変動適応策（EbA）と呼びます。</p>
+<p>適応策には水害対策のようなEco-DRRと重なるものも多いですが、たとえば計画的な緑地配置による暑熱の緩和など、EbAに独特の対策もあります。</p>
+</section>
+<section id="まとめ" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="まとめ"><span class="header-section-number">9.5</span> まとめ</h2>
+<p>色々用語が出てきたので、一度整理しましょう。 自然の持つ多面的な機能を社会課題の解決に活用する考え方がNbS、そのうち災害を対象としたものがEcoDRR、気候変動を対象としたものがEbAで、具体的な実現の手段として、自然を活用したインフラであるグリーンインフラ（GI）を用いることがあります。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/9/nbs.png" class="img-fluid figure-img"></p>
+<figcaption>本章で扱ったキーワードの整理。辻本翔平氏作成のものを改変。</figcaption>
+</figure>
+</div>
+</section>
+<section id="第9回の課題" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="第9回の課題"><span class="header-section-number">9.6</span> 第9回の課題</h2>
+<p>ある地域で行われているNbSに関する取り組みを一つ以上ピックアップして、以下の観点から調べて発表にまとめてください。</p>
+<ul>
+<li>背景となる地域課題<br>
+</li>
+<li>課題への対策や、実施主体、実施概要<br>
+</li>
+<li>自然の機能をどのように活用しているか<br>
+</li>
+<li>取り組みに関する地理学的な考察（実施場所の特徴との結びつけなど）<br>
+</li>
+<li>その実施例から考察した将来の展望など、より一般化された意見</li>
+</ul>
+</section>
+<section id="謝辞" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="謝辞"><span class="header-section-number">9.7</span> 謝辞</h2>
+<p>本章の作成にあたり、名城大学の辻本翔平助教より多くのご助言をいただきました。 ありがとうございました。</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Iwasa2017GI" class="csl-entry" role="listitem">
+Iwasa, Yuki, and Takaaki Nishida. 2017. <span>“人口減少・成熟社会におけるグリーンインフラストラクチャーの社会的ポテンシャル.”</span> <em>日本生態学会誌</em> 67: 239–45. <a href="https://doi.org/10.18960/SEITAI.67.2_239">https://doi.org/10.18960/SEITAI.67.2_239</a>.
+</div>
+<div id="ref-Kathiresan2005ECSS" class="csl-entry" role="listitem">
+Kathiresan, Kandasamy, and Narayanasamy Rajendran. 2005. <span>“Coastal Mangrove Forests Mitigated Tsunami.”</span> <em>Estuarine, Coastal and Shelf Science</em> 65 (November): 601–6. <a href="https://doi.org/10.1016/J.ECSS.2005.06.022">https://doi.org/10.1016/J.ECSS.2005.06.022</a>.
+</div>
+<div id="ref-Nishihiro2020SGI" class="csl-entry" role="listitem">
+Nishihiro, Jun, Kazuaki Ohtsuki, Ayato Kohzu, Hiroki Kato, Shogo Ogasawara, Yasutaka Satake, Taro Shoji, Masami Hasegawa, and Akihiko Kondoh. 2020. <span>“「里山グリーンインフラ」による気候変動適応： 印旛沼流域における谷津の耕作放棄田の多面的活用の可能性.”</span> <em>応用生態工学</em> 22 (March): 175–85. <a href="https://doi.org/10.3825/ECE.22.175">https://doi.org/10.3825/ECE.22.175</a>.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
