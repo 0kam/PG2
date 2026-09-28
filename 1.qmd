@@ -10,7 +10,7 @@
 
 このようなマイナスの変化を受けて、生物多様性を回復させようとする動きも出てきました。日本も批准している生物多様性条約の締約国会議（COP15, 2022）では、生物多様性の損失を止め、回復に転じさせる（**ネイチャーポジティブ**）ための行動をとることが提言され、世界中で生態系を回復させるための取り組みが試行されています。
 
-![昆明・モントリオール生物多様性枠組の構造（環境省HP（https://www.biodic.go.jp/biodiversity/about/treaty/gbf/kmgbf.html）より）](https://www.biodic.go.jp/biodiversity/about/treaty/images/kmgbf_structure.jpg){fig-align="center" width="800"}
+![昆明・モントリオール生物多様性枠組の構造（環境省HP（https://www.env.go.jp/nature/biodiversity/kmgbf.html）より）](https://www.env.go.jp/content/000296183.jpg){fig-align="center" width="800"}
 
 ![ネイチャーポジティブの概念（東北大学COI-NEXT 「ネイチャーポジティブ発展社会実現拠点（https://www.naturepositive-hub.jp/vision/）」より）](https://www.naturepositive-hub.jp/images/vision/what-pc.webp){fig-align="center" width="800"}
 
