@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-<script src="site_libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="site_libs/leaflet-binding-2.2.3/leaflet.js"></script>
 
 
 </head>
@@ -256,7 +256,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#第四回の課題" id="toc-第四回の課題" class="nav-link" data-scroll-target="#第四回の課題"><span class="header-section-number">4.4</span> 第四回の課題</a></li>
   <li><a href="#sec-kotsu" id="toc-sec-kotsu" class="nav-link" data-scroll-target="#sec-kotsu"><span class="header-section-number">4.5</span> 余談：プログラミングに入門するときのコツ</a></li>
-  <li><a href="#より深く知りたい方へ" id="toc-より深く知りたい方へ" class="nav-link" data-scroll-target="#より深く知りたい方へ"><span class="header-section-number">4.6</span> より深く知りたい方へ</a></li>
+  <li><a href="#sec-ai" id="toc-sec-ai" class="nav-link" data-scroll-target="#sec-ai"><span class="header-section-number">4.6</span> 余談2：レポート作成とAIの付き合い方</a>
+  <ul class="collapse">
+  <li><a href="#aiは平然と嘘をつく" id="toc-aiは平然と嘘をつく" class="nav-link" data-scroll-target="#aiは平然と嘘をつく"><span class="header-section-number">4.6.1</span> AIは平然と嘘をつく</a></li>
+  <li><a href="#使っていいこと気をつけること" id="toc-使っていいこと気をつけること" class="nav-link" data-scroll-target="#使っていいこと気をつけること"><span class="header-section-number">4.6.2</span> 使っていいこと・気をつけること</a></li>
+  <li><a href="#文献の探し方" id="toc-文献の探し方" class="nav-link" data-scroll-target="#文献の探し方"><span class="header-section-number">4.6.3</span> 文献の探し方</a></li>
+  <li><a href="#aiを使ったら一言書いておく" id="toc-aiを使ったら一言書いておく" class="nav-link" data-scroll-target="#aiを使ったら一言書いておく"><span class="header-section-number">4.6.4</span> AIを使ったら一言書いておく</a></li>
+  <li><a href="#採点について" id="toc-採点について" class="nav-link" data-scroll-target="#採点について"><span class="header-section-number">4.6.5</span> 採点について</a></li>
+  <li><a href="#ちなみに" id="toc-ちなみに" class="nav-link" data-scroll-target="#ちなみに"><span class="header-section-number">4.6.6</span> ちなみに</a></li>
+  </ul></li>
+  <li><a href="#より深く知りたい方へ" id="toc-より深く知りたい方へ" class="nav-link" data-scroll-target="#より深く知りたい方へ"><span class="header-section-number">4.7</span> より深く知りたい方へ</a></li>
   </ul>
 </nav>
     </div>
@@ -659,17 +668,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>それでは地理情報解析に取り組んでみましょう。今回のテーマは、前章で軽く扱った国土地理院の数値標高モデル（DEM）データを用いて実践的な解析を行うことです。</p>
 <section id="データの準備" class="level3" data-number="4.3.1">
 <h3 data-number="4.3.1" class="anchored" data-anchor-id="データの準備"><span class="header-section-number">4.3.1</span> データの準備</h3>
-<p>もう少し広い範囲のDEMデータを準備して、Rを駆使しながら遊んでみましょう。 まずは、前回と同様に<a href="https://service.gsi.go.jp/kiban/app/">基盤地図情報ダウンロードサービス</a>からDEMデータをダウンロードします。墨田区から武蔵野市にかけて、東西方向に3つのタイルを選択します。</p>
-<p><img src="images/4/1_1.png" class="img-fluid"></p>
-<p>「ダウンロードリストに全て追加」→「ダウンロード等へ」→「まとめてダウンロード」を選択し、メールで送られてきたリンクからダウンロードします。 今回は、<code>2025xxxxxxxxxxxx-001.zip</code>のようなZIPファイルがダウンロードされているので、これを<code>PG2/4/</code>に移動し、解凍します。</p>
+<p>もう少し広い範囲のDEMデータを準備して、Rを駆使しながら遊んでみましょう。まずは、前回と同様に<a href="https://service.gsi.go.jp/kiban/app/">基盤地図情報ダウンロードサービス</a>からDEMデータをダウンロードします。「数値標高モデルを探す」で「最新データ」、対象メッシュは「5A（航空レーザ測量）」のみを指定します。「メッシュ単位」→「メッシュを選択」のメッシュ番号欄に<code>533944,533945,533946</code>と入力し、「検索」を押します。墨田区から武蔵野市にかけて、東西方向に3つのタイルが検索されます。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/4/1_1.png" class="img-fluid figure-img"></p>
+<figcaption>3メッシュのDEM5A検索結果（2026年9月確認）</figcaption>
+</figure>
+</div>
+<p>検索結果の各行で「追加」を押し、「ダウンロードリストへ」に進みます。リストに対象の3件があることを確認し、「まとめてダウンロード」を押します。確認画面で「OK」を押し、登録したメールアドレスに届くリンクからダウンロードします。取得したアーカイブを解凍し、以下の3つのDEMのZIPファイルを<code>PG2/4/</code>に置きます。DEMのZIP自体は解凍せず、QGISに読み込ませます。</p>
 <pre><code>4
-└── 20250830131401458-001
-    ├── FG-GML-533944-DEM5A-20250620.zip
-    ├── FG-GML-533945-DEM5A-20250620.zip
-    ├── FG-GML-533946-DEM5A-20250620.zip
-    ├── fmdid15-3101.xml
-    └── fmdid25-3101.xml</code></pre>
-<p>このような形で、<code>.zip</code>ファイルが3つあるはずです。 それでは、これをそれぞれQGISでGeoTIFFファイルに変換しましょう。 今回は、<code>GeoTIFFの出力先</code>を<code>[一時ファイル保存]</code>にします。 <img src="images/4/1_2.png" class="img-fluid"></p>
+├── FG-GML-533944-DEM5A-20250822.zip
+├── FG-GML-533945-DEM5A-20250822.zip
+└── FG-GML-533946-DEM5A-20250822.zip</code></pre>
+<p>ファイル名は2026年9月28日に実際に取得したアーカイブで確認したものです。末尾の日付は更新により変わるため、実際に取得したファイル名を選んでください。それでは、これをそれぞれQGISでGeoTIFFファイルに変換しましょう。今回は、<code>GeoTIFFの出力先</code>を<code>[一時ファイル保存]</code>にします。以下のQGIS画面例は旧データですが、同じ欄に今回取得した3つのZIPファイルを指定します。 <img src="images/4/1_2.png" class="img-fluid"></p>
 <p>以下のような感じで、3つのDEMファイルが読み込まれました。</p>
 <p><img src="images/4/1_3.png" class="img-fluid"></p>
 <p>次に、これらを一つに結合します。<code>ラスタ→その他→結合</code>を選び、<code>入力レイヤ</code>に先ほど作成された3つのレイヤ（<code>GeoTIFFの出力先</code>という名前のはず）を選択し、<code>実行</code>を押します。</p>
@@ -702,15 +713,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-<pre><code>## class       : SpatRaster 
+<pre><code>## class       : SpatRaster
 ## size        : 1500, 6750, 1  (nrow, ncol, nlyr)
 ## resolution  : 5.555556e-05, 5.555556e-05  (x, y)
 ## extent      : 139.5, 139.875, 35.66667, 35.75  (xmin, xmax, ymin, ymax)
-## coord. ref. : lon/lat WGS 84 (EPSG:4326) 
-## source      : dem_tokyo.tif 
-## name        : dem_tokyo 
-## min value   :     -7.58 
-## max value   :     74.44</code></pre>
+## coord. ref. : lon/lat WGS 84 (EPSG:4326)
+## source      : dem_tokyo.tif
+## name        : dem_tokyo
+## min value   :     -7.58
+## max value   : 74.440002</code></pre>
 </div>
 </section>
 <section id="sec-elevation-by-cities" class="level3" data-number="4.3.3">
@@ -1048,8 +1059,8 @@ remotes::install_github("uribo/jpndistrict")</code></pre>
 <span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span>  <span class="co"># Add default OpenStreetMap map tiles</span></span>
 <span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-c9a06dda6baa4fcf5b60" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-c9a06dda6baa4fcf5b60">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[35.70303223926791,35.70313929531326,35.7031453353735,35.70300890503935,35.70576380382061,35.70663893731215],[139.7497117411159,139.7486161861963,139.7475113269894,139.746435356433,139.7440781028729,139.7438109937727],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[35.70300890503935,35.70663893731215],"lng":[139.7438109937727,139.7497117411159]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-390fad2f096086438d78" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-390fad2f096086438d78">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[35.70303223926791,35.70313929531326,35.70314533537349,35.70300890503935,35.70576380382061,35.70663893731216],[139.7497117411159,139.7486161861963,139.7475113269894,139.746435356433,139.7440781028729,139.7438109937727],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[35.70300890503935,35.70663893731216],"lng":[139.7438109937727,139.7497117411159]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>首都高でした！ここですね。</p>
@@ -1113,8 +1124,87 @@ Rは日本語ユーザーも多いので、調べれば高確率で参考にな�
 なぜかプログラムが動かない、そんな時は悩まずにプログラムの途中で生成されている変数やデータフレームを確認する癖をつけましょう。例えば<code>df</code>という名前のデータフレームをいじっているのならば、まずはConsoleペインに<code>df</code>と打って中身を見てみます。列名や入っている値が自分の想定とが違っていませんか？パイプで処理をつなげているときは、どこで問題が起きているか区別するためにそれぞれの段階の結果を出力してみると良いでしょう。</p></li>
 </ol>
 </section>
-<section id="より深く知りたい方へ" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="より深く知りたい方へ"><span class="header-section-number">4.6</span> より深く知りたい方へ</h2>
+<section id="sec-ai" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="sec-ai"><span class="header-section-number">4.6</span> 余談2：レポート作成とAIの付き合い方</h2>
+<p>プログラミングではチャッピーに頼りまくっていいと書きました。では、レポートはどうでしょうか。 結論から言うと、<strong>AIは使っていいです。ただし、書いてあることの責任は全部あなたにあります。</strong> AIが書いた文章でも、あなたの名前で出した時点であなたの主張です。間違っていたら、それはAIのミスではなくあなたのミスとして扱います。</p>
+<section id="aiは平然と嘘をつく" class="level3" data-number="4.6.1">
+<h3 data-number="4.6.1" class="anchored" data-anchor-id="aiは平然と嘘をつく"><span class="header-section-number">4.6.1</span> AIは平然と嘘をつく</h3>
+<p>去年のレポートで、こんなことがありました。NDSIについて書いたレポートで、引用されていた論文が、よく見ると全然違うNDSIの論文だったんです。</p>
+<p>リモセンでNDSIといえば、雪の指数（Normalized Difference <strong>Snow</strong> Index）です。ところが、音響生態学にも「NDSI」があります（Normalized Difference <strong>Soundscape</strong> Index）。こちらは録音データの人工音と生物音の比から計算する指数です。この授業ではどちらも扱うので、他人事ではありません。</p>
+<p>AIはこういう取り違えを、それっぽい文章で自信満々にやってきます。原典を開かない限り、まず気づけません。</p>
+</section>
+<section id="使っていいこと気をつけること" class="level3" data-number="4.6.2">
+<h3 data-number="4.6.2" class="anchored" data-anchor-id="使っていいこと気をつけること"><span class="header-section-number">4.6.2</span> 使っていいこと・気をつけること</h3>
+<p>僕の感覚では、次のように考えています。</p>
+<p><strong>どんどん使ってほしいこと</strong></p>
+<ul>
+<li><strong>Rのコード</strong><br>
+これまで通りです。エラーの相談もコードの説明もどんどん聞いてください。</li>
+<li><strong>英語論文を読む手伝い</strong><br>
+訳してもらったり、「この段落、要するに何が言いたいの？」と聞いたりするのは大いにアリです。ただし、引用するときは原文も確認しましょう。</li>
+<li><strong>構成の相談</strong><br>
+「こういう解析をしてこういう結果が出たんだけど、どういう順番で書けば伝わる？」と聞くと、けっこういい壁打ち相手になります。</li>
+<li><strong>日本語の推敲</strong><br>
+自分で書いた文章を「読みやすくして」と頼むのはOKです。ただし、直された文章の意味が変わっていないかは自分で確認してください。</li>
+</ul>
+<p><strong>気をつけてほしいこと</strong></p>
+<ul>
+<li><strong>考察の丸投げ</strong><br>
+「この図から何が言える？」とAIに聞くのは、ヒントをもらう程度ならいいと思います。でも、それをそのまま写すのはダメです。自分の解析結果を一番よく知っているのはあなたです。たとえば「ここの値がなぜ外れているのか」は、AIには分かりません（神田川の首都高を思い出してください）。</li>
+<li><strong>自分の結果にない主張</strong><br>
+AIは一般論をもっともらしく書き足してきます。自分のデータでも文献でも裏付けられないことは、書かないようにしましょう。</li>
+<li><strong>参考文献リストを作らせる</strong><br>
+これは今のところ一番危ない使い方なので、絶対にやめてください。実在しない論文や、タイトルは合っているのに中身が違う論文が、平気で混ざります。</li>
+</ul>
+<p>迷ったときの判断基準はシンプルです。<strong>「その文章について質問されたら、自分の言葉で説明できるか」</strong>。説明できるなら、AIに手伝ってもらっていても大丈夫です。実を言うと、レポートについて簡単な口頭試問を行うことを検討しています。</p>
+</section>
+<section id="文献の探し方" class="level3" data-number="4.6.3">
+<h3 data-number="4.6.3" class="anchored" data-anchor-id="文献の探し方"><span class="header-section-number">4.6.3</span> 文献の探し方</h3>
+<p>とはいえ、文献探しはAIがかなり役に立つところです。僕のおすすめの手順を書いておきます。</p>
+<ol type="1">
+<li><p>英語の文献はAI検索ツールで広く拾う</p>
+<ul>
+<li><a href="https://consensus.app/">Consensus</a><br>
+質問文で検索すると、関連する論文を要約付きで出してくれます。僕も普段使っています。でも和文誌はほぼ引っかかりません。</li>
+<li><a href="https://scholar.google.com/">Google Scholar</a><br>
+定番です。「Scholar Labs」というAI検索機能も試験的に始まっているので、使える人は試してみてください。こちらは和文誌も検索できます。</li>
+</ul></li>
+<li><p>日本語の文献は、AIで検索語を作ってから探す<br>
+Consensusなどでは日本語の論文がほぼ出てきません。そこで、AIには<strong>検索語を考えてもらう</strong>のがおすすめです。たとえば「積雪のリモートセンシングに関する日本語の論文を探したい。検索語の候補を10個挙げて」と聞いてみてください。「積雪域」「融雪」「雪氷 衛星」みたいな候補を出してくれるので、それを次のデータベースに入れて探します。</p>
+<ul>
+<li><a href="https://cir.nii.ac.jp/">CiNii Research</a>：日本の論文、紀要、博士論文、本をまとめて探せます。</li>
+<li><a href="https://www.jstage.jst.go.jp/">J-STAGE</a>：日本の学会誌の多くが無料で読めます。</li>
+</ul></li>
+<li><p>良い論文を1本見つけたら、芋づる式にたどる<br>
+その論文の参考文献（過去の研究）と被引用（その後の研究）をたどって広げていきましょう。J-STAGEの論文ページには「引用文献」「被引用文献」のタブがあります。</p></li>
+<li><p>引用する前に、必ず原典を開く<br>
+<strong>これが一番大事です。</strong> 全部を精読する必要はありませんが、アブストラクトと、自分の主張に関係する図や段落は必ず確認しましょう。さっきのNDSIの件も、アブストラクトの1行目を読めば気づけたはずです。</p></li>
+</ol>
+</section>
+<section id="aiを使ったら一言書いておく" class="level3" data-number="4.6.4">
+<h3 data-number="4.6.4" class="anchored" data-anchor-id="aiを使ったら一言書いておく"><span class="header-section-number">4.6.4</span> AIを使ったら一言書いておく</h3>
+<p>レポートの最後に「AIの利用について」という欄を作って、次の3つを簡単に書いてください。</p>
+<ul>
+<li>何を使ったか（例：ChatGPT、Consensus）</li>
+<li>何に使ったか（例：文献探し、英語論文の翻訳、文章の推敲）</li>
+<li>自分で何を確認したか（例：引用した論文は全て原典を確認した）</li>
+</ul>
+<p><strong>書いてあれば、AIを使ったこと自体で減点はしません。</strong> 正直に書いてくれたほうが、僕も採点しやすいです。</p>
+</section>
+<section id="採点について" class="level3" data-number="4.6.5">
+<h3 data-number="4.6.5" class="anchored" data-anchor-id="採点について"><span class="header-section-number">4.6.5</span> 採点について</h3>
+<p>提出されたレポートの参考文献は、いくつか抜き打ちで原典を確認しています。<strong>書いてあることと引用した論文の中身が合っていない</strong>場合は減点します。これは、手で書いたかAIを使ったかには関係ありません。研究の作法として大事なことです。</p>
+<p>逆に言えば、ちゃんと確かめているなら、AIはどんどん使ってください。うまく使えば、文献探しも英語論文も、昔よりずっと楽になっています。</p>
+</section>
+<section id="ちなみに" class="level3" data-number="4.6.6">
+<h3 data-number="4.6.6" class="anchored" data-anchor-id="ちなみに"><span class="header-section-number">4.6.6</span> ちなみに</h3>
+<p>白状すると、この節はClaude（AI）と相談しながら（ほぼClaudeが）書きました。方針は僕が考えて、構成や文章化をAIに手伝ってもらい、最終的に僕が手で直しています。</p>
+<p>実はそのとき、AIが最初に出してきた例は「SAR（合成開口レーダーと種数面積関係）」で、それっぽいけど事実とは違うものでした。実際に去年あったのはNDSIの件なので、僕が直しています。まさに上で書いた「AIは平然と嘘をつく」「必ず確かめる」を、書いている本人が体験したわけです。</p>
+<p>大事なのは、最後に自分の目で確かめて、自分の責任で出すことです。</p>
+</section>
+</section>
+<section id="より深く知りたい方へ" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="より深く知りたい方へ"><span class="header-section-number">4.7</span> より深く知りたい方へ</h2>
 <ul>
 <li><a href="https://r4ds.hadley.nz/data-visualize.html">R for Data Science</a></li>
 <li><a href="https://r.geocompx.org/jp/index.html">Geocomputation with R</a></li>

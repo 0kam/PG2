@@ -322,11 +322,30 @@ Rなどのプログラミング言語で作成されたプログラム。この�
 <p>生態学や自然地理学で使う最も基本的な地理情報に、地形データがあります。 地形データは、5mや1m間隔の格子の中に、その場所の標高が格納されたラスタデータ（数値標高モデル、Digital Elevation Model (DEM)）として表現されます。 日本国内においては、国土地理院がDEMを作成・公開しており、誰でも無償で利用できます。一方、国土地理院DEMはGISでは取り扱いづらいデータ形式で配布されているため、QGISのプラグインを使ってGeoTIFF形式に変換します。</p>
 <p>ここでは、<a href="https://github.com/MIERUNE/QuickDEM4JP">QuickDEM4JPプラグイン</a>を使います。 まず、QGIS上部のメニューバーから「プラグイン」→「プラグインの管理とインストール」をクリックします。 <img src="images/3/qgis_dem4jp_1.png" class="img-fluid"> 検索窓に<code>QuickDEM4JP</code>と入力し、「QuickDEM4JP」を選択してインストールボタンを押します。 <img src="images/3/qgis_dem4jp_2.png" class="img-fluid"> 試しに、駿河台キャンパス周辺のDEMをダウンロードして表示してみましょう。 まずは、基盤地図情報ダウンロードサービスのアカウントを作成します。以下のURLからメールアドレスを登録し、本登録まで進んでください。 <a href="https://service-login.gsi.go.jp">ログインページ</a></p>
 <p>アカウントができたらDEMデータのダウンロードに移りましょう。国土地理院の<a href="https://service.gsi.go.jp/kiban/app/">基盤地図情報ダウンロードサービス</a>を開き、右上の「ログイン」ボタンから、先ほど作成したアカウントにログインします。</p>
-<p>「基本項目・数値標高モデルのダウンロード」から「数値標高モデル」のボタンを押します。 表示された地図をズームして駿河台キャンパスを含むメッシュをクリックします。画面下の「検索結果リスト」タブにデータが追加されるので「ダウンロードリストに全て追加」を押します。「ダウンロードリスト」タブを開き、「ダウンロード等」に進みます。 <img src="images/3/qgis_dem4jp_3.png" class="img-fluid"></p>
-<p>追加したDEMデータを選択し、「ダウンロード」ボタンを押します。登録したメールアドレスにダウンロードリンクが送られてきます。</p>
-<p><img src="images/3/qgis_dem4jp_4.png" class="img-fluid"> <code>FG-GML-533946-DEM5A-20250620.zip</code>というファイルがダウンロードされるので、これを<code>PG2/3/</code>以下に移動させます。</p>
+<p>「基盤地図情報「基本項目」・「数値標高モデル」のダウンロード」から「数値標高モデル」を開きます。左側の「数値標高モデルを探す」で、以下の条件を指定して「検索」を押します。</p>
+<ul>
+<li>作成年月：<code>最新データ</code></li>
+<li>対象メッシュ：<code>5A（航空レーザ測量）</code>のみチェック（<code>5B</code>と<code>5C</code>のチェックを外す）</li>
+<li>ダウンロードするファイルの単位：<code>メッシュ単位</code> → <code>メッシュを選択</code></li>
+<li>メッシュ番号：<code>533946</code>（駿河台キャンパスを含む範囲）</li>
+</ul>
+<p>検索結果の「追加」を押し、「ダウンロードリストへ」に進みます。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/3/qgis_dem4jp_3.png" class="img-fluid figure-img"></p>
+<figcaption>メッシュ番号533946のDEM5Aを検索した画面（2026年9月確認）</figcaption>
+</figure>
+</div>
+<p>ダウンロードリストで対象のDEMデータにチェックを入れ、「選択項目をダウンロード」を押します。ログインを求められた場合は、登録したアカウントでログインしてください。確認画面で「OK」を押すと、ZIPアーカイブを作成してメールを送信する旨が表示されます。登録したメールアドレスに届くリンクからダウンロードしてください。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/3/qgis_dem4jp_4.png" class="img-fluid figure-img"></p>
+<figcaption>DEMのダウンロードリスト（2026年9月確認）</figcaption>
+</figure>
+</div>
+<p>メールのリンクから取得するファイルは、<code>20260928214951663-001.zip</code>のような名前のアーカイブです。これを解凍すると、DEMのZIPファイルとメタデータのXMLファイルが入っています。2026年9月28日に取得を確認したDEMのファイル名は<code>FG-GML-533946-DEM5A-20250822.zip</code>です。このDEMのZIPは解凍せず、<code>PG2/3/</code>以下に移動させます。末尾の日付はデータの更新により変わるため、以降の操作では実際に取得したファイル名を選んでください。</p>
 <p>画面をQGISに戻しましょう。上部メニューバーの「Processing」から「Toolbox」をクリックして、プロセシングールボックスを開きます。先ほど追加した「QuickDEM4JP」をクリックします。 <img src="images/3/qgis_dem4jp_5.png" class="img-fluid"></p>
-<p>「DEM」に、先ほどダウンロードした<code>PG2/3/FG-GML-533946-DEM5A-20250620.zip</code>を、「GeoTIFFの出力先」に適当なファイル名（<code>PG2/3/chiyodaku_dem.tif</code>）を選択し、「実行」を押します。 <img src="images/3/qgis_dem4jp_6.png" class="img-fluid"></p>
+<p>「DEM」に、先ほどダウンロードしたZIPファイル（例：<code>PG2/3/FG-GML-533946-DEM5A-20250822.zip</code>）を、「GeoTIFFの出力先」に適当なファイル名（<code>PG2/3/chiyodaku_dem.tif</code>）を選択し、「実行」を押します。下のQGIS画面例は旧データのファイル名ですが、同じ欄で今回取得したZIPファイルを指定します。 <img src="images/3/qgis_dem4jp_6.png" class="img-fluid"></p>
 <p>以下のように、標高が格納されたファイルが表示されるはずです！ <img src="images/3/qgis_dem4jp_7.png" class="img-fluid"> この図だと白黒でちょっと見辛いので、表示をいじってみましょう。 左下「レイヤ」の<code>chiyodaku_dem</code>を右クリックし、「プロパティ」を開きます。 - カラーマップの変更 - 左のタブ一覧から「シンボロジ」タブを開きます。 - 「レンダリングタイプ」を「単バンド擬似カラー」にします。 - 「カラーランプ」を「Viridis」にします。 - 「OK」を押します - 透明度の変更 - 左のタブ一覧から「透明度」タブを開きます。 - 「グローバルな不透明度」を70%にします。 - 「OK」を押します。</p>
 <p><img src="images/3/qgis_dem4jp_8.png" class="img-fluid"> 鮮やかなカラーマップが表示されました！半透明で標準地図も見ることができます。 本郷台地から不忍池に伸びる谷地形が印象的ですね！</p>
 <section id="余裕がある人向けの発展課題" class="level4" data-number="3.3.4.1">

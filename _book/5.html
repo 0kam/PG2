@@ -294,7 +294,7 @@ window.Quarto = {
 <p>まずは、解析用のフォルダを<code>PG2/5/</code>として作成しましょう。</p>
 <section id="画像の取得" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="画像の取得"><span class="header-section-number">5.1</span> 画像の取得</h2>
-<p>ではまずは、Sentinel-2画像の取得を行ってみましょう。画像の検索・取得には<a href="https://browser.dataspace.copernicus.eu">Coperncus Browser</a>を使います。まずはアカウントを作成し、ログインしましょう。</p>
+<p>ではまずは、Sentinel-2画像の取得を行ってみましょう。画像の検索・取得には<a href="https://browser.dataspace.copernicus.eu">Copernicus Browser</a>を使います。まずはアカウントを作成し、ログインしましょう。</p>
 <p>ここでは、試しに冬から春にかけての草津温泉周辺の衛星画像を数枚取得し、雪解けや植物の芽吹きの様子を可視化します。</p>
 <p>まずは、データが欲しい範囲（Region of Interest, ROI）を指定します。</p>
 <div class="quarto-figure quarto-figure-center">
@@ -305,9 +305,19 @@ window.Quarto = {
 <p>草津白根山から草津市街を含む範囲を矩形で選択しましょう。範囲は大体で良いです。</p>
 <p>次に、データを検索します。<code>YYYY-MM-DD</code>と書かれている場所をクリックするとカレンダーが出てくるので、まずは2025年の2月を選びましょう。画像を検索する際には、雲に覆われている割合が一定以下の画像を選ぶこともできます。ここでは、10%以下の写真を指定します。ここでは、2025/2/15のデータが当てはまったので、これをクリックし、表示します。</p>
 <p><img src="images/5/2.png" class="img-fluid"></p>
-<p>それでは、画像をダウンロードしましょう。まず、画面右端に表示されているダウロードボタンを押します。するとダウンロード画面がポップアップで出てくるので、設定を変更します。今回は上部のタブから「Analytical」を選び、諸々の設定を以下のように変えます。「Image Format」は取得する画像の種類と画素値の表現方法を意味しています。ここでは地理座標の紐づいたTIFF形式、画素値は16bit (画素値を<span class="math inline">\(0 - 2^{16}\)</span>で表現)を指定します。解像度は10mを指定し、バンドは2(青), 3(緑), 4(赤), 8(近赤外), 11(短波赤外) を選びます。</p>
+<p>それでは、画像をダウンロードしましょう。まず、画面右端の「Download image」を押し、ダウンロード画面上部の「Analytical」を選びます。2026年9月時点の画面では、次のように設定します。</p>
+<ul>
+<li>Image format：<code>TIFF (16-bit)</code>（地理座標を持つTIFF形式）</li>
+<li>Coordinate system：<code>UTM 54N (EPSG:32654)</code>（今回の草津周辺の範囲）</li>
+<li>Image resolution：<code>CUSTOM</code></li>
+<li>Resolution X / Y：どちらも<code>10</code> m/px</li>
+<li>Layers：Visualisedの<code>True color</code>のチェックを外し、Rawの<code>B02</code>（青）、<code>B03</code>（緑）、<code>B04</code>（赤）、<code>B08</code>（近赤外）、<code>B11</code>（短波赤外）だけを選ぶ</li>
+<li><code>B11</code>が見えない場合は<code>Show more</code>を押す</li>
+<li><code>Add dataMask band to raw layers</code>：オフ（以下のRコードでは各ファイルを1バンドとして読み込みます）</li>
+</ul>
+<p><code>HIGH</code>を選ぶだけでは、指定範囲によって出力解像度が変わります。<code>CUSTOM</code>で10 mを指定してください。設定後、上部の「Download」を押します。</p>
 <p><img src="images/5/3.png" class="img-fluid"></p>
-<p>同様に、2025/3/22、2025/4/21、2025/5/8の画像をダウンロードしましょう。「Browser_images.zip」というような名前のファイルがダウンロードされます。ダウンロードした画像を保管するためのフォルダ「PG2/5/images/」を作り、zipファイルを解凍した中身の画像ファイルを全てこの中にコピーします。images/直下に20枚の画像が保存されているはずです。</p>
+<p>同様に、2025/3/22、2025/4/21、2025/5/8の画像をダウンロードしましょう。ダウンロード画面を開き直すと設定が初期値に戻る場合があるため、毎回上記の設定を確認します。「Browser_images.zip」というような名前のファイルがダウンロードされます。ダウンロードした画像を保管するためのフォルダ「PG2/5/images/」を作り、ZIPを解凍して、ファイル名に<code>B02</code>、<code>B03</code>、<code>B04</code>、<code>B08</code>、<code>B11</code>と<code>(Raw)</code>を含む5枚だけを日付ごとにコピーします。<code>True_color.tiff</code>も取得した場合は、このフォルダには入れません。4日分をそろえると、images/直下に20枚の画像が保存されているはずです。</p>
 </section>
 <section id="まずはrで読み込む" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="まずはrで読み込む"><span class="header-section-number">5.2</span> まずはRで読み込む</h2>
@@ -579,14 +589,14 @@ NDVI = \frac{NIR - R}{NIR + R}
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>image <span class="ot">&lt;-</span> <span class="fu">read_sentinel2</span>(<span class="st">"2025-02-15"</span>)</span>
 <span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>image</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="do">## class       : SpatRaster </span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="do">## class       : SpatRaster</span></span>
 <span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="do">## size        : 771, 1206, 5  (nrow, ncol, nlyr)</span></span>
 <span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="do">## resolution  : 10.00164, 9.998199  (x, y)</span></span>
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="do">## extent      : 276869.4, 288931.4, 4053089, 4060797  (xmin, xmax, ymin, ymax)</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="do">## coord. ref. : WGS 84 / UTM zone 54N (EPSG:32654) </span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="do">## sources     : 2025-02-15-00:00_2025-02-15-23:59_Sentinel-2_L2A_B02_(Raw).tiff  </span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="do">##               2025-02-15-00:00_2025-02-15-23:59_Sentinel-2_L2A_B03_(Raw).tiff  </span></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="do">##               2025-02-15-00:00_2025-02-15-23:59_Sentinel-2_L2A_B04_(Raw).tiff  </span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="do">## coord. ref. : WGS 84 / UTM zone 54N (EPSG:32654)</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="do">## sources     : 2025-02-15-00:00_2025-02-15-23:59_Sentinel-2_L2A_B02_(Raw).tiff</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="do">##               2025-02-15-00:00_2025-02-15-23:59_Sentinel-2_L2A_B03_(Raw).tiff</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="do">##               2025-02-15-00:00_2025-02-15-23:59_Sentinel-2_L2A_B04_(Raw).tiff</span></span>
 <span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="do">##               ... and 2 more sources</span></span>
 <span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="do">## names       : B02, B03, B04, B08, B11</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
