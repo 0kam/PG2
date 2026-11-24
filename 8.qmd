@@ -89,8 +89,7 @@ OpenSDMで「RCPの選択」と書かれた欄には、4つ選択肢が見える
 
 シナリオによって分布予測がどのように変わるか試してみると面白いと思います。
 
-![](https://adaptation-platform.nies.go.jp/climate_change_adapt/adapt/img/0105-02.jpg)
->環境省[「IPCC第6次評価報告書の概要－第1作業部会（自然科学的根拠）－」](https://www.env.go.jp/content/000116424.pdf)より
+![環境省[「IPCC第6次評価報告書の概要－第1作業部会（自然科学的根拠）－」](https://www.env.go.jp/content/000116424.pdf)より](https://adaptation-platform.nies.go.jp/climate_change_adapt/adapt/img/0105-02.jpg)
 
 [参考：国立環境研究所「将来気候の予測方法」](https://adaptation-platform.nies.go.jp/climate_change_adapt/adapt/a-0105.html)
 

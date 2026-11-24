@@ -62,8 +62,7 @@ library(terra)
 library(tidyterra)
 setwd("~/Documents/PG2/6/") #| hide_line
 
-img <- rast("gokuraku_images/2025_0731.jpg") |>
-  flip() # 写真は左上が原点で、右下に向かって進む座標系なので反転させないとプロット時に逆さまで表示される
+img <- rast("gokuraku_images/2025_0731.jpg")
 
 plot(img)
 
@@ -123,7 +122,6 @@ sky_mask <- rast("sky.png") |>
 extract_snow <- function(image_path) {
   snow <- image_path |>
     rast() |>
-    flip() |>
     colorize(to = "hsv") |> # HSV色空間に変換
     select(value) |> # 明るさを取得
     thresh("otsu") |> # 大津の二値化で明るい部分（雪）と暗い部分に分ける
@@ -260,7 +258,6 @@ sky_mask <- rast("sky.png") |>
 calculate_gr <- function(image_path) {
   gr <- image_path |>
     rast() |>
-    flip() |>
     colorize(to = "hsv") |> # HSVに変換して戻すと、レイヤー名が勝手にred, green, blueになって便利
     colorize(to = "rgb") |>
     mutate(gr = green / (red + green + blue)) |>
@@ -384,7 +381,6 @@ sky_mask <- rast("sky.png") |>
 calculate_rr <- function(image_path) {
   rr <- image_path |>
     rast() |>
-    flip() |>
     colorize(to = "hsv") |> # HSVに変換して戻すと、レイヤー名が勝手にred, green, blueになって便利
     colorize(to = "rgb") |>
     mutate(rr = (red) / (red + green + blue)) |>
