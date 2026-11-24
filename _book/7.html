@@ -284,6 +284,7 @@ window.Quarto = {
   <li><a href="#スペクトログラムの作成" id="toc-スペクトログラムの作成" class="nav-link" data-scroll-target="#スペクトログラムの作成"><span class="header-section-number">7.2.2</span> スペクトログラムの作成</a></li>
   <li><a href="#解析1.-音響景観指数soundscape-index" id="toc-解析1.-音響景観指数soundscape-index" class="nav-link" data-scroll-target="#解析1.-音響景観指数soundscape-index"><span class="header-section-number">7.2.3</span> 解析1. 音響景観指数（Soundscape Index）</a></li>
   <li><a href="#解析2.-birdnetで鳥の鳴き声を調べる" id="toc-解析2.-birdnetで鳥の鳴き声を調べる" class="nav-link" data-scroll-target="#解析2.-birdnetで鳥の鳴き声を調べる"><span class="header-section-number">7.2.4</span> 解析2. BirdNETで鳥の鳴き声を調べる</a></li>
+  <li><a href="#発展echoroo-liteで鳥の鳴き声を調べる" id="toc-発展echoroo-liteで鳥の鳴き声を調べる" class="nav-link" data-scroll-target="#発展echoroo-liteで鳥の鳴き声を調べる"><span class="header-section-number">7.2.5</span> 発展：Echoroo Liteで鳥の鳴き声を調べる</a></li>
   </ul></li>
   <li><a href="#第6回の課題" id="toc-第6回の課題" class="nav-link" data-scroll-target="#第6回の課題"><span class="header-section-number">7.3</span> 第6回の課題</a></li>
   </ul>
@@ -587,18 +588,18 @@ PG2
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>predictions</span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 560 × 5</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="do">##    start   end scientific_name          common_name            confidence</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;                    &lt;chr&gt;                       &lt;dbl&gt;</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  1     3     6 Certhia americana        アメリカキバシリ            0.105</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  2     6     9 Phylloscopus xanthodryas メボソムシクイ              0.919</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  3     9    12 Phylloscopus xanthodryas メボソムシクイ              0.571</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  4    12    15 Psophodes olivaceus      ムナグロシラヒゲドリ        0.180</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  5    15    18 Geothlypis formosa       メガネアメリカムシクイ      0.141</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  6    15    18 Horornis diphone         ウグイス                    0.118</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  7    18    21 Tarsiger cyanurus        ルリビタキ                  0.136</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  8    21    24 Regulus satrapa          アメリカキクイタダキ        0.248</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  9    24    27 Horornis diphone         ウグイス                    0.132</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="do">## 10    24    27 Myadestes obscurus       ハワイツグミ                0.101</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="do">##    start   end scientific_name          common_name                   confidence</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;                    &lt;chr&gt;                              &lt;dbl&gt;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  1     3     6 Certhia americana        "\u30a2\u30e1\u30ea\u30ab\u3…      0.105</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  2     6     9 Phylloscopus xanthodryas "\u30e1\u30dc\u30bd\u30e0\u3…      0.919</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  3     9    12 Phylloscopus xanthodryas "\u30e1\u30dc\u30bd\u30e0\u3…      0.571</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  4    12    15 Psophodes olivaceus      "\u30e0\u30ca\u30b0\u30ed\u3…      0.180</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  5    15    18 Geothlypis formosa       "\u30e1\u30ac\u30cd\u30a2\u3…      0.141</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  6    15    18 Horornis diphone         "\u30a6\u30b0\u30a4\u30b9"         0.118</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  7    18    21 Tarsiger cyanurus        "\u30eb\u30ea\u30d3\u30bf\u3…      0.136</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  8    21    24 Regulus satrapa          "\u30a2\u30e1\u30ea\u30ab\u3…      0.248</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  9    24    27 Horornis diphone         "\u30a6\u30b0\u30a4\u30b9"         0.132</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="do">## 10    24    27 Myadestes obscurus       "\u30cf\u30ef\u30a4\u30c4\u3…      0.101</span></span>
 <span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ 550 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>「アメリカキバシリ」や「アメリカキクイタダキ」など、明かに日本にいなさそうな鳥が多数含まれていますね。 BirdNETは北米や欧州で取得された音源を多く用いて訓練されているため、北米・欧州の種が誤って出やすい傾向にあります。</p>
@@ -624,16 +625,16 @@ PG2
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 560 × 6</span></span>
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="do">##    start   end scientific_name          common_name   confidence confidence_meta</span></span>
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;                    &lt;chr&gt;              &lt;dbl&gt;           &lt;dbl&gt;</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  1     3     6 Certhia americana        アメリカキバシリ……      0.105          NA    </span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  2     6     9 Phylloscopus xanthodryas メボソムシクイ……      0.919           0.314</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  3     9    12 Phylloscopus xanthodryas メボソムシクイ……      0.571           0.314</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="do">##  4    12    15 Psophodes olivaceus      ムナグロシラヒゲドリ……      0.180          NA    </span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="do">##  5    15    18 Geothlypis formosa       メガネアメリカムシクイ……      0.141          NA    </span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="do">##  6    15    18 Horornis diphone         ウグイス           0.118           0.656</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="do">##  7    18    21 Tarsiger cyanurus        ルリビタキ         0.136           0.226</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="do">##  8    21    24 Regulus satrapa          アメリカキクイタダキ……      0.248          NA    </span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="do">##  9    24    27 Horornis diphone         ウグイス           0.132           0.656</span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="do">## 10    24    27 Myadestes obscurus       ハワイツグミ       0.101          NA    </span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  1     3     6 Certhia americana        "\u30a2\u30e…      0.105          NA    </span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  2     6     9 Phylloscopus xanthodryas "\u30e1\u30d…      0.919           0.314</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  3     9    12 Phylloscopus xanthodryas "\u30e1\u30d…      0.571           0.314</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="do">##  4    12    15 Psophodes olivaceus      "\u30e0\u30c…      0.180          NA    </span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="do">##  5    15    18 Geothlypis formosa       "\u30e1\u30a…      0.141          NA    </span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="do">##  6    15    18 Horornis diphone         "\u30a6\u30b…      0.118           0.656</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="do">##  7    18    21 Tarsiger cyanurus        "\u30eb\u30e…      0.136           0.226</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="do">##  8    21    24 Regulus satrapa          "\u30a2\u30e…      0.248          NA    </span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="do">##  9    24    27 Horornis diphone         "\u30a6\u30b…      0.132           0.656</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="do">## 10    24    27 Myadestes obscurus       "\u30cf\u30e…      0.101          NA    </span></span>
 <span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ 550 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>明かに日本にいなさそうな種はconfidence_metaがNAになっていますね。 今回は便宜的に、<code>confidence_meta &gt; 0.15</code> を満たす種のみを抽出します。</p>
@@ -669,6 +670,35 @@ PG2
 <p>結果が出ました！地域で絞り込んでいるとはいえ、BirdNETは結構間違えます。</p>
 <p>鳴き声を自分で聞いてみて、合ってそうか確認したほうが良いでしょう。</p>
 <p><a href="https://www.suntory.co.jp/eco/birds/encyclopedia/nakigoe.html">サントリーのHP</a>にはわかりやすい鳥の鳴き声図鑑があるので、これを参考に聞き比べてみるのがおすすめです。</p>
+</section>
+<section id="発展echoroo-liteで鳥の鳴き声を調べる" class="level3" data-number="7.2.5">
+<h3 data-number="7.2.5" class="anchored" data-anchor-id="発展echoroo-liteで鳥の鳴き声を調べる"><span class="header-section-number">7.2.5</span> 発展：Echoroo Liteで鳥の鳴き声を調べる</h3>
+<p>ここまでRからBirdNETを使ってきましたが、「AIで検出 → 自分で聞いて確かめる」という作業をRだけでやるのは少し大変です。 BirdNETには<a href="https://github.com/birdnet-team/BirdNET-Analyzer">BirdNET Analyzer</a>というデスクトップアプリもありますが、ここでは岡本が開発している<a href="https://github.com/0kam/echoroo-lite">Echoroo Lite</a>を紹介します。 課題などでGUIのソフトを使って鳥の鳴き声を調べたい場合は、こちらをおすすめします。</p>
+<p>Echoroo Liteは、録音から鳥の声をAIで探し、人が聞いて確かめ、その結果をレポートにまとめるデスクトップアプリです。 解析はインターネットにつながず、パソコンの中だけで行われます。</p>
+<ul>
+<li><strong>日本の鳥に絞った種リスト</strong>：上で見たような「アメリカキバシリ」問題が起きにくく、自分で地域・季節のフィルタリングをする必要がありません。</li>
+<li><strong>軽量なモデルKingletが使える</strong>：Google の鳥類音声モデル Perch を元に小さくした<a href="https://github.com/0kam/kinglet">Kinglet</a>（これも岡本が開発）を選べます。Perchより約2〜10倍速いので、ノートパソコンでも長い録音を現実的な時間で解析できます。Perch V2やBirdNETも選べるので、結果を比べることもできます。</li>
+<li><strong>聞いて確かめるのが簡単</strong>：AIが見つけた種が検出数の多い順に並び、種を開くとAIの点数が高い音から順に聞けます。その種の声だったらボタンを押すだけで「いる」と記録されます。</li>
+<li><strong>時間変化の図とレポート</strong>：どの日のどの時刻によく鳴いていたかを図で確認でき、確かめた種の一覧・図・音声をHTMLのレポートとCSVに書き出せます。</li>
+</ul>
+<p>使い方の流れや動画は<a href="https://github.com/0kam/echoroo-lite">リポジトリのREADME</a>にまとまっています。インストーラーは<a href="https://github.com/0kam/echoroo-lite/releases/latest">Releases</a>からダウンロードできます（Windows / macOS（Apple シリコン）/ Linux）。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>ファイル名に録音開始日時が必要です（例：<code>REC_2025-07-10_10-00-00_001.wav</code>）。自分で録音した音声を使う場合は、ファイル名を合わせておきましょう。</li>
+<li>日本国内の録音専用で、研究・教育などの非商用利用に限ります（BirdNET 2.4を同梱しているため）。</li>
+<li>AIの結果はあくまで候補です。Rで解析したときと同じく、必ず自分の耳で確かめてから結論を出しましょう。</li>
+</ul>
+</div>
+</div>
 </section>
 </section>
 <section id="第6回の課題" class="level2" data-number="7.3">

@@ -228,7 +228,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows"><span class="header-section-number">3.3.1</span> Windows</a></li>
   <li><a href="#mac" id="toc-mac" class="nav-link" data-scroll-target="#mac"><span class="header-section-number">3.3.2</span> Mac</a></li>
   <li><a href="#国土地理院標準地図を読み込む" id="toc-国土地理院標準地図を読み込む" class="nav-link" data-scroll-target="#国土地理院標準地図を読み込む"><span class="header-section-number">3.3.3</span> 国土地理院標準地図を読み込む</a></li>
-  <li><a href="#国土地理院数値標高モデルdemを使えるようにする" id="toc-国土地理院数値標高モデルdemを使えるようにする" class="nav-link" data-scroll-target="#国土地理院数値標高モデルdemを使えるようにする"><span class="header-section-number">3.3.4</span> 国土地理院数値標高モデル（DEM）を使えるようにする</a></li>
+  <li><a href="#ベクターデータとラスターデータ" id="toc-ベクターデータとラスターデータ" class="nav-link" data-scroll-target="#ベクターデータとラスターデータ"><span class="header-section-number">3.3.4</span> ベクターデータとラスターデータ</a></li>
+  <li><a href="#国土地理院数値標高モデルdemを使えるようにする" id="toc-国土地理院数値標高モデルdemを使えるようにする" class="nav-link" data-scroll-target="#国土地理院数値標高モデルdemを使えるようにする"><span class="header-section-number">3.3.5</span> 国土地理院数値標高モデル（DEM）を使えるようにする</a></li>
   </ul></li>
   <li><a href="#rとrstudioのインストール" id="toc-rとrstudioのインストール" class="nav-link" data-scroll-target="#rとrstudioのインストール"><span class="header-section-number">3.4</span> RとRStudioのインストール</a>
   <ul class="collapse">
@@ -303,24 +304,47 @@ Rなどのプログラミング言語で作成されたプログラム。この�
 <section id="国土地理院標準地図を読み込む" class="level3" data-number="3.3.3">
 <h3 data-number="3.3.3" class="anchored" data-anchor-id="国土地理院標準地図を読み込む"><span class="header-section-number">3.3.3</span> 国土地理院標準地図を読み込む</h3>
 <p>この授業では、さまざまな地理情報を表示するためのツールとしてQGISを使います この際に、背景となる地図があると便利です。背景地図には、インターネット経由でXYZタイル形式のデータを取得するのが一般的です。QGISではOpenStreetMap(OSM)が使えるようになっていますが、日本国内に限って言えば（等高線が描かれた）国土地理院標準地図を使うのが便利です。</p>
-<p>まず、QGISを開き、左側の「ブラウザ」から「XYZタイル」を選び、右クリックし、「新規接続」をクリックします。 <img src="images/3/qgis_gsi_1.png" class="img-fluid"> 新規接続設定画面が出てくるので、</p>
+<p>まず、QGISを開き、左側の「ブラウザ」から「XYZタイル」を選び、右クリックし、「新規接続」をクリックします。</p>
+<p><img src="images/3/qgis_gsi_1.png" class="img-fluid"></p>
+<p>新規接続設定画面が出てくるので、</p>
 <ul>
 <li>名前に <code>地理院標準地図</code></li>
 <li>URLに <code>https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png</code></li>
 </ul>
 <p>を入力し、「OK」を押します。</p>
-<p><img src="images/3/qgis_gsi_2.png" class="img-fluid"> 「ブラウザ」の「XYZタイル」に「地理院標準地図」が追加されているので、クリックして地図を表示します。ズームしながらいろいろな場所を見てみましょう！</p>
-<p><img src="images/3/qgis_gsi_3.png" class="img-fluid"> ### ベクターデータとラスターデータ 前提として、GISにおけるデータの種類について簡単に紹介します。 GISで用いられるデータは主に<strong>ベクターデータ</strong>と<strong>ラスターデータ</strong>に分類されます。</p>
+<p><img src="images/3/qgis_gsi_2.png" class="img-fluid"></p>
+<p>「ブラウザ」の「XYZタイル」に「地理院標準地図」が追加されているので、クリックして地図を表示します。ズームしながらいろいろな場所を見てみましょう！</p>
+<p><img src="images/3/qgis_gsi_3.png" class="img-fluid"></p>
+</section>
+<section id="ベクターデータとラスターデータ" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="ベクターデータとラスターデータ"><span class="header-section-number">3.3.4</span> ベクターデータとラスターデータ</h3>
+<p>前提として、GISにおけるデータの種類について簡単に紹介します。 GISで用いられるデータは主に<strong>ベクターデータ</strong>と<strong>ラスターデータ</strong>に分類されます。</p>
 <ul>
-<li><strong>ベクターデータ</strong>は、市区町村や建物などを<strong>ポイント、ライン、ポリゴン</strong>で表したものです。 それぞれのポイント、ライン、ポリゴンには市区町村名や建物名などの<strong>属性(Attribute)</strong>を紐づけます。ベクターデータはシェープファイル（.shp）やGeoJSON（.geojson）、KML（.kml）といったファイル形式で保存されます。 <img src="https://images.microcms-assets.io/assets/6c4873527fd24450a0163b40e8e173f2/8f22dcb8d6434fcbb17d76a7f88073ef/howto_1_about_data-type_2.png" class="img-fluid" alt="同じ建物を面で表現した場合（左図）とポイントで表現した場合（右図）QGIS LAB 「GISデータについて知ろう！ベクタデータとラスタデータの違いを解説」（https://qgis.mierune.co.jp/posts/howto_1_about_data-type）より"></li>
-<li><strong>ラスターデータ</strong>は一定間隔の格子状にその場所のデータ（標高、土地被覆、色など）が格納されたデータのことを指します。たとえば、航空写真や衛生画像が該当します。この格子の目の大きさを<strong>ピクセルサイズ</strong>ないしは<strong>空間解像度</strong>と呼び、これが細かいほど細部まで詳細に表すことができますが、データサイズが大きくなります。ラスターデータはGeoTIFF（.tiff、.tif）形式で保存されることが多いです。 <img src="https://images.microcms-assets.io/assets/6c4873527fd24450a0163b40e8e173f2/9849488dc31a4faa80d799a2302157a2/howto_1_about_data-type_5.png" class="img-fluid" alt="ラスタデータは格子状に並んだピクセルで校正されている（地球地図日本（国土地理院）を加工して作成）。「GISデータについて知ろう！ベクタデータとラスタデータの違いを解説」（https://qgis.mierune.co.jp/posts/howto_1_about_data-type）より"></li>
+<li><p><strong>ベクターデータ</strong>は、市区町村や建物などを<strong>ポイント、ライン、ポリゴン</strong>で表したものです。 それぞれのポイント、ライン、ポリゴンには市区町村名や建物名などの<strong>属性(Attribute)</strong>を紐づけます。ベクターデータはシェープファイル（.shp）やGeoJSON（.geojson）、KML（.kml）といったファイル形式で保存されます。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://images.microcms-assets.io/assets/6c4873527fd24450a0163b40e8e173f2/8f22dcb8d6434fcbb17d76a7f88073ef/howto_1_about_data-type_2.png" class="img-fluid figure-img"></p>
+<figcaption>同じ建物を面で表現した場合（左図）とポイントで表現した場合（右図）QGIS LAB 「GISデータについて知ろう！ベクタデータとラスタデータの違いを解説」（https://qgis.mierune.co.jp/posts/howto_1_about_data-type）より</figcaption>
+</figure>
+</div></li>
+<li><p><strong>ラスターデータ</strong>は一定間隔の格子状にその場所のデータ（標高、土地被覆、色など）が格納されたデータのことを指します。たとえば、航空写真や衛生画像が該当します。この格子の目の大きさを<strong>ピクセルサイズ</strong>ないしは<strong>空間解像度</strong>と呼び、これが細かいほど細部まで詳細に表すことができますが、データサイズが大きくなります。ラスターデータはGeoTIFF（.tiff、.tif）形式で保存されることが多いです。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://images.microcms-assets.io/assets/6c4873527fd24450a0163b40e8e173f2/9849488dc31a4faa80d799a2302157a2/howto_1_about_data-type_5.png" class="img-fluid figure-img"></p>
+<figcaption>ラスタデータは格子状に並んだピクセルで校正されている（地球地図日本（国土地理院）を加工して作成）。「GISデータについて知ろう！ベクタデータとラスタデータの違いを解説」（https://qgis.mierune.co.jp/posts/howto_1_about_data-type）より</figcaption>
+</figure>
+</div></li>
 </ul>
 <p><a href="https://qgis.mierune.co.jp/posts/howto_1_about_data-type">参考：QGIS LAB 「GISデータについて知ろう！ベクタデータとラスタデータの違いを解説」</a></p>
 </section>
-<section id="国土地理院数値標高モデルdemを使えるようにする" class="level3" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="国土地理院数値標高モデルdemを使えるようにする"><span class="header-section-number">3.3.4</span> 国土地理院数値標高モデル（DEM）を使えるようにする</h3>
+<section id="国土地理院数値標高モデルdemを使えるようにする" class="level3" data-number="3.3.5">
+<h3 data-number="3.3.5" class="anchored" data-anchor-id="国土地理院数値標高モデルdemを使えるようにする"><span class="header-section-number">3.3.5</span> 国土地理院数値標高モデル（DEM）を使えるようにする</h3>
 <p>生態学や自然地理学で使う最も基本的な地理情報に、地形データがあります。 地形データは、5mや1m間隔の格子の中に、その場所の標高が格納されたラスタデータ（数値標高モデル、Digital Elevation Model (DEM)）として表現されます。 日本国内においては、国土地理院がDEMを作成・公開しており、誰でも無償で利用できます。一方、国土地理院DEMはGISでは取り扱いづらいデータ形式で配布されているため、QGISのプラグインを使ってGeoTIFF形式に変換します。</p>
-<p>ここでは、<a href="https://github.com/MIERUNE/QuickDEM4JP">QuickDEM4JPプラグイン</a>を使います。 まず、QGIS上部のメニューバーから「プラグイン」→「プラグインの管理とインストール」をクリックします。 <img src="images/3/qgis_dem4jp_1.png" class="img-fluid"> 検索窓に<code>QuickDEM4JP</code>と入力し、「QuickDEM4JP」を選択してインストールボタンを押します。 <img src="images/3/qgis_dem4jp_2.png" class="img-fluid"> 試しに、駿河台キャンパス周辺のDEMをダウンロードして表示してみましょう。 まずは、基盤地図情報ダウンロードサービスのアカウントを作成します。以下のURLからメールアドレスを登録し、本登録まで進んでください。 <a href="https://service-login.gsi.go.jp">ログインページ</a></p>
+<p>ここでは、<a href="https://github.com/MIERUNE/QuickDEM4JP">QuickDEM4JPプラグイン</a>を使います。 まず、QGIS上部のメニューバーから「プラグイン」→「プラグインの管理とインストール」をクリックします。</p>
+<p><img src="images/3/qgis_dem4jp_1.png" class="img-fluid"></p>
+<p>検索窓に<code>QuickDEM4JP</code>と入力し、「QuickDEM4JP」を選択してインストールボタンを押します。</p>
+<p><img src="images/3/qgis_dem4jp_2.png" class="img-fluid"></p>
+<p>試しに、駿河台キャンパス周辺のDEMをダウンロードして表示してみましょう。 まずは、基盤地図情報ダウンロードサービスのアカウントを作成します。以下のURLからメールアドレスを登録し、本登録まで進んでください。 <a href="https://service-login.gsi.go.jp">ログインページ</a></p>
 <p>アカウントができたらDEMデータのダウンロードに移りましょう。国土地理院の<a href="https://service.gsi.go.jp/kiban/app/">基盤地図情報ダウンロードサービス</a>を開き、右上の「ログイン」ボタンから、先ほど作成したアカウントにログインします。</p>
 <p>「基盤地図情報「基本項目」・「数値標高モデル」のダウンロード」から「数値標高モデル」を開きます。左側の「数値標高モデルを探す」で、以下の条件を指定して「検索」を押します。</p>
 <ul>
@@ -344,12 +368,32 @@ Rなどのプログラミング言語で作成されたプログラム。この�
 </figure>
 </div>
 <p>メールのリンクから取得するファイルは、<code>20260928214951663-001.zip</code>のような名前のアーカイブです。これを解凍すると、DEMのZIPファイルとメタデータのXMLファイルが入っています。2026年9月28日に取得を確認したDEMのファイル名は<code>FG-GML-533946-DEM5A-20250822.zip</code>です。このDEMのZIPは解凍せず、<code>PG2/3/</code>以下に移動させます。末尾の日付はデータの更新により変わるため、以降の操作では実際に取得したファイル名を選んでください。</p>
-<p>画面をQGISに戻しましょう。上部メニューバーの「Processing」から「Toolbox」をクリックして、プロセシングールボックスを開きます。先ほど追加した「QuickDEM4JP」をクリックします。 <img src="images/3/qgis_dem4jp_5.png" class="img-fluid"></p>
-<p>「DEM」に、先ほどダウンロードしたZIPファイル（例：<code>PG2/3/FG-GML-533946-DEM5A-20250822.zip</code>）を、「GeoTIFFの出力先」に適当なファイル名（<code>PG2/3/chiyodaku_dem.tif</code>）を選択し、「実行」を押します。下のQGIS画面例は旧データのファイル名ですが、同じ欄で今回取得したZIPファイルを指定します。 <img src="images/3/qgis_dem4jp_6.png" class="img-fluid"></p>
-<p>以下のように、標高が格納されたファイルが表示されるはずです！ <img src="images/3/qgis_dem4jp_7.png" class="img-fluid"> この図だと白黒でちょっと見辛いので、表示をいじってみましょう。 左下「レイヤ」の<code>chiyodaku_dem</code>を右クリックし、「プロパティ」を開きます。 - カラーマップの変更 - 左のタブ一覧から「シンボロジ」タブを開きます。 - 「レンダリングタイプ」を「単バンド擬似カラー」にします。 - 「カラーランプ」を「Viridis」にします。 - 「OK」を押します - 透明度の変更 - 左のタブ一覧から「透明度」タブを開きます。 - 「グローバルな不透明度」を70%にします。 - 「OK」を押します。</p>
-<p><img src="images/3/qgis_dem4jp_8.png" class="img-fluid"> 鮮やかなカラーマップが表示されました！半透明で標準地図も見ることができます。 本郷台地から不忍池に伸びる谷地形が印象的ですね！</p>
-<section id="余裕がある人向けの発展課題" class="level4" data-number="3.3.4.1">
-<h4 data-number="3.3.4.1" class="anchored" data-anchor-id="余裕がある人向けの発展課題"><span class="header-section-number">3.3.4.1</span> 余裕がある人向けの発展課題</h4>
+<p>画面をQGISに戻しましょう。上部メニューバーの「Processing」から「Toolbox」をクリックして、プロセシングールボックスを開きます。先ほど追加した「QuickDEM4JP」をクリックします。</p>
+<p><img src="images/3/qgis_dem4jp_5.png" class="img-fluid"></p>
+<p>「DEM」に、先ほどダウンロードしたZIPファイル（例：<code>PG2/3/FG-GML-533946-DEM5A-20250822.zip</code>）を、「GeoTIFFの出力先」に適当なファイル名（<code>PG2/3/chiyodaku_dem.tif</code>）を選択し、「実行」を押します。下のQGIS画面例は旧データのファイル名ですが、同じ欄で今回取得したZIPファイルを指定します。</p>
+<p><img src="images/3/qgis_dem4jp_6.png" class="img-fluid"></p>
+<p>以下のように、標高が格納されたファイルが表示されるはずです！</p>
+<p><img src="images/3/qgis_dem4jp_7.png" class="img-fluid"></p>
+<p>この図だと白黒でちょっと見辛いので、表示をいじってみましょう。 左下「レイヤ」の<code>chiyodaku_dem</code>を右クリックし、「プロパティ」を開きます。</p>
+<ul>
+<li>カラーマップの変更
+<ul>
+<li>左のタブ一覧から「シンボロジ」タブを開きます。</li>
+<li>「レンダリングタイプ」を「単バンド擬似カラー」にします。</li>
+<li>「カラーランプ」を「Viridis」にします。</li>
+<li>「OK」を押します。</li>
+</ul></li>
+<li>透明度の変更
+<ul>
+<li>左のタブ一覧から「透明度」タブを開きます。</li>
+<li>「グローバルな不透明度」を70%にします。</li>
+<li>「OK」を押します。</li>
+</ul></li>
+</ul>
+<p><img src="images/3/qgis_dem4jp_8.png" class="img-fluid"></p>
+<p>鮮やかなカラーマップが表示されました！半透明で標準地図も見ることができます。 本郷台地から不忍池に伸びる谷地形が印象的ですね！</p>
+<section id="余裕がある人向けの発展課題" class="level4" data-number="3.3.5.1">
+<h4 data-number="3.3.5.1" class="anchored" data-anchor-id="余裕がある人向けの発展課題"><span class="header-section-number">3.3.5.1</span> 余裕がある人向けの発展課題</h4>
 <p>東京23区全域のDEMをダウンロードして一つのGeoTIFFファイルにまとめ、QGIS上で表示してみましょう。 ヒント：「QGIS ラスター 結合」で検索</p>
 </section>
 </section>

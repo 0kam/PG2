@@ -367,7 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>上記では数字だけを取り扱ってきましたが、Rは数字以外のデータを扱うこともできます。 プログラミング言語では、データの種類のことを「型」と呼びます。 例えば、数字の1と文字としての”1”は全く別のものとして取り扱われます。 したがって、以下の例では文字である”1”を足し算で用いることができないため、エラーが生じます。</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="st">"1"</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in 1 + "1": non-numeric argument to binary operator</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in 1 + "1": 二項演算子の引数が数値ではありません</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>それでは、Rで用いられる（主な）型をみていきましょう。</p>
 <section id="数値-numeric" class="level4" data-number="4.1.2.1">
@@ -680,7 +680,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ├── FG-GML-533944-DEM5A-20250822.zip
 ├── FG-GML-533945-DEM5A-20250822.zip
 └── FG-GML-533946-DEM5A-20250822.zip</code></pre>
-<p>ファイル名は2026年9月28日に実際に取得したアーカイブで確認したものです。末尾の日付は更新により変わるため、実際に取得したファイル名を選んでください。それでは、これをそれぞれQGISでGeoTIFFファイルに変換しましょう。今回は、<code>GeoTIFFの出力先</code>を<code>[一時ファイル保存]</code>にします。以下のQGIS画面例は旧データですが、同じ欄に今回取得した3つのZIPファイルを指定します。 <img src="images/4/1_2.png" class="img-fluid"></p>
+<p>ファイル名は2026年9月28日に実際に取得したアーカイブで確認したものです。末尾の日付は更新により変わるため、実際に取得したファイル名を選んでください。それでは、これをそれぞれQGISでGeoTIFFファイルに変換しましょう。今回は、<code>GeoTIFFの出力先</code>を<code>[一時ファイル保存]</code>にします。以下のQGIS画面例は旧データですが、同じ欄に今回取得した3つのZIPファイルを指定します。</p>
+<p><img src="images/4/1_2.png" class="img-fluid"></p>
 <p>以下のような感じで、3つのDEMファイルが読み込まれました。</p>
 <p><img src="images/4/1_3.png" class="img-fluid"></p>
 <p>次に、これらを一つに結合します。<code>ラスタ→その他→結合</code>を選び、<code>入力レイヤ</code>に先ほど作成された3つのレイヤ（<code>GeoTIFFの出力先</code>という名前のはず）を選択し、<code>実行</code>を押します。</p>
@@ -1059,8 +1060,8 @@ remotes::install_github("uribo/jpndistrict")</code></pre>
 <span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span>  <span class="co"># Add default OpenStreetMap map tiles</span></span>
 <span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-390fad2f096086438d78" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-390fad2f096086438d78">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[35.70303223926791,35.70313929531326,35.70314533537349,35.70300890503935,35.70576380382061,35.70663893731216],[139.7497117411159,139.7486161861963,139.7475113269894,139.746435356433,139.7440781028729,139.7438109937727],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[35.70300890503935,35.70663893731216],"lng":[139.7438109937727,139.7497117411159]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-54d968b32292a6107869" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-54d968b32292a6107869">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[35.70303223926791,35.70313929531326,35.70314533537349,35.70300890503935,35.70576380382061,35.70663893731216],[139.7497117411159,139.7486161861963,139.7475113269894,139.746435356433,139.7440781028729,139.7438109937727],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[35.70300890503935,35.70663893731216],"lng":[139.7438109937727,139.7497117411159]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>首都高でした！ここですね。</p>
